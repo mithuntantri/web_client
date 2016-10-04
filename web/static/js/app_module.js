@@ -20,20 +20,19 @@ angular.module("zigfo", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', '
 
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
       if (error === "Not Authorised") {
-        $state.go("login")
-        // alert("You are not logged in")
+        $state.go("main.home")
       } else if(error === "Already Logged In"){
-        $state.go("login")
+        $state.go("main.home")
       } else if (error === "Token Invalid") {
-        $state.go("login")
+        $state.go("main.home")
       }
     })
-    // A `tokenexpired` event
+
     $rootScope.$on('tokenexpired', function () {
       $cookies.remove('token')
       $cookies.remove('loggedIn')
       $rootScope.loggedIn = false
-      $state.go("login")
+      $state.go("main.home")
     })
 }])
 // A $http interceptor for injecting token and checking for token expiry
@@ -56,55 +55,85 @@ angular.module("zigfo", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', '
     return Interceptor;
 }])
 
-  .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider,
-                    $authProvider, $facebookProvider){
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider,
+                    $httpProvider, $authProvider, $facebookProvider){
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('tokenInterceptor');
-    $urlRouterProvider.otherwise("/");
-    // $urlRouterProvider.when('/', '/');
-
+    $urlRouterProvider.otherwise("/home");
     $facebookProvider.setAppId('1791808574372416');
 
     // State definitions
     $stateProvider
-        .state("login", {
-            url: "/",
-            templateUrl: "partials/home.html",
-            controller: "loginController",
-            resolve:{
-                gotoLogin: ['$state', '$q', function ($state, $q) {
-                    $state.go('login')
-                    return $q.resolve()
-                }],
-                alreadyLoggedIn: ['$q', '$cookies', function($q, $cookies) {
-                    if($cookies.get('token')){
-                        return $q.reject("Already Logged In")
-                    }
-                }]
-            }
+        .state("main", {
+          url: "/",
+          templateUrl: "partials/main.html",
+          controller: "mainController",
+          abstract: true,
+          resolve:{
+              gotoHome: ['$state', '$q', function ($state, $q) {
+                  $state.go('main.home')
+                  return $q.resolve()
+              }],
+              alreadyLoggedIn: ['$q', '$cookies', function($q, $cookies) {
+                  if($cookies.get('token')){
+                      return $q.reject("Already Logged In")
+                  }
+              }]
+          }
         })
-        .state("dashboard", {
-            url: "/dashboard",
-            templateUrl: "partials/dashboard.html",
-            controller: "dashboardController",
-            resolve: {
+
+        .state("main.home", {
+          url: "",
+          templateUrl: "partials/main.home.html",
+          controller: "mainHomeController"
+        })
+        
+        .state("main.design", {
+          url: "",
+          templateUrl: "partials/main.design.html",
+          controller: "mainHomeController"
+        })
+
+        .state("main.app", {
+          url: "/app",
+          templateUrl: "partials/app.html",
+          controller: "appController",
+          resolve:{
+              gotoHome: ['$state', '$q', function ($state, $q) {
+                  $state.go('main.app.home')
+                  return $q.resolve()
+              }],
+              alreadyLoggedIn: ['$q', '$cookies', function($q, $cookies) {
+                  if($cookies.get('token')){
+                      return $q.reject("Already Logged In")
+                  }
+              }],
               loginRequired: ['$q','$cookies', function($q,$cookies){
                 if(!$cookies.get('token')) {
                   return $q.reject("Not Authorised");
                 }
               }]
-            }
+          }
         })
-        .state("profile", {
+
+        .state("main.app.home", {
+            url: "/home",
+            templateUrl: "partials/app.home.html",
+            controller: "homeController"
+        })
+        .state("main.app.profile", {
             url: "/profile",
-            templateUrl: "partials/profile.html",
-            controller: "profileController",
-            resolve: {
-              loginRequired: ['$q', '$cookies',function($q,$cookies){
-                if(!$cookies.get('token')) {
-                  return $q.reject("Not Authorised");
-                }
-              }]
-            }
+            templateUrl: "partials/app.profile.html",
+            controller: "profileController"
+        })
+        .state("main.app.measurements", {
+            url: "/measurements",
+            templateUrl: "partials/app.measurements.html",
+            controller: "measurementsController"
+        })
+        .state("main.app.credits", {
+          url: "/credits",
+          templateUrl: "partials/app.credits.html",
+          controller: "creditsController"
         })
 })

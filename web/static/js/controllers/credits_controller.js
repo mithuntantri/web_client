@@ -1,5 +1,5 @@
 angular.module("zigfo")
-.controller('dashboardController', ['$scope','$http','$state', '$cookies',
+.controller('creditsController', ['$scope','$http','$state', '$cookies',
   function ($scope, $http, $state, $cookies) {
   console.log('Dashboard Loaded');
   $scope.gotoProfile = ()=>{

@@ -28,7 +28,8 @@
         </div>
         <div class="profile-fab-section">
           <div class="profile-fab-lbl">
-            Log In
+            <span ng-if="!loggedIn" ng-click="OpenLoginModal()">Log In</span>
+            <span ng-if="loggedIn">{{username}}</span>
           </div>
           <div class="profile-fab-dropdown">
             <ul class="dropdown-list">
@@ -36,19 +37,19 @@
                 <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">perm_identity</i></div>
                 <div class="dropdown-item-lbl">Your Account</div>
               </li>
-              <li class="dropdown-list-item">
+              <li class="dropdown-list-item" ui-sref="main.app.measurements">
                 <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">all_inclusive</i></div>
                 <div class="dropdown-item-lbl">Measurement Profile</div>
               </li>
-              <li class="dropdown-list-item" class="dropdown-list-item">
-                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">sentiment_very_satisfied</i></div>
+              <li class="dropdown-list-item" class="dropdown-list-item" ui-sref="main.design">
+                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">favorite_border</i></div>
                 <div class="dropdown-item-lbl">Favorites</div>
               </li>
-              <li class="dropdown-list-item">
-                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">work</i></div>
+              <li class="dropdown-list-item" ui-sref="main.app.credits">
+                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">account_balance_wallet</i></div>
                 <div class="dropdown-item-lbl">
                   <div style="width:66%;float:left;">ZigFo Credits</div>
-                  <div style="width:33%;float:left;text-align:right;">0</div>
+                  <div style="width:33%;float:left;text-align:right;">{{zigfo_credits}}</div>
                 </div>
             </ul>
             <div style="width:100%;height:50px;padding:10px 7px;text-align:center;font-size:11px;">
@@ -155,7 +156,7 @@
       <input ng-model="signup.username">
     </md-input-container>
     <md-input-container class="md-block" flex-gt-sm style="margin:0;">
-      <label>Stitcho Password</label>
+      <label>Zigfo Password</label>
       <input ng-model="signup.password">
     </md-input-container>
     <div style="width:100%;">
