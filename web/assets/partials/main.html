@@ -27,9 +27,11 @@
           </div>
         </div>
         <div class="profile-fab-section">
-          <div class="profile-fab-lbl">
-            <span ng-if="!loggedIn" ng-click="OpenLoginModal()">Log In</span>
-            <span ng-if="loggedIn">{{username}}</span>
+          <div class="profile-fab-lbl" ng-if="!loggedIn" ng-click="OpenLoginModal()">
+            <span>Log In</span>
+          </div>
+          <div class="profile-fab-lbl" ng-if="loggedIn">
+            <span>{{username}}</span>
           </div>
           <div class="profile-fab-dropdown">
             <ul class="dropdown-list">
@@ -110,7 +112,7 @@
 </div>
 <div class="ui small modal loginmodal">
   <div class="modal-close-section">
-    <i class="fa fa-times" aria-hidden="true" ng-click="closeLoginModal()"></i>
+    <i class="fa fa-times" aria-hidden="true" ng-click="CloseLoginModal()"></i>
   </div>
   <div class="modal-header-section">
     <div class="sliding-middle-out" ng-click="modalTab('login')" ng-class="{'active': login_active}">
@@ -153,11 +155,18 @@
   <div class="modal-container" ng-show="signup_active">
     <md-input-container class="md-block" flex-gt-sm style="margin:0;">
       <label>Mobile Number</label>
-      <input ng-model="signup.username">
+      <input ng-model="mobileno">
     </md-input-container>
-    <md-input-container class="md-block" flex-gt-sm style="margin:0;">
-      <label>Zigfo Password</label>
-      <input ng-model="signup.password">
+    <!-- <md-input-container class="md-block" flex-gt-sm style="margin:0;"> -->
+      <input type="checkbox" ng-model="has_referral_code">Have a Referral Code?
+    <!-- </md-input-container> -->
+    <md-input-container class="md-block" flex-gt-sm style="margin:0;" ng-if="has_referral_code">
+      <label>Referral Code</label>
+      <input ng-model="referral_code">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm style="margin:0;" ng-if="otp_generated">
+      <label>Verify OTP</label>
+      <input ng-model="otp">
     </md-input-container>
     <div style="width:100%;">
       <md-button class="md-raised md-primary" style="margin:0 auto;width:100%;background-color:#dd4b39;">

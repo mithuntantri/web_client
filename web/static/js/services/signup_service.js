@@ -2,6 +2,7 @@ class SignupService {
   constructor($http, $rootScope) {
     this.$http = $http
     this.$rootScope = $rootScope
+    this.otp_generated = false
   }
   usersignup(mobileno, referral_id){
     if (referral_id.length === 0){
@@ -58,3 +59,5 @@ class SignupService {
     })
   }
 }
+SignupService.$inject = ['$http', '$rootScope']
+angular.module("zigfo").service('SignupService', SignupService)

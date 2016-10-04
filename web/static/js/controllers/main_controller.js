@@ -1,6 +1,6 @@
 angular.module("zigfo").controller('mainController',
-              ['$scope','$state', '$rootScope', '$cookies', 'LoginService', 'SignupService',
-              function($scope, $rootScope, $state, $cookies, LoginService, SignupService){
+              ['$scope','$state', '$rootScope', '$cookies', 'LoginService', 'SignupService', 'FBLoginService',
+              function($scope, $rootScope, $state, $cookies, LoginService, SignupService, FBLoginService){
 
       console.log('Main Controller');
 
@@ -8,7 +8,8 @@ angular.module("zigfo").controller('mainController',
       $scope.zigfo_wallet = 0
       $scope.loggedIn = false
       $scope.set_expiry = true
-
+      $scope.has_referral_code = false
+      $scope.otp_generated = SignupService.otp_generated
       $('.modal.loginmodal').modal({
           closable: false,
           allowMultiple: false,
@@ -21,11 +22,11 @@ angular.module("zigfo").controller('mainController',
           }
       });
 
-      $scope.openLoginModal = () =>{
+      $scope.OpenLoginModal = () =>{
         $('.modal.loginmodal').modal('show')
       }
 
-      $scope.closeLoginModal = () =>{
+      $scope.CloseLoginModal = () =>{
         $('.modal.loginmodal').modal('hide')
       }
 

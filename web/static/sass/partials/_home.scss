@@ -39,6 +39,7 @@ $header-text-color: #fff;
   float:left;
   height: 100%;
   border-left: 1px solid $orange-contrast;
+  cursor:pointer;
 }
 .profile-fab-section{
   width: 120px;
@@ -47,6 +48,7 @@ $header-text-color: #fff;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-left: 1px solid $orange-contrast;
+  cursor:pointer;
 }
 .app-container{
   width:100%;
@@ -258,3 +260,14 @@ li.dropdown-list-item:hover{
   padding: 0 7px;
   font-size: 12px;
 }
+HTMLJSCSS
+.checkboxdemoSelectAll .demo-legend {
+  color: #3F51B5; }
+
+.checkboxdemoSelectAll .demo-fieldset {
+  border-style: solid;
+  border-width: 1px;
+  height: 100%; }
+
+.checkboxdemoSelectAll .demo-select-all-checkboxes {
+  padding-left: 30px; }

@@ -10,3 +10,4 @@ import "./controllers/credits_controller"
 
 import "./services/login_service"
 import "./services/signup_service"
+import "./services/fb_login_service"
