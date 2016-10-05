@@ -14,15 +14,17 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
     let loggedIn = localStorage.loggedIn
     let token = localStorage.token
     let name = localStorage.username
+    console.log(loggedIn, token, name);
     if(loggedIn === "true"){
         $rootScope.loggedIn = true
     }
 
     $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error){
+      console.log('Unauthorized', error);
       if (error === "Not Authorised") {
         $state.go("main.home")
       } else if(error === "Already Logged In"){
-        $state.go("main.home")
+        $state.go("main.app.home")
       } else if (error === "Token Invalid") {
         $state.go("main.home")
       }
@@ -30,7 +32,7 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
 
     $rootScope.$on('tokenexpired', function () {
       localStorage.removeItem('token')
-      localStorage.removeItem('loggedIn')
+      localStorage.loggedIn = false
       $rootScope.loggedIn = false
       $state.go("main.home")
     })
@@ -105,16 +107,8 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
           templateUrl: "partials/app.html",
           controller: "appController",
           resolve:{
-              gotoHome: ['$state', '$q', function ($state, $q) {
-                  $state.go('main.app.home')
-                  return $q.resolve()
-              }],
-              alreadyLoggedIn: ['$q', function($q) {
-                  if(localStorage.token){
-                      return $q.reject("Already Logged In")
-                  }
-              }],
               loginRequired: ['$q', function($q){
+                console.log(localStorage.token, !localStorage.token);
                 if(!localStorage.token) {
                   return $q.reject("Not Authorised");
                 }
@@ -130,7 +124,7 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
         .state("main.app.profile", {
             url: "/profile",
             templateUrl: "partials/app.profile.html",
-            controller: "profileController"
+            controller: "mainProfileController"
         })
         .state("main.app.measurements", {
             url: "/measurements",

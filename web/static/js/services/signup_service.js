@@ -1,3 +1,4 @@
+
 class SignupService {
   constructor($http, $rootScope, $state, ModalService) {
     this.$http = $http
@@ -102,6 +103,10 @@ class SignupService {
         'password': password
       }
     }).then((response)=>{
+      this.$rootScope.loggedIn = true
+      localStorage.token = response.data.data.secret
+      localStorage.loggedIn = true
+      localStorage.mobileno = mobileno
       if(response.data.data.first_time_login){
         if(!response.data.data.password_set){
           this.ModalService.CloseLoginModal()
@@ -109,13 +114,8 @@ class SignupService {
         }else if(!response.data.data.profile_set){
           this.ModalService.CloseLoginModal()
           this.ModalService.ClosePasswordModal()
-          this.$state.go("main.profile")
+          this.$state.go("main.app.profile")
         }
-        localStorage.token = response.data.data.secret
-        localStorage.loggedIn = true
-      }else{
-        localStorage.token = response.data.data.secret
-        localStorage.loggedIn = true
       }
     }, (error)=>{
 
