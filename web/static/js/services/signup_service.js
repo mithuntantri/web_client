@@ -114,7 +114,7 @@ class SignupService {
         }else if(!response.data.data.profile_set){
           this.ModalService.CloseLoginModal()
           this.ModalService.ClosePasswordModal()
-          this.$state.go("main.app.profile")
+          this.$state.go("app.profile")
         }
       }
     }, (error)=>{

@@ -22,12 +22,21 @@ angular.module("zigfo").controller('mainProfileController',
       $scope.pin_code = ''
       $scope.city = 'Bangalore'
 
-      $scope.set_profile = ()=>{
+      $scope.setProfile = ()=>{
         if ($scope.male){
           $scope.gender = 'M'
         }else{
           $scope.gender = 'F'
         }
-        ProfileService.set_profile(mobileno, email_id, gender, first_name, last_name, address, street, pin_code)
+        ProfileService.set_user_profile(
+          $scope.mobileno,
+          $scope.email_id,
+          $scope.gender,
+          $scope.first_name,
+          $scope.last_name,
+          $scope.address,
+          $scope.street,
+          $scope.pin_code
+        )
       }
 }])

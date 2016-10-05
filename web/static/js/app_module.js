@@ -24,7 +24,8 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
       if (error === "Not Authorised") {
         $state.go("main.home")
       } else if(error === "Already Logged In"){
-        $state.go("main.app.home")
+        console.log('Already Logged');
+        $state.go("app.home")
       } else if (error === "Token Invalid") {
         $state.go("main.home")
       }
@@ -61,7 +62,8 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
                     $httpProvider, $authProvider, $facebookProvider){
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('tokenInterceptor');
-    $urlRouterProvider.otherwise("/home");
+    $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.when('/app', '/app/home');
     $facebookProvider.setAppId('1791808574372416');
 
     // State definitions
@@ -72,7 +74,7 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
           controller: "mainController",
           abstract: true,
           resolve:{
-              gotoHome: ['$state', '$q', function ($state, $q) {
+            gotoLogin: ['$state', '$q', function ($state, $q) {
                   $state.go('main.home')
                   return $q.resolve()
               }],
@@ -102,13 +104,12 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
           controller: "mainProfileController"
         })
 
-        .state("main.app", {
+        .state("app", {
           url: "/app",
           templateUrl: "partials/app.html",
           controller: "appController",
           resolve:{
               loginRequired: ['$q', function($q){
-                console.log(localStorage.token, !localStorage.token);
                 if(!localStorage.token) {
                   return $q.reject("Not Authorised");
                 }
@@ -116,22 +117,22 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
           }
         })
 
-        .state("main.app.home", {
+        .state("app.home", {
             url: "/home",
             templateUrl: "partials/app.home.html",
             controller: "homeController"
         })
-        .state("main.app.profile", {
+        .state("app.profile", {
             url: "/profile",
             templateUrl: "partials/app.profile.html",
             controller: "mainProfileController"
         })
-        .state("main.app.measurements", {
+        .state("app.measurements", {
             url: "/measurements",
             templateUrl: "partials/app.measurements.html",
             controller: "measurementsController"
         })
-        .state("main.app.credits", {
+        .state("app.credits", {
           url: "/credits",
           templateUrl: "partials/app.credits.html",
           controller: "creditsController"

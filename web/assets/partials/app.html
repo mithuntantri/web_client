@@ -1,1 +1,224 @@
-<div ui-view></div>
+<div class="top-nav">
+  <div class="sub-nav">
+    <div class="sub-nav-container">
+      <div class="sub-nav-menu-left">
+        India's Leading Online Tailor | Use Coupon
+        <span style="background-color:#fff;color:#f70;padding:2px 5px;">ZIG100</span>
+        on first Order to get 100 off
+      </div>
+      <div class="sub-nav-menu-right">
+        <span class="sub-nav-menu">Help<span>
+        <span class="sub-nav-menu">Track Order<span>
+        <span class="sub-nav-menu">Download App<span>
+      </div>
+    </div>
+  </div>
+  <div class="main-nav">
+    <div class="main-nav-container">
+      <div class="left-logo-section"></div>
+      <div class="center-search-section"></div>
+      <div class="right-fab-section">
+        <div class="cart-fab-section">
+          <div class="cart-fab-lbl">
+            Cart
+          </div>
+          <div class="cart-fab-icon">
+            <i class="material-icons" style="line-height:65px;">shopping_cart</i>
+          </div>
+        </div>
+        <div class="profile-fab-section">
+          <div class="profile-fab-lbl" ng-if="!loggedIn" ng-click="OpenLoginModal()">
+            <span>Log In</span>
+          </div>
+          <div class="profile-fab-lbl" ng-if="loggedIn">
+            <span>{{username}}</span>
+          </div>
+          <div class="profile-fab-dropdown">
+            <ul class="dropdown-list">
+              <li class="dropdown-list-item" ui-sref="app.profile">
+                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">perm_identity</i></div>
+                <div class="dropdown-item-lbl">Your Account</div>
+              </li>
+              <li class="dropdown-list-item" ui-sref="app.measurements">
+                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">all_inclusive</i></div>
+                <div class="dropdown-item-lbl">Measurement Profile</div>
+              </li>
+              <li class="dropdown-list-item" class="dropdown-list-item" ui-sref="main.design">
+                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">favorite_border</i></div>
+                <div class="dropdown-item-lbl">Favorites</div>
+              </li>
+              <li class="dropdown-list-item" ui-sref="app.credits">
+                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">account_balance_wallet</i></div>
+                <div class="dropdown-item-lbl">
+                  <div style="width:66%;float:left;">ZigFo Credits</div>
+                  <div style="width:33%;float:left;text-align:right;">{{zigfo_credits}}</div>
+                </div>
+            </ul>
+            <div style="width:100%;height:50px;padding:10px 7px;text-align:center;font-size:11px;">
+              If you are a new user
+              <div style="width:100%;text-align:center;font-size:12px;">Register</div>
+            </div>
+          </div>
+          <div class="profile-fab-icon">
+            <i class="material-icons" style="line-height:65px;">account_circle</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="app-container">
+  <div class="fab-categories">
+    <ul class="fab-categories-list">
+      <div class="fab-list-header">TOP CATEGORIES</div>
+      <li class="fab-categories-list">
+        <div class="fab-categories-icon" style="overflow:hidden;">
+          <img src="img/custom_shirts_logo.jpg" style="width:100%;height:100%;"/>
+        </div>
+        <div class="fab-categories-label">Custom Shirts</div>
+      </li>
+      <li class="fab-categories-list">
+        <div class="fab-categories-icon" style="overflow:hidden;">
+          <img src="img/womenswear_logo.jpg" style="width:100%;height:100%;"/>
+        </div>
+        <div class="fab-categories-label">Womenswear</div>
+      </li>
+      <li class="fab-categories-list">
+        <div class="fab-categories-icon" style="overflow:hidden;">
+          <img src="img/fabric_logo.jpg" style="width:100%;height:100%;"/>
+        </div>
+        <div class="fab-categories-label">Fabrics</div>
+      </li>
+    </ul>
+    <ul class="fab-categories-list-2">
+      <div class="fab-list-header-2">MORE CATEGORIES</div>
+      <li class="fab-categories-list-2">
+        <div class="fab-categories-label-2">Men's Fashion</div>
+      </li>
+      <li class="fab-categories-list-2">
+        <div class="fab-categories-label-2">Women's Fashion</div>
+      </li>
+      <li class="fab-categories-list-2">
+        <div class="fab-categories-label-2">Suits</div>
+      </li>
+      <li class="fab-categories-list-2">
+        <div class="fab-categories-label-2">Accessories</div>
+      </li>
+    </ul>
+  </div>
+  <div class="ui-view-container">
+    <div ui-view></div>
+  </div>
+</div>
+<div class="ui small modal passwordmodal">
+  <!-- <div class="modal-close-section">
+    <i class="fa fa-times" aria-hidden="true" ng-click="ClosePasswordModal()"></i>
+  </div> -->
+  <div class="modal-header-section">
+    <div class="sliding-middle-out active" style="width:125px;">
+      Set Password
+    </div>
+  </div>
+  <div class="modal-container">
+      <md-input-container class="md-block" flex-gt-sm style="margin:0;">
+        <label>New Password</label>
+        <input ng-model="new_password" type="password">
+      </md-input-container>
+      <md-input-container class="md-block" flex-gt-sm style="margin:0;">
+        <label>Retype Password</label>
+        <input ng-model="confirm_password" type="password">
+      </md-input-container>
+      <div style="width:100%;">
+        <md-button class="md-raised md-primary" style="margin:0 auto;width:100%;background-color:#dd4b39;" ng-click="createPassword()">
+          <i class="fa fa-lock"></i>
+          <span style="padding:0 7px">Set Password</span>
+        </md-button>
+      </div>
+  </div>
+</div>
+<div class="ui small modal loginmodal">
+  <div class="modal-close-section">
+    <i class="fa fa-times" aria-hidden="true" ng-click="CloseLoginModal()"></i>
+  </div>
+  <div class="modal-header-section">
+    <div class="sliding-middle-out" ng-click="modalTab('login')" ng-class="{'active': login_active}">
+      Login In
+    </div>
+    <div class="sliding-middle-out" ng-click="modalTab('signup')" ng-class="{'active': signup_active}">
+      Sign Up
+    </div>
+  </div>
+  <div class="modal-container" ng-show="login_active">
+      <md-input-container class="md-block" flex-gt-sm style="margin:0;height:39px;">
+        <label>Mobile Number or Email</label>
+        <input ng-model="user.username">
+      </md-input-container>
+      <div class="form-right-text">
+        Login with OTP
+      </div>
+      <md-input-container class="md-block" flex-gt-sm style="margin:0;height:39px;">
+        <label>ZigFo Password</label>
+        <input ng-model="user.password" type="password">
+      </md-input-container>
+      <div class="form-right-text-l0">
+        Forgot Password?
+      </div>
+      <!-- <md-checkbox ng-checked="expire" ng-click="changeExpiry()">
+       Keep me Signed In
+      </md-checkbox> -->
+      <div style="width:100%;">
+        <md-button class="md-raised md-primary" style="margin:0 auto;width:100%;background-color:#dd4b39;"
+          ng-click="secureLogin()">
+          <i class="fa fa-lock"></i>
+          <span style="padding:0 7px">Secure Login</span>
+        </md-button>
+      </div>
+      <div style="font-size:9px;text-align:left;width:100%;line-height:25px;">
+        By Logging in you agree to our
+        <span style="color:#dd4b39;">T&C</span> and <span style="color:#dd4b39;">Privacy Policy.</span>
+      </div>
+  </div>
+  <div class="modal-container" ng-show="signup_active">
+    <md-input-container class="md-block" flex-gt-sm style="margin:0;height:60px;">
+      <label>Mobile Number</label>
+      <input ng-model="mobileno">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm style="margin:0;">
+      <md-checkbox ng-checked="has_referral_code" ng-click="changeReferralId()" class="signup-checkbox">
+       Have a Referral Code?
+      </md-checkbox>
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm style="margin:0;height:60px;" ng-show="has_referral_code">
+      <label>Referral Code</label>
+      <input ng-model="referral_code">
+    </md-input-container>
+    <md-input-container class="md-block" flex-gt-sm style="margin:0;" ng-show="SignupService.otp_generated">
+      <label>Verify OTP</label>
+      <input ng-model="otp" ng-change="changeOtp()">
+    </md-input-container>
+    <div style="width:100%;">
+      <md-button class="md-raised md-primary" style="margin:0 auto;width:100%;background-color:#dd4b39;" ng-click="secureSignUp()" ng-if="!SignupService.otp_generated">
+        <i class="fa fa-lock"></i>
+        <span style="padding:0 7px">Create Account</span>
+      </md-button>
+    </div>
+    <div style="width:100%;">
+      <md-button class="md-raised md-primary" style="margin:0 auto;width:100%;background-color:#dd4b39;" ng-click="verifySignUp()" ng-if="SignupService.otp_generated">
+        <i class="fa fa-lock"></i>
+        <span style="padding:0 7px">Verify Account</span>
+      </md-button>
+    </div>
+    <div style="font-size:9px;text-align:left;width:100%;line-height:25px;">
+      By Signing Up you agree to our
+      <span style="color:#dd4b39;">T&C</span> and <span style="color:#dd4b39;">Privacy Policy.</span>
+    </div>
+  </div>
+  <span class="modal-or-divider">OR</span>
+  <div class="fblogin-btn-container">
+    <md-button class="md-raised md-primary fblogin-btn"
+      ng-click="fblogin()">
+      <i class="fa fa-facebook"></i>
+      <span style="padding:0 7px">LOGIN WITH FACEBOOK</span>
+    </md-button>
+  </div>
+</div>
