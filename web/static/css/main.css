@@ -2,6 +2,36 @@
 body{
   font-family: 'Roboto', sans-serif !important;
 }
+[type="checkbox"]:not(:checked), [type="checkbox"]:checked{
+  position: relative !important;
+  opacity:1 !important;
+  left:50px !important;
+  top:5px !important;
+}
+md-checkbox.md-default-theme.md-checked .md-icon, md-checkbox.md-checked .md-icon{
+  background-color: rgb(221, 75, 57) !important;
+}
+md-checkbox .md-container,
+md-checkbox .md-icon{
+  width:15px !important;
+  height:15px !important;
+}
+md-checkbox .md-label{
+  font-size: 12px;
+}
+.signup-checkbox{
+  margin-top: -20px;
+  margin-right: 47px !important;
+  float: right;
+}
+.ui.small.modal.passwordmodal{
+  position: fixed;
+  top:20% !important;
+  left:60%;
+  width:400px;
+  height:350px;
+  padding: 20px 25px;
+}
 .ui.small.modal.loginmodal{
   position: fixed;
   top:20% !important;
@@ -32,7 +62,7 @@ body{
 	margin: auto;
 	height: 3px;
 	width: 0px;
-  margin-top:5px;
+  margin-top:10px;
 	background: transparent;
 	transition: width .5s ease, background-color .5s ease;
 }
@@ -62,7 +92,7 @@ body{
   width:100%;height:85px;border-top:1px solid #deeaee;padding: 25px 30px;
 }
 .fblogin-btn{
-  margin:0 auto;width:100%;background-color:#48629b;
+  margin:0 !important;width:100%;background-color:#48629b;
 }
 .modal-or-divider{
   position:absolute;top:320px;left:190px;padding:0 10px;background-color:#fff;

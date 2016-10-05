@@ -1,7 +1,7 @@
 angular.module("zigfo")
 .controller('profileController',
-  ['$scope','$state','$http', '$cookies',
-    function ($scope, $state, $http, $cookies) {
+  ['$scope','$state','$http',
+    function ($scope, $state, $http) {
   $scope.fetchProfile = ()=>{
     $http({
       url:'/api/login/verify',

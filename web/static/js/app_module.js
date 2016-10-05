@@ -1,6 +1,6 @@
-angular.module("zigfo", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', 'ngFacebook'])
-.run(['$rootScope', '$state', '$stateParams', '$timeout', '$cookies',
-    function($rootScope, $state, $stateParams, $timeout, $cookies) {
+angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
+.run(['$rootScope', '$state', '$stateParams', '$timeout',
+    function($rootScope, $state, $stateParams, $timeout) {
 
     (function(){
        if (document.getElementById('facebook-jssdk')) {return;}
@@ -11,9 +11,9 @@ angular.module("zigfo", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', '
        firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
      }());
 
-    let loggedIn = $cookies.get('loggedIn')
-    let token = $cookies.get('token')
-    let name = $cookies.get('name')
+    let loggedIn = localStorage.loggedIn
+    let token = localStorage.token
+    let name = localStorage.username
     if(loggedIn === "true"){
         $rootScope.loggedIn = true
     }
@@ -29,18 +29,18 @@ angular.module("zigfo", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', '
     })
 
     $rootScope.$on('tokenexpired', function () {
-      $cookies.remove('token')
-      $cookies.remove('loggedIn')
+      localStorage.removeItem('token')
+      localStorage.removeItem('loggedIn')
       $rootScope.loggedIn = false
       $state.go("main.home")
     })
 }])
 // A $http interceptor for injecting token and checking for token expiry
-.factory('tokenInterceptor', ['$q', '$rootScope', '$cookies',function($q, $rootScope, $cookies){
+.factory('tokenInterceptor', ['$q', '$rootScope',function($q, $rootScope){
     var Interceptor = {
         'request': function(config) {
-            if ($cookies.get('token')) {
-                config.headers['X-Authorization-Token'] = $cookies.get('token')
+            if (localStorage.token) {
+                config.headers['X-Authorization-Token'] = localStorage.token
             }
             return config;
         },
@@ -74,8 +74,8 @@ angular.module("zigfo", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', '
                   $state.go('main.home')
                   return $q.resolve()
               }],
-              alreadyLoggedIn: ['$q', '$cookies', function($q, $cookies) {
-                  if($cookies.get('token')){
+              alreadyLoggedIn: ['$q', function($q) {
+                  if(localStorage.token){
                       return $q.reject("Already Logged In")
                   }
               }]
@@ -87,11 +87,17 @@ angular.module("zigfo", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', '
           templateUrl: "partials/main.home.html",
           controller: "mainHomeController"
         })
-        
+
         .state("main.design", {
           url: "",
           templateUrl: "partials/main.design.html",
           controller: "mainHomeController"
+        })
+
+        .state("main.profile", {
+          url: "",
+          templateUrl: "partials/main.profile.html",
+          controller: "mainProfileController"
         })
 
         .state("main.app", {
@@ -103,13 +109,13 @@ angular.module("zigfo", ['ui.router', 'ngCookies', 'satellizer', 'ngMaterial', '
                   $state.go('main.app.home')
                   return $q.resolve()
               }],
-              alreadyLoggedIn: ['$q', '$cookies', function($q, $cookies) {
-                  if($cookies.get('token')){
+              alreadyLoggedIn: ['$q', function($q) {
+                  if(localStorage.token){
                       return $q.reject("Already Logged In")
                   }
               }],
-              loginRequired: ['$q','$cookies', function($q,$cookies){
-                if(!$cookies.get('token')) {
+              loginRequired: ['$q', function($q){
+                if(!localStorage.token) {
                   return $q.reject("Not Authorised");
                 }
               }]

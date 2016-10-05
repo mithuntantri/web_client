@@ -1,5 +1,5 @@
 angular.module("zigfo").controller('measurementsController',
-              ['$scope','$state', '$rootScope', '$http', '$cookies', '$auth', '$facebook',
-              function($scope, $rootScope, $state, $http, $cookies, $auth, $facebook){
+              ['$scope','$state', '$rootScope', '$http', '$auth', '$facebook',
+              function($scope, $rootScope, $state, $http, $auth, $facebook){
                 console.log('Measurements Controller');
 }])
