@@ -117,21 +117,8 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
                   return $q.reject("Not Authorised");
                 }
               }],
-              getProfile: ['$q', '$http', '$rootScope', '$state',function ($q, $http, $rootScope, $state) {
-                let mobileno = localStorage.mobileno
-                let client_id = localStorage.client_id
-                $http({
-                  url: `/api/profile?mobileno=${mobileno}&client_id=${client_id}`,
-                  method: 'GET'
-                }).then((response)=>{
-                  if(response.data.status === 'success'){
-                    $rootScope.profile = response.data.data
-                  }else{
-                    $state.go("app.profile")
-                  }
-                }, (error)=>{
-                  return $q.reject("Not Authorised");
-                })
+              getProfile: ['$q', '$http', '$rootScope', 'ProfileService', function ($q, $http, $rootScope, ProfileService) {
+                ProfileService.get_user_profile()
               }]
           }
         })
@@ -156,4 +143,12 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
           templateUrl: "partials/app.credits.html",
           controller: "creditsController"
         })
+})
+.filter('getTotalCredits', ()=>{
+  return(c)=>{
+    if(!c){
+      return 0
+    }
+    return c.referral_credits + c.profile_credits + c.promo_credits
+  }
 })

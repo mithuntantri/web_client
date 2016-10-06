@@ -31,7 +31,7 @@
             <span>Log In</span>
           </div>
           <div class="profile-fab-lbl" ng-if="loggedIn">
-            <span>{{username}}</span>
+            <span>{{ProfileService.username}}</span>
           </div>
           <div class="profile-fab-dropdown">
             <ul class="dropdown-list">
@@ -51,7 +51,7 @@
                 <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">account_balance_wallet</i></div>
                 <div class="dropdown-item-lbl">
                   <div style="width:66%;float:left;">ZigFo Credits</div>
-                  <div style="width:33%;float:left;text-align:right;">{{zigfo_credits}}</div>
+                  <div style="width:33%;float:left;text-align:right;">{{ProfileService.credits | getTotalCredits}}</div>
                 </div>
             </ul>
             <div style="width:100%;height:50px;padding:10px 7px;text-align:center;font-size:11px;">

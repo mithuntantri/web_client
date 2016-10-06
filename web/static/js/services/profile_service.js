@@ -4,6 +4,7 @@ class ProfileService {
     this.$state = $state
     this.$rootScope = $rootScope
     this.$q = $q
+    this.username = 'User'
   }
   set_user_profile(mobileno, email_id, gender, first_name, last_name, address, street, pin_code){
     this.$http({
@@ -22,6 +23,7 @@ class ProfileService {
       }
     }).then((response) =>{
       if(response.data.status === 'success'){
+        this.get_user_profile()
         this.$state.go("app.home")
       }
     }, (error)=>{
@@ -29,7 +31,21 @@ class ProfileService {
     })
   }
   get_user_profile(){
-    
+    let mobileno = localStorage.mobileno
+    let client_id = localStorage.client_id
+    this.$http({
+      url: `/api/profile?mobileno=${mobileno}&client_id=${client_id}`,
+      method: 'GET'
+    }).then((response)=>{
+      if(response.data.status === 'success'){
+        this.$rootScope.profile = response.data.data
+        this.username = this.$rootScope.profile.personal_info.first_name
+        this.credits = this.$rootScope.profile.credits
+      }else if(response.data.status === 'failed'){
+        this.$state.go("app.profile")
+      }
+    }, (error)=>{
+    })
   }
 }
 ProfileService.$inject = ['$http', '$state', '$rootScope', '$q']
