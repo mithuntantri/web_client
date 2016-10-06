@@ -28,6 +28,8 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
         $state.go("app.home")
       } else if (error === "Token Invalid") {
         $state.go("main.home")
+      } else if (error === "No Profile"){
+        $state.go("app.profile")
       }
     })
 
@@ -44,6 +46,7 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
         'request': function(config) {
             if (localStorage.token) {
                 config.headers['X-Authorization-Token'] = localStorage.token
+                config.headers['Device'] = ''
             }
             return config;
         },
@@ -113,6 +116,22 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
                 if(!localStorage.token) {
                   return $q.reject("Not Authorised");
                 }
+              }],
+              getProfile: ['$q', '$http', '$rootScope', '$state',function ($q, $http, $rootScope, $state) {
+                let mobileno = localStorage.mobileno
+                let client_id = localStorage.client_id
+                $http({
+                  url: `/api/profile?mobileno=${mobileno}&client_id=${client_id}`,
+                  method: 'GET'
+                }).then((response)=>{
+                  if(response.data.status === 'success'){
+                    $rootScope.profile = response.data.data
+                  }else{
+                    $state.go("app.profile")
+                  }
+                }, (error)=>{
+                  return $q.reject("Not Authorised");
+                })
               }]
           }
         })

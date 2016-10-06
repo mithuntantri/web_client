@@ -7,7 +7,7 @@ angular.module("zigfo").controller('mainController',
       $scope.loggedIn = $rootScope.loggedIn
       $scope.zigfo_wallet = 0
       $scope.loggedIn = false
-      $scope.set_expiry = true
+      $scope.set_expiry = false
       $scope.has_referral_code = false
       $scope.SignupService = SignupService
 
@@ -16,7 +16,19 @@ angular.module("zigfo").controller('mainController',
       $scope.otp = ''
       $scope.new_password = ''
       $scope.retype_password = ''
+      $scope.password = ''
 
+      $scope.loginWithOtp = false
+      $scope.loginWithPassword = true
+      $scope.loginWithFB = false
+
+      $scope.changeLoginForm = (type1, type2)=>{
+        $scope.loginWithOtp = type1
+        $scope.loginWithPassword = type2
+        if (type1){
+          LoginService.userlogin($scope.mobileno, $scope.set_expiry, $scope.password, type1, $scope.otp, $scope.loginWithFB)
+        }
+      }
       $scope.changeReferralId = ()=>{
           $scope.has_referral_code = !$scope.has_referral_code
       }
@@ -81,7 +93,7 @@ angular.module("zigfo").controller('mainController',
       }
 
       $scope.secureLogin = ()=>{
-        LoginService.userlogin()
+        LoginService.userlogin($scope.mobileno, $scope.set_expiry, $scope.password, false, $scope.otp, $scope.loginWithFB)
       }
 
       $scope.secureSignUp = ()=>{
@@ -100,7 +112,7 @@ angular.module("zigfo").controller('mainController',
         }else if (verified && set_profile){
           $scope.CloseLoginModal()
           $scope.ClosePasswordModal()
-          $state.go("main.profile")
+          $state.go("app.profile")
         }
       }
 

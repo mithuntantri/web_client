@@ -151,21 +151,27 @@
   <div class="modal-container" ng-show="login_active">
       <md-input-container class="md-block" flex-gt-sm style="margin:0;height:39px;">
         <label>Mobile Number or Email</label>
-        <input ng-model="user.username">
+        <input ng-model="mobileno">
       </md-input-container>
-      <div class="form-right-text">
-        Login with OTP
+      <div class="form-right-text" ng-click="changeLoginForm(true, false)" ng-show="loginWithPassword">
+        Login with OTP?
       </div>
-      <md-input-container class="md-block" flex-gt-sm style="margin:0;height:39px;">
+      <div class="form-right-text" ng-click="changeLoginForm(false, true)" ng-show="loginWithOtp">
+        Login with Password?
+      </div>
+      <md-input-container class="md-block" flex-gt-sm style="margin:0;height:39px;" ng-show="loginWithPassword">
         <label>ZigFo Password</label>
-        <input ng-model="user.password" type="password">
+        <input ng-model="password" type="password">
       </md-input-container>
-      <div class="form-right-text-l0">
-        Forgot Password?
+      <md-input-container class="md-block" flex-gt-sm style="margin:0;height:39px;" ng-show="loginWithOtp">
+        <label>OTP</label>
+        <input ng-model="otp" type="password">
+      </md-input-container>
+      <div style="width:100%;height:60px;">
+        <md-checkbox ng-checked="!set_expiry" style="float:right;margin-right:50px;">
+         Keep me Signed In
+        </md-checkbox>
       </div>
-      <!-- <md-checkbox ng-checked="expire" ng-click="changeExpiry()">
-       Keep me Signed In
-      </md-checkbox> -->
       <div style="width:100%;">
         <md-button class="md-raised md-primary" style="margin:0 auto;width:100%;background-color:#dd4b39;"
           ng-click="secureLogin()">
@@ -216,7 +222,7 @@
   <span class="modal-or-divider">OR</span>
   <div class="fblogin-btn-container">
     <md-button class="md-raised md-primary fblogin-btn"
-      ng-click="fblogin()">
+      ng-click="fbLogin()">
       <i class="fa fa-facebook"></i>
       <span style="padding:0 7px">LOGIN WITH FACEBOOK</span>
     </md-button>

@@ -1,7 +1,9 @@
 class ProfileService {
-  constructor($http, $state) {
+  constructor($http, $state, $rootScope, $q) {
     this.$http = $http
     this.$state = $state
+    this.$rootScope = $rootScope
+    this.$q = $q
   }
   set_user_profile(mobileno, email_id, gender, first_name, last_name, address, street, pin_code){
     this.$http({
@@ -26,6 +28,9 @@ class ProfileService {
 
     })
   }
+  get_user_profile(){
+    
+  }
 }
-ProfileService.$inject = ['$http', '$state']
+ProfileService.$inject = ['$http', '$state', '$rootScope', '$q']
 angular.module('zigfo').service('ProfileService', ProfileService)

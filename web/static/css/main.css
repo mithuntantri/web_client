@@ -80,7 +80,7 @@ md-checkbox .md-label{
   height:74px;width:100%;
 }
 .modal-container{
-  height:235px;width:100%;padding: 0 30px;
+  height:250px;width:100%;padding: 0 30px;
 }
 .form-right-text{
   width:100%;text-align:right;font-size:10px;color:#dd4b39;height:39px;line-height:0px;cursor:pointer;
@@ -95,5 +95,5 @@ md-checkbox .md-label{
   margin:0 !important;width:100%;background-color:#48629b;
 }
 .modal-or-divider{
-  position:absolute;top:320px;left:190px;padding:0 10px;background-color:#fff;
+  position:absolute;top:335px;left:190px;padding:0 10px;background-color:#fff;
 }

@@ -107,6 +107,7 @@ class SignupService {
       localStorage.token = response.data.data.secret
       localStorage.loggedIn = true
       localStorage.mobileno = mobileno
+      localStorage.client_id = "5"
       if(response.data.data.first_time_login){
         if(!response.data.data.password_set){
           this.ModalService.CloseLoginModal()

@@ -1,17 +1,20 @@
 class LoginService {
-  constructor($http, $rootScope) {
+  constructor($http, $rootScope, $state, ModalService) {
     this.$http = $http
     this.$rootScope = $rootScope
+    this.$state = $state
+    this.ModalService = ModalService
   }
   userlogin(id, set_expiry, password, otp_login, otp, fb_login){
+    console.log(id)
     if(otp_login && otp === ''){
-      login_w_otp(id, "5", set_expiry)
+      this.login_w_otp(id, "5", set_expiry)
     }else if(otp_login && otp !== ''){
-      verify_login_otp(id, "5", otp)
+      this.verify_login_otp(id, "5", set_expiry, otp)
     }else if(fb_login){
-      login_w_fb(id, "5", set_expiry)
+      this.login_w_fb(id, "5", set_expiry)
     }else{
-      login_w_id(id, "5", set_expiry, password)
+      this.login_w_id(id, "5", set_expiry, password)
     }
   }
   login_w_id (id, client_id, set_expiry, password){
@@ -27,19 +30,89 @@ class LoginService {
       }
     }).then((response)=>{
       if(response.data.status === 'success'){
-        $cookies.put('token',response.data.data.secret)
-        $cookies.put('loggedIn',"true")
-        $cookies.put('username', response.data.data.username)
-        if(response.data.data.first_time_login && !response.data.data.is_password_set){
-          $state.go('password')
-        }else if(response.data.data.first_time_login && !response.data.data.is_profile_set){
-          $state.go('profile')
-        }
+        this.$rootScope.loggedIn = true
+        localStorage.token = response.data.data.secret
+        localStorage.loggedIn = true
+        localStorage.mobileno = id
+        localStorage.client_id = "5"
+        this.ModalService.CloseLoginModal()
+        this.$state.go("app.home")
+      }
+    },(error)=>{
+      console.log('Login Failed:',error);
+    })
+  }
+  login_w_otp (id, client_id, set_expiry){
+    console.log('User ID:',id);
+    this.$http({
+      url: '/api/login',
+      method: 'POST',
+      data:{
+        'id': id,
+        'client_id' : client_id,
+        'set_expiry' : set_expiry,
+        'otp_login' : true,
+        'otp' : '',
+      }
+    }).then((response)=>{
+      if(response.data.status === 'success'){
+
+      }
+    },(error)=>{
+      console.log('Login Failed:',error);
+    })
+  }
+  verify_login_otp (id, client_id, set_expiry, otp){
+    console.log('User ID:',id);
+    this.$http({
+      url: '/api/login',
+      method: 'POST',
+      data:{
+        'id': id,
+        'client_id' : client_id,
+        'set_expiry' : set_expiry,
+        'otp_login' : true,
+        'otp' : otp
+      }
+    }).then((response)=>{
+      if(response.data.status === 'success'){
+        this.$rootScope.loggedIn = true
+        localStorage.token = response.data.data.secret
+        localStorage.loggedIn = true
+        localStorage.mobileno = mobileno
+        localStorage.client_id = "5"
+        this.ModalService.CloseLoginModal()
+        this.$state.go('app.home')
+      }
+    },(error)=>{
+      console.log('Login Failed:',error);
+    })
+  }
+  login_w_fb (id, client_id, set_expiry){
+    console.log('User ID:',id);
+    this.$http({
+      url: '/api/login',
+      method: 'POST',
+      data:{
+        'id': id,
+        'client_id' : client_id,
+        'set_expiry' : set_expiry,
+        'fb_login' : true
+      }
+    }).then((response)=>{
+      if(response.data.status === 'success'){
+        this.$rootScope.loggedIn = true
+        localStorage.token = response.data.data.secret
+        localStorage.loggedIn = true
+        localStorage.mobileno = mobileno
+        localStorage.client_id = "5"
+        this.ModalService.CloseLoginModal()
+        this.$state.go("app.home")
       }
     },(error)=>{
       console.log('Login Failed:',error);
     })
   }
 }
-LoginService.$inject = ['$http', '$rootScope']
+LoginService.$inject = ['$http', '$rootScope', '$state', 'ModalService']
 angular.module("zigfo").service('LoginService', LoginService)
