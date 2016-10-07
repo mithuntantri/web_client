@@ -221,6 +221,8 @@ li.fab-categories-list:hover{
   color: #fff;
   padding:20px;
   padding-left: 10px;
+  z-index:10;
+  padding-bottom:5px;
 }
 .profile-fab-section:hover{
   background-color: $black-contrast;
@@ -239,6 +241,7 @@ ul.dropdown-list{
 li.dropdown-list-item{
   height:33px;
   cursor: pointer;
+  border-radius: 5px;
 }
 li.dropdown-list-item:hover{
   background-color: black;

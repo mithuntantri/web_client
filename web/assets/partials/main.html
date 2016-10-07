@@ -189,12 +189,12 @@
       <label>Mobile Number</label>
       <input ng-model="mobileno">
     </md-input-container>
-    <md-input-container class="md-block" flex-gt-sm style="margin:0;">
+    <md-input-container class="md-block" flex-gt-sm style="margin:0;" ng-if="!SignupService.otp_generated">
       <md-checkbox ng-checked="has_referral_code" ng-click="changeReferralId()" class="signup-checkbox">
        Have a Referral Code?
       </md-checkbox>
     </md-input-container>
-    <md-input-container class="md-block" flex-gt-sm style="margin:0;height:60px;" ng-show="has_referral_code">
+    <md-input-container class="md-block" flex-gt-sm style="margin:0;height:60px;" ng-show="has_referral_code" ng-if="!SignupService.otp_generated">
       <label>Referral Code</label>
       <input ng-model="referral_code">
     </md-input-container>
