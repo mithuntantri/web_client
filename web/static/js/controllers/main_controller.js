@@ -121,7 +121,7 @@ angular.module("zigfo").controller('mainController',
       }
 
       $scope.createPassword = ()=>{
-        SignupService.create_user_password($scope.mobileno, $scope.password)
+        SignupService.create_user_password($scope.mobileno, $scope.new_password)
       }
 
 }])
