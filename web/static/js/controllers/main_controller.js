@@ -1,8 +1,13 @@
 angular.module("zigfo").controller('mainController',
-              ['$scope','$state', '$rootScope', 'LoginService', 'SignupService', 'FBLoginService', 'ModalService',
-              function($scope, $state, $rootScope, LoginService, SignupService, FBLoginService, ModalService){
+              ['$scope','$state', '$rootScope', 'LoginService', 'SignupService',
+              'FBLoginService', 'ModalService', 'CategoriesService',
+              function($scope, $state, $rootScope, LoginService, SignupService,
+                FBLoginService, ModalService, CategoriesService){
 
       console.log('Main Controller');
+
+      $scope.CategoriesService = CategoriesService
+      CategoriesService.getCategories()
 
       $scope.loggedIn = $rootScope.loggedIn
       $scope.zigfo_wallet = 0
