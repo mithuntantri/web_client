@@ -1,39 +1,7 @@
 angular.module("zigfo")
 .controller('profileController',
-  ['$scope','$state','$http',
-    function ($scope, $state, $http) {
-  $scope.fetchProfile = ()=>{
-    $http({
-      url:'/api/login/verify',
-      method: 'POST',
-      data: {
-        'username': $cookies.get('name')
-      }
-    }).then((response)=>{
-      if(!response.data.data.authorized){
-        $cookies.remove('token')
-        $cookies.remove('name')
-        $cookies.remove('loggedIn')
-        $state.go("login")
-      }else{
-        console.log('Fetched Profile');
-      }
-    })
-  }
-  $scope.logout = ()=>{
-    $http({
-      url: '/api/logout',
-      method:'DELETE',
-      data: {
-        "username": $cookies.get('name')
-      }
-    }).then((response)=>{
-      $cookies.remove('token')
-      $cookies.remove('name')
-      $cookies.remove('loggedIn')
-      $state.go("login")
-    },(error)=>{
-      console.log(error);
-    })
-  }
+  ['$scope','$state','$http', 'TabsService',
+    function ($scope, $state, $http, TabsService) {
+      $scope.TabsService = TabsService
+
 }])

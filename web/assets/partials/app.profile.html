@@ -1,79 +1,376 @@
-<div style="width:100%;">
-  <img src="img/profile_banner.jpg" style="width:100%;height:100%;"/>
-</div>
-<div style="width:100%;height:50px;padding-top:19px;border-bottom:1px solid #ccc;">
-  <div style="width:765px;height:100%;margin:0 auto;">
-    <div class="sliding-middle-out" ng-click="modalTab('login')" ng-class="{'active': login_active}" style="width:150px;">
-      PERSONAL INFO
-    </div>
-    <div class="sliding-middle-out" ng-click="modalTab('signup')" ng-class="{'active': signup_active}" style="width:150px;">
-      SAVED CARDS
-    </div>
-    <div class="sliding-middle-out" ng-click="modalTab('signup')" ng-class="{'active': signup_active}" style="width:150px;">
-      SAVED ADDRESS
-    </div>
-    <div class="sliding-middle-out" ng-click="modalTab('signup')" ng-class="{'active': signup_active}" style="width:150px;">
-      BANK DETAILS
-    </div>
-    <div class="sliding-middle-out" ng-click="modalTab('signup')" ng-class="{'active': signup_active}" style="width:150px;">
-      SUBSCRIPTIONS
+<div class="center-container">
+  <div class="my-account-header">
+    My Account
+  </div>
+  <div class="my-account-username">
+    {{ProfileService.profile.first_name}} {{ProfileService.profile.last_name}}
+  </div>
+  <div class="my-account-sidebar">
+    <div class="sidebar-options">
+      <ul class="sidebar-option">
+        <div class="overview">
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.overview}"
+            ng-click="TabsService.myaccountTabs(true, false, false, false, false, false, false, false, false, false, false)">
+            Overview
+          </li>
+        </div>
+        <div class="order">
+          <div class="sidebar-header">ORDERS</div>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.myorders}"
+            ng-click="TabsService.myaccountTabs(false, true, false, false, false, false, false, false, false, false, false)">
+            My Orders
+          </li>
+        </div>
+        <div class="credits">
+          <div class="sidebar-header">CREDITS</div>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.credits}"
+            ng-click="TabsService.myaccountTabs(false, false, true, false, false, false, false, false, false, false, false)">
+            Zigfo Credits
+          </li>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.coupons}"
+            ng-click="TabsService.myaccountTabs(false, false, false, true, false, false, false, false, false, false, false)">
+            Coupons
+          </li>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.cashback}"
+            ng-click="TabsService.myaccountTabs(false, false, false, false, true, false, false, false, false, false, false)">
+            My Cashback
+          </li>
+        </div>
+        <div class="account">
+          <div class="sidebar-header">ACCOUNT</div>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.info}"
+            ng-click="TabsService.myaccountTabs(false, false, false, false, false, true, false, false, false, false, false)">
+            Your Info
+          </li>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.cards}"
+            ng-click="TabsService.myaccountTabs(false, false, false, false, false, false, true, false, false, false, false)">
+            Saved Cards
+          </li>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.addresses}"
+            ng-click="TabsService.myaccountTabs(false, false, false, false, false, false, false, true, false, false, false)">
+            Saved Addresses
+          </li>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.measurements}"
+            ng-click="TabsService.myaccountTabs(false, false, false, false, false, false, false, false, true, false, false)">
+            Measurements
+          </li>
+        </div>
+      </ul>
     </div>
   </div>
-</div>
-<div style="width:100%;height:300px;">
-  <div style="width:50%;height:100%;float:left;padding:10px 25px;">
-    <div style="height:80px;width:100%;">
-      <md-input-container class="md-block" flex-gt-sm style="margin:0;width:50%;float:left;" ng-disabled>
-        <label>Mobile Number</label>
-        <input ng-model="mobileno">
-      </md-input-container>
-      <md-input-container class="md-block" flex-gt-sm style="margin:0;width:50%;float:left;">
-        <label>Email ID</label>
-        <input ng-model="email_id">
-      </md-input-container>
+  <div class="my-account-content">
+    <div class="orders-tab-container" ng-if="TabsService.myaccount_tabs.myorders">
+      <ul class="underline-tabs">
+        <li class="underline-tab" style="height:42px;line-height:42px;text-align:center;min-width:65px;margin-right:2px;margin-left:0px;"
+          ng-class="{'active':TabsService.myorders.all_orders}"
+          ng-click="TabsService.changeOrdersTab(true, false)">ORDERS</li>
+        <li class="underline-tab" style="height:42px;line-height:42px;text-align:center;min-width:65px;margin-left:2px;"
+          ng-class="{'active':TabsService.myorders.return_orders}"
+          ng-click="TabsService.changeOrdersTab(false, true)">RETURN</li>
+      </ul>
     </div>
-    <div style="width:100%;height:60px;line-height:30px;">
-      <input type="radio" name="group1" id="male" ng-model="gender.male" value="male" ng-click="setGender(true, false)" class="radio-btn"/>
-      <label for="male" class="radio-label">Male</label>
-      <input type="radio" name="group1" id="female" ng-model="gender.female" value="female" ng-click="setGender(false, true)" class="radio-btn"/>
-      <label for="female" class="radio-label">Female</label>
+    <div class="coupons-container" ng-if="TabsService.myaccount_tabs.coupons">
+      <div class="coupons-card">
+        <div class="coupons-desc">
+          <div class="coupons-avatar">
+            Rs. 100 OFF
+          </div>
+          <div class="coupons-content">
+            <div style="width:100%;height:35px;line-height:35px;font-size:13px;">
+              On minimum billing of Rs. 500
+            </div>
+            <div style="width:100%;height:30px;line-height:30px;font-size:13px;">
+              Code: ZIG100
+            </div>
+            <div style="width:100%;height:20px;line-height:20px;font-size:13px;">
+              *VAT extra
+            </div>
+          </div>
+        </div>
+        <div class="coupons-details">
+          <div style="width:50%;float:left;text-align:left;">
+            Expiry : OCT 31 2017
+          </div>
+          <div style="width:50%;float:left;text-align:right;color:#526cd0;">
+            Details
+          </div>
+        </div>
+      </div>
     </div>
-    <div style="width:100%;height:80px;">
-      <md-input-container class="md-block" flex-gt-sm style="margin:0;width:50%;float:left;">
-        <label>First Name</label>
-        <input ng-model="first_name">
-      </md-input-container>
-      <md-input-container class="md-block" flex-gt-sm style="margin:0;width:50%;float:left;">
-        <label>Last Name</label>
-        <input ng-model="last_name">
-      </md-input-container>
+    <div class="addresses-container" ng-if="TabsService.myaccount_tabs.addresses && ProfileService.profile_set">
+      <div class="add-new-address">
+        Add New Address <div style="float:right;"><i class="material-icons" style="line-height:39px;">chevron_right</i></div>
+      </div>
+      <div class="all-addresses">
+        <div class="all-addresses-header">
+          Default Address
+        </div>
+        <div class="address-card">
+          <div class="address-card-desc">
+            <div style="line-height:43px;font-size:13px;font-weight:400;">{{ProfileService.profile.first_name}} {{ProfileService.profile.last_name}}</div>
+            <div style="line-height:18px;font-size:12px;">{{ProfileService.profile.address}}</div>
+            <div style="line-height:18px;font-size:12px;">{{ProfileService.profile.street}}</div>
+            <div style="line-height:18px;font-size:12px;">Bengaluru - {{ProfileService.profile.pin_code}}</div>
+            <div style="line-height:18px;font-size:12px;">Karnataka</div>
+            <div style="line-height:43px;font-size:13px;">Mobile Number {{ProfileService.profile.mobileno}}</div>
+          </div>
+          <div class="address-card-options">
+            <div class="address-options">
+              <div style="float:left;"><i class="material-icons" style="line-height:49px;">close</i></div>
+              <div style="float:left;line-height:49px;padding:0 5px;">Remove</div>
+            </div>
+            <div class="address-options">
+              <div style="float:left;"><i class="material-icons" style="line-height:49px;">mode_edit</i></div>
+              <div style="float:left;line-height:49px;padding:0 5px;">Edit</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div style="width:50%;height:100%;float:left;">
-    <md-input-container class="md-block" flex-gt-sm style="margin:0;">
-      <label>Address</label>
-      <input ng-model="address">
-    </md-input-container>
-    <md-input-container class="md-block" flex-gt-sm style="margin:0;">
-      <label>Street</label>
-      <input ng-model="street">
-    </md-input-container>
-    <div style="width:100%;height:80px;">
-      <md-input-container class="md-block" flex-gt-sm style="margin:0;width:50%;float:left;">
-        <label>Pin Code</label>
-        <input ng-model="pin_code">
-      </md-input-container>
-      <md-input-container class="md-block" flex-gt-sm style="margin:0;width:50%;float:left;">
-        <label>City</label>
-        <input ng-model="city">
-      </md-input-container>
+    <div class="content-card" ng-if="!TabsService.myaccount_tabs.coupons && (!ProfileService.profile_set || !TabsService.myaccount_tabs.addresses)">
+      <div class="editaddress-container" ng-if="TabsService.myaccount_tabs.editAddress">
+        <div class="myprofile-header">
+            Address Information
+        </div>
+        <div class="input-field-container" style="margin-top:18px;">
+          <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
+              <label style="width:100%;line-height:32px;font-size:14px;">PIN CODE</label>
+              <input ng-model="ProfileService.profile.pin_code" type="text" style="text-transform:uppercase;padding:0 10px;margin-top:10px;" maxlength="16"
+                ng-change="$event.stopPropagation()" ng-model-options="{debounce:20}" ng-click="$event.stopPropagation()"
+                  id="editlabelinput">
+           </md-input-container>
+        </div>
+        <div class="input-field-container" style="height:135px;">
+          <md-input-container class="md-icon-float md-icon-right md-block custom-input-field" style="width:93% !important;height:90% !important;">
+              <label style="width:100%;line-height:32px;font-size:14px;">ADDRESS</label>
+              <input ng-model="ProfileService.profile.address" type="textbox">
+           </md-input-container>
+        </div>
+        <div class="input-field-container">
+          <md-input-container class="md-icon-float md-icon-right md-block custom-input-field" style="width:93% !important;">
+              <label style="width:100%;line-height:32px;font-size:14px;">STREET</label>
+              <input ng-model="ProfileService.profile.street" type="textbox">
+           </md-input-container>
+        </div>
+        <div class="input-field-container" style="height:50px;">
+          <ul class="profile-left-label" style="margin:0;">
+            <li class="profile-label">CITY</li>
+          </ul>
+          <ul class="profile-right-desc" style="margin:0;">
+            <li class="profile-desc" style="font-size:16px;font-weight:400;">BENGALURU</li>
+          </ul>
+        </div>
+        <div class="input-field-container" style="margin-top:10px;height:58px;">
+          <div class="submit-btn" ng-click="ProfileService.set_user_profile()">
+            SUBMIT
+          </div>
+          <div class="cancel-btn">
+            CANCEL
+          </div>
+        </div>
+      </div>
+      <div class="editprofile-container" ng-if="TabsService.myaccount_tabs.editprofile">
+        <div class="myprofile-header">
+            Account Information
+        </div>
+        <div style="width:100%;height:100%;float:left;padding-top:20px;">
+          <div class="input-field-container">
+            <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
+                <label style="width:100%;line-height:32px;font-size:14px;">MOBILE NUMBER</label>
+                <input ng-model="ProfileService.profile.mobileno" type="text">
+             </md-input-container>
+             <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
+                 <label style="width:100%;line-height:32px;font-size:14px;">PASSWORD</label>
+                 <input ng-model="ProfileService.profile.password" type="password">
+              </md-input-container>
+          </div>
+          <div class="input-field-container">
+            <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
+                <label style="width:100%;line-height:32px;font-size:14px;">FIRST NAME</label>
+                <input ng-model="ProfileService.profile.first_name" type="text">
+             </md-input-container>
+             <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
+                 <label style="width:100%;line-height:32px;font-size:14px;">LAST NAME</label>
+                 <input ng-model="ProfileService.profile.last_name" type="text">
+              </md-input-container>
+          </div>
+          <div class="input-field-container" style="height:50px;padding:0 20px;">
+            <div class="left-option">
+              <div style="width:33px;line-height:50px;float:left;cursor:pointer;" ng-click="ProfileService.changeGender(true, false)">
+                <i class="material-icons" style="line-height:50px;" ng-if="ProfileService.profile.male">radio_button_checked</i>
+                <i class="material-icons" style="line-height:50px;" ng-if="ProfileService.profile.female">radio_button_unchecked</i>
+              </div>
+              <div style="width:100px;line-height:50px;float:left;">
+                MEN
+              </div>
+            </div>
+            <div class="right-option">
+              <div style="width:33px;line-height:50px;float:left;cursor:pointer;" ng-click="ProfileService.changeGender(false, true)">
+                <i class="material-icons" style="line-height:50px;" ng-if="ProfileService.profile.female">radio_button_checked</i>
+                <i class="material-icons" style="line-height:50px;" ng-if="ProfileService.profile.male">radio_button_unchecked</i>
+              </div>
+              <div style="width:100px;line-height:50px;float:left;">
+                WOMEN
+              </div>
+            </div>
+          </div>
+          <div class="input-field-container" style="margin-top:10px;">
+            <md-input-container class="md-icon-float md-icon-right md-block custom-input-field" style="width:93% !important;float:left;">
+                <label style="width:100%;line-height:32px;font-size:14px;">EMAIL ID</label>
+                <input ng-model="ProfileService.profile.email_id" type="text">
+             </md-input-container>
+          </div>
+          <div class="input-field-container" style="margin-top:10px;">
+            <div class="submit-btn" ng-click="ProfileService.submitProfile()">
+              SUBMIT
+            </div>
+            <div class="cancel-btn">
+              CANCEL
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="myprofile-container" ng-if="TabsService.myaccount_tabs.info">
+        <div class="myprofile-header">
+          Primary Information
+          <div class="editinfo-btn" ng-click="TabsService.myaccountTabs(false, false, false, false, false, false, false, false, false, true, false)">
+            EDIT INFO
+          </div>
+        </div>
+        <div class="myprofile-table">
+          <ul class="myprofile-list">
+            <li class="myprofile-item">
+              <div class="left-label">Mobile Number</div>
+              <div class="right-desc">{{ProfileService.profile.mobileno}}</div>
+            </li>
+            <li style="height:37px;padding-bottom:17px;line-height:20px;width:270px;text-align:right;">
+              <div style="width:20px;float:right;"><i class="material-icons" style="line-height:20px;font-size:17px;">check_circle</i></div>
+              <div style="width:150px;text-align:right;float:right;">Verified</div>
+            </li>
+            <li class="myprofile-item">
+              <div class="left-label">Password</div>
+              <div class="right-desc">*********</div>
+            </li>
+            <li style="height:37px;padding-bottom:17px;line-height:20px;width:298px;text-align:right;">
+              <div style="width:150px;text-align:right;float:right;font-size:12px;"><a>Change password</a></div>
+            </li>
+            <li class="myprofile-item">
+              <div class="left-label">First Name</div>
+              <div class="right-desc">{{ProfileService.profile.first_name}}</div>
+            </li>
+            <li class="myprofile-item">
+              <div class="left-label">Last Name</div>
+              <div class="right-desc">{{ProfileService.profile.last_name}}</div>
+            </li>
+            <li class="myprofile-item">
+              <div class="left-label">Gender</div>
+              <div class="right-desc" ng-if="ProfileService.profile.male">Male</div>
+              <div class="right-desc" ng-if="ProfileService.profile.female">FeMale</div>
+            </li>
+            <li class="myprofile-item">
+              <div class="left-label">Email ID</div>
+              <div class="right-desc">{{ProfileService.profile.email_id}}</div>
+            </li>
+            <li class="myprofile-item">
+              <div class="left-label">Location</div>
+              <div class="right-desc">Bengaluru</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="savedcards-container" ng-if="TabsService.myaccount_tabs.cards">
+        <div class="nothing-to-display">
+          <div style="height:50px;width:100%;text-align:center;">
+            <i class="material-icons" style="font-size:38px;line-height:50px;">credit_card</i>
+          </div>
+          <div class="ntd-header">
+            NO SAVED CARDS
+          </div>
+          <div class="ntd-desc">
+            All of your Saved Cards appear here. Currently you do not have any saved cards.
+          </div>
+        </div>
+      </div>
+      <div class="savedaddress-container" ng-if="TabsService.myaccount_tabs.addresses">
+        <div class="nothing-to-display">
+          <div style="height:50px;width:100%;text-align:center;">
+            <i class="material-icons" style="font-size:38px;line-height:50px;">account_balance</i>
+          </div>
+          <div class="ntd-header" style="min-width:175px;">
+            NO SAVED ADDRESSES
+          </div>
+          <div class="ntd-desc">
+            All of your Saved Addresses appear here. Currently you do not have any saved Addresses saved.
+          </div>
+          <div class="ntd-desc">
+            <div class="editinfo-btn" style="margin:0 auto;width:100%;">
+              ADD NEW ADDRESS
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="credits-container" ng-if="TabsService.myaccount_tabs.credits">
+        <div class="four-column-container">
+          <div class="total-credits">
+            <div class="credits-value highlight-value">{{ProfileService.credits | getTotalCredits}}</div>
+            <div class="credits-desc highlight-content">Total Zigfo Credits Available</div>
+          </div>
+          <div class="profile-credits">
+            <div class="credits-value">{{ProfileService.credits.profile_credits}}</div>
+            <div class="credits-desc">Profile Credits Available</div>
+          </div>
+          <div class="referral-credits">
+            <div class="credits-value">{{ProfileService.credits.referral_credits}}</div>
+            <div class="credits-desc">Referral Credits Available</div>
+          </div>
+          <div class="gift-credits">
+            <div class="credits-value">{{ProfileService.credits.promo_credits}}</div>
+            <div class="credits-desc">Gift Credits Available</div>
+          </div>
+        </div>
+        <div class="credits-desc2">
+          Your Zigfo Credits balance, if any, has been transferred into a Zigfo Voucher & sent to you by email.
+          As a gesture, we have added 100 Zigfo Credits top-up to the voucher for profile completion.
+          The credits can be used directly on check-out with only 20% of the credits could be used per order.
+        </div>
+        <div class="credits-desc2">
+          You can also find this details on <a>zigfo.com</a> website in <a>MY ACCOUNT > COUPONS</a>, If any.
+        </div>
+        <div class="credits-desc2">
+          Please see FAQS for any queries. For any more queries, feel free to reach us on <a>care@zigfo.com</a> or call us on <a>91-8867742253(24x7)</a>.
+        </div>
+        <div class="credits-desc2" style="text-align:right;">
+          <span style="font-size:16px;">Referral Code : </span>
+          <span style="font-size:22px;font-weight:400;color:#20bd99;">{{ProfileService.profile.referral_id}}</span>
+        </div>
+      </div>
+      <div class="savedmeasurements-container" ng-if="TabsService.myaccount_tabs.measurements">
+        <div class="nothing-to-display">
+          <div style="height:50px;width:100%;text-align:center;">
+            <i class="material-icons" style="font-size:38px;line-height:50px;">filter_9_plus</i>
+          </div>
+          <div class="ntd-header" style="min-width:175px;max-width:265px;">
+            NO SAVED MEASUREMENT PROFILE
+          </div>
+          <div class="ntd-desc">
+            All of your Saved Measurement Profiles appear here. Currently you do not have any saved Measurement Profiles saved.
+          </div>
+          <div class="ntd-desc">
+            <div class="editinfo-btn" style="margin:0 auto;width:100%;">
+              ADD NEW MEASUREMENT
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div style="width:120px;float:right;">
-    <md-button class="md-raised md-primary" style="margin:0 auto;width:100%;background-color:#dd4b39;"
-    ng-click="setProfile()">
-    <i class="fa fa-lock"></i>
-    <span style="padding:0 7px">Save Profile</span>
-    </md-button>
   </div>
 </div>

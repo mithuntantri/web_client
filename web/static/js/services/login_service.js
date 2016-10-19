@@ -18,7 +18,7 @@ class LoginService {
     }
   }
   login_w_id (id, client_id, set_expiry, password){
-    console.log('User ID:',id);
+    console.log('User ID:',id, password);
     this.$http({
       url: '/api/login',
       method: 'POST',

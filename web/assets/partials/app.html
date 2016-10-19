@@ -16,7 +16,21 @@
   <div class="main-nav">
     <div class="main-nav-container">
       <div class="left-logo-section"></div>
-      <div class="center-search-section"></div>
+      <div class="center-search-section">
+        <div class="search-container">
+          <div class="search-input">
+            <input type="text" placeholder="Search Products & Brands" class="search-input-text"/>
+          </div>
+          <div class="search-btn">
+            <div class="search-icon">
+              <i class="material-icons" style="font-size:18px;line-height:35px;">search</i>
+            </div>
+            <div class="search-label">
+              Search
+            </div>
+          </div>
+        </div>
+      </div>
       <div class="right-fab-section">
         <div class="cart-fab-section">
           <div class="cart-fab-lbl">
@@ -31,7 +45,7 @@
             <span>Log In</span>
           </div>
           <div class="profile-fab-lbl" ng-if="loggedIn">
-            <span>{{ProfileService.username}}</span>
+            <span>{{ProfileService.profile.first_name}}</span>
           </div>
           <div class="profile-fab-dropdown">
             <ul class="dropdown-list">
@@ -73,45 +87,126 @@
   </div>
 </div>
 <div class="app-container">
-  <div class="fab-categories">
-    <ul class="fab-categories-list">
-      <div class="fab-list-header">TOP CATEGORIES</div>
-      <li class="fab-categories-list">
-        <div class="fab-categories-icon" style="overflow:hidden;">
-          <img src="img/custom_shirts_logo.jpg" style="width:100%;height:100%;"/>
-        </div>
-        <div class="fab-categories-label">Custom Shirts</div>
-      </li>
-      <li class="fab-categories-list">
-        <div class="fab-categories-icon" style="overflow:hidden;">
-          <img src="img/womenswear_logo.jpg" style="width:100%;height:100%;"/>
-        </div>
-        <div class="fab-categories-label">Womenswear</div>
-      </li>
-      <li class="fab-categories-list">
-        <div class="fab-categories-icon" style="overflow:hidden;">
-          <img src="img/fabric_logo.jpg" style="width:100%;height:100%;"/>
-        </div>
-        <div class="fab-categories-label">Fabrics</div>
-      </li>
-    </ul>
-    <ul class="fab-categories-list-2">
-      <div class="fab-list-header-2">MORE CATEGORIES</div>
-      <li class="fab-categories-list-2">
-        <div class="fab-categories-label-2">Men's Fashion</div>
-      </li>
-      <li class="fab-categories-list-2">
-        <div class="fab-categories-label-2">Women's Fashion</div>
-      </li>
-      <li class="fab-categories-list-2">
-        <div class="fab-categories-label-2">Suits</div>
-      </li>
-      <li class="fab-categories-list-2">
-        <div class="fab-categories-label-2">Accessories</div>
-      </li>
-    </ul>
+  <!-- <div class="ui-view-container"> -->
+  <div ui-view style="min-height:640px;"></div>
+  <!-- </div> -->
+  <div style="width:100%;border-top:1px solid #e2e2e2;height:200px;padding: 0px 8%;border-bottom:1px solid #e2e2e2;background-color:#fff;">
+    <div class="footer-container">
+      <div class="footerIcon-container">
+        <i class="securePayment footerIcon"></i>
+      </div>
+      <div class="footerHeader-container">
+        100% SECURE PAYMENTS
+      </div>
+      <div class="footerDesc-container">
+        All major credit and debit cards accepted
+      </div>
+    </div>
+    <div class="footer-container">
+      <div class="footerIcon-container">
+        <i class="trustPay footerIcon"></i>
+      </div>
+      <div class="footerHeader-container">
+        TRUSTPAY
+      </div>
+      <div class="footerDesc-container">
+        100% payment protection. Easy Return policy.
+      </div>
+    </div>
+    <div class="footer-container">
+      <div class="footerIcon-container">
+        <i class="helpCenter footerIcon"></i>
+      </div>
+      <div class="footerHeader-container">
+        HELPCENTER
+      </div>
+      <div class="footerDesc-container">
+        Got a question? Look no further. Browse our FAQs or submit your query here.
+      </div>
+    </div>
+    <div class="footer-container" style="border-right:1px solid #e2e2e2;">
+      <div class="footerIcon-container">
+        <i class="shopontheGo footerIcon"></i>
+      </div>
+      <div class="footerHeader-container">
+        SHOP ON THE GO
+      </div>
+      <div class="footerDesc-container">
+        Download the app and get exciting app only offers at your fingertips
+      </div>
+    </div>
   </div>
-  <div class="ui-view-container">
-    <div ui-view></div>
+  <div style="width:100%;height:300px;border-bottom:1px solid #e2e2e2;padding:50px 8%;background-color:#fff;">
+    <div style="width:15%;float:left;height:100%;">
+      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">POLICY INFO</div>
+      <ul style="font-size:12px;color:#a4a3a3;">
+        <li>Privacy Policy</li>
+        <li>Terms of Sale</li>
+        <li>Terms of Use</li>
+        <li>T&C</li>
+        <li>Return Policy</li>
+      </ul>
+    </div>
+    <div style="width:15%;float:left;height:100%;">
+      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">USEFUL LINKS</div>
+      <ul style="font-size:12px;color:#a4a3a3;">
+        <li>FAQs</li>
+        <li>Shipping</li>
+        <li>Contact Us</li>
+        <li>Cancellation</li>
+        <li>Track Orders</li>
+      </ul>
+    </div>
+    <div style="width:40%;float:left;height:100%;">
+      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">EXPERIENCE ZIGFO APP ON MOBILE</div>
+      <div style="width:100%;height:75px;padding:15px;">
+        <i class="downloadApp1Icon footerIcon"></i>
+        <i class="downloadApp2Icon footerIcon"></i>
+        <i class="downloadApp3Icon footerIcon"></i>
+      </div>
+      <div style="width:40%;height:100px;float:left;text-align:center;">
+        <i class="originalityIcon footerIcon"></i>
+      </div>
+      <div style="width:60%;height:100px;float:left;">
+        <div style="font-size:18px;line-height:35px;">Fast, Simple & Delightful</div>
+        <div style="color:#a4a3a3;">All it takes is 30 seconds to Download</div>
+      </div>
+    </div>
+    <div style="width:30%;float:left;height:100%;">
+      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">ABOUT ZIGFO</div>
+      <div style="font-size:11px;color:#a4a3a3;">
+        Our shirts are made with the single most essential ingredient ever, which is love. With this comes the finest quality of shirting and top workmanship from our tailors as well as heartfelt services from our teams. Our shirts are made with the most exclusive collars and cuffs with thick and soft finishes and exclusively edged seams. We are able to produce any style of collar, cuff, front placket, back, pocket, bottom styles possible. The list is endless! Monograms/Initials are possible anywhere on the shirt, depending on your choice. Marvel at our range of 100 % cotton fabrics, made of the highest thread counts and weaves. There is so much to choose from!
+      </div>
+    </div>
+  </div>
+  <div style="width:100%;height:128px;padding:25px 8%;background-color:#fff;border-bottom:1px solid #e2e2e2;">
+    <div style="width:50%;height:100%;float:left;">
+      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">PAYMENT</div>
+      <div style="width:100%;height:60px;line-height:60px;">
+        <i class="visaPayment footerIcon"></i>
+        <i class="mastercardPayment footerIcon"></i>
+        <i class="cashondelivery footerIcon"></i>
+        <i class="netbanking footerIcon"></i>
+      </div>
+    </div>
+    <div style="width:50%;height:100%;float:left;">
+      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">CONNECT</div>
+      <div style="width:100%;height:60px;line-height:60px;">
+        <i class="facebook footerIcon"></i>
+        <i class="twitter footerIcon"></i>
+        <i class="google footerIcon"></i>
+        <i class="youtube footerIcon"></i>
+        <i class="instagram footerIcon"></i>
+        <i class="pintereset footerIcon"></i>
+      </div>
+    </div>
+  </div>
+  <div style="width:100%;height:40px;line-height:40px;padding:0 8%;">
+    <div style="width:50%;font-size:12px;float:left;text-align:left;">
+      Have Issues? Contact Us
+    </div>
+    <div style="width:50%;font-size:11px;float:left;text-align:right;">
+      Copyright © 2016, Raee Creations Private Limited. All Rights Reserved
+    </div>
   </div>
 </div>

@@ -11,11 +11,11 @@ class SignupService {
     this.set_profile = false
     this.signup_verified = false
   }
-  usersignup(mobileno, referral_id){
-    if (referral_id.length === 0){
-      this.signup_wo_referral(mobileno, "5")
-    }else{
+  usersignup(mobileno, referral_id, referral_id_exits){
+    if (referral_id_exits){
       this.signup_w_referral(mobileno, "5", referral_id)
+    }else{
+      this.signup_wo_referral(mobileno, "5")
     }
   }
   signup_w_referral(mobileno, client_id, referral_id){

@@ -1,6 +1,6 @@
 angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
-.run(['$rootScope', '$state', '$stateParams', '$timeout',
-    function($rootScope, $state, $stateParams, $timeout) {
+.run(['$rootScope', '$state', '$stateParams', '$timeout', "TabsService",
+    function($rootScope, $state, $stateParams, $timeout, TabsService) {
 
     (function(){
        if (document.getElementById('facebook-jssdk')) {return;}
@@ -30,6 +30,7 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
         $state.go("main.home")
       } else if (error === "No Profile"){
         $state.go("app.profile")
+        TabsService.myaccountTabs(false, false, false, false, false, false, false, false, false, true, false)
       }
     })
 
@@ -130,7 +131,7 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
         .state("app.profile", {
             url: "/profile",
             templateUrl: "partials/app.profile.html",
-            controller: "mainProfileController"
+            controller: "profileController"
         })
         .state("app.measurements", {
             url: "/measurements",

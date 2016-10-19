@@ -1,8 +1,8 @@
 angular.module("zigfo").controller('mainController',
               ['$scope','$state', '$rootScope', 'LoginService', 'SignupService',
-              'FBLoginService', 'ModalService', 'CategoriesService',
+              'FBLoginService', 'ModalService', 'CategoriesService', 'TabsService',
               function($scope, $state, $rootScope, LoginService, SignupService,
-                FBLoginService, ModalService, CategoriesService){
+                FBLoginService, ModalService, CategoriesService, TabsService){
 
       console.log('Main Controller');
 
@@ -102,7 +102,7 @@ angular.module("zigfo").controller('mainController',
       }
 
       $scope.secureSignUp = ()=>{
-        SignupService.usersignup($scope.mobileno, $scope.referral_code)
+        SignupService.usersignup($scope.mobileno, $scope.referral_code, $scope.has_referral_code)
       }
 
       $scope.verifySignUp = ()=>{
@@ -118,6 +118,7 @@ angular.module("zigfo").controller('mainController',
           $scope.CloseLoginModal()
           $scope.ClosePasswordModal()
           $state.go("app.profile")
+          TabsService.myaccountTabs(false, false, false, false, false, false, false, false, false, true, false)
         }
       }
 
