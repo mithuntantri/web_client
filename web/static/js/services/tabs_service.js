@@ -1,5 +1,6 @@
 class TabsService {
-  constructor() {
+  constructor(MeasurementsService) {
+    this.MeasurementsService = MeasurementsService
     this.myaccount_tabs = {
       overview : false,
       myorders : false,
@@ -11,7 +12,7 @@ class TabsService {
       addresses : false,
       measurements : false,
       editprofile : false,
-      editAddress : false,
+      editAddress : false
     }
     this.myorders = {
       all_orders : true,
@@ -25,6 +26,9 @@ class TabsService {
     }
   }
   myaccountTabs(t1, t2, t3, t4, t5, t6, t7, t8, t9, t10, t11){
+    if (t9){
+      this.MeasurementsService.getMeasurements()
+    }
     this.myaccount_tabs = {
       overview : t1,
       myorders : t2,
@@ -40,5 +44,5 @@ class TabsService {
     }
   }
 }
-TabsService.$inject = []
+TabsService.$inject = ['MeasurementsService']
 angular.module("zigfo").service('TabsService', TabsService)

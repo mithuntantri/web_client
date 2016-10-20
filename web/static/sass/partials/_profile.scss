@@ -140,13 +140,20 @@ li.profile-desc{
   padding: 5px 0;
   width:100%;
 }
-input:not([type]), input[type=text], input[type=textbox],
-input[type=password], input[type=email], input[type=url],
-input[type=time], input[type=date], input[type=datetime],
-input[type=datetime-local], input[type=tel], input[type=number],
-input[type=search], textarea.materialize-textarea{
+// input:not([type]), input[type=text], input[type=textbox],
+// input[type=password], input[type=email], input[type=url],
+// input[type=time], input[type=date], input[type=datetime],
+// input[type=datetime-local], input[type=tel], input[type=number],
+// input[type=search], textarea.materialize-textarea{
+.custom-input{
   border: none !important;
   box-shadow: none !important;
+  height: 50px !important;
+  margin-bottom: 0px !important;
+  padding: 0 10px !important;
+}
+.custom-label{
+  padding: 0 22px !important;
 }
 .custom-input-field{
   padding:0 !important;

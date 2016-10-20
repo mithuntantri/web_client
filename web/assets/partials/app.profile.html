@@ -106,6 +106,26 @@
         </div>
       </div>
     </div>
+    <div class="measurements-container" ng-if="TabsService.myaccount_tabs.measurements && MeasurementsService.measurements_exists">
+      <div class="add-new-measurements">
+        Add New Measurements <div style="float:right;"><i class="material-icons" style="line-height:39px;">chevron_right</i></div>
+      </div>
+      <div class="all-measurements">
+        <div class="all-measurements-header">
+          Default Measurements
+        </div>
+        <div class="measurements-card">
+          <div class="measurements-card-desc">
+          </div>
+          <div class="measurements-card-options">
+            <div class="measurements-options">
+            </div>
+            <div class="measurements-options">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="addresses-container" ng-if="TabsService.myaccount_tabs.addresses && ProfileService.profile_set">
       <div class="add-new-address">
         Add New Address <div style="float:right;"><i class="material-icons" style="line-height:39px;">chevron_right</i></div>
@@ -136,7 +156,7 @@
         </div>
       </div>
     </div>
-    <div class="content-card" ng-if="!TabsService.myaccount_tabs.coupons && (!ProfileService.profile_set || !TabsService.myaccount_tabs.addresses)">
+    <div class="content-card" ng-if="!TabsService.myaccount_tabs.coupons && (!ProfileService.profile_set || !TabsService.myaccount_tabs.addresses) && (!MeasurementsService.measurements_exists || !TabsService.myaccount_tabs.measurements)">
       <div class="editaddress-container" ng-if="TabsService.myaccount_tabs.editAddress">
         <div class="myprofile-header">
             Address Information
@@ -144,7 +164,7 @@
         <div class="input-field-container" style="margin-top:18px;">
           <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
               <label style="width:100%;line-height:32px;font-size:14px;">PIN CODE</label>
-              <input ng-model="ProfileService.profile.pin_code" type="text" style="text-transform:uppercase;padding:0 10px;margin-top:10px;" maxlength="16"
+              <input class="custom-input" ng-model="ProfileService.profile.pin_code" type="text" style="text-transform:uppercase;padding:0 10px;margin-top:10px;" maxlength="16"
                 ng-change="$event.stopPropagation()" ng-model-options="{debounce:20}" ng-click="$event.stopPropagation()"
                   id="editlabelinput">
            </md-input-container>
@@ -152,13 +172,13 @@
         <div class="input-field-container" style="height:135px;">
           <md-input-container class="md-icon-float md-icon-right md-block custom-input-field" style="width:93% !important;height:90% !important;">
               <label style="width:100%;line-height:32px;font-size:14px;">ADDRESS</label>
-              <input ng-model="ProfileService.profile.address" type="textbox">
+              <input class="custom-input" ng-model="ProfileService.profile.address" type="textbox">
            </md-input-container>
         </div>
         <div class="input-field-container">
           <md-input-container class="md-icon-float md-icon-right md-block custom-input-field" style="width:93% !important;">
               <label style="width:100%;line-height:32px;font-size:14px;">STREET</label>
-              <input ng-model="ProfileService.profile.street" type="textbox">
+              <input class="custom-input" ng-model="ProfileService.profile.street" type="textbox">
            </md-input-container>
         </div>
         <div class="input-field-container" style="height:50px;">
@@ -186,21 +206,21 @@
           <div class="input-field-container">
             <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
                 <label style="width:100%;line-height:32px;font-size:14px;">MOBILE NUMBER</label>
-                <input ng-model="ProfileService.profile.mobileno" type="text">
+                <input class="custom-input" ng-model="ProfileService.profile.mobileno" type="text">
              </md-input-container>
              <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
                  <label style="width:100%;line-height:32px;font-size:14px;">PASSWORD</label>
-                 <input ng-model="ProfileService.profile.password" type="password">
+                 <input class="custom-input" ng-model="ProfileService.profile.password" type="password">
               </md-input-container>
           </div>
           <div class="input-field-container">
             <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
                 <label style="width:100%;line-height:32px;font-size:14px;">FIRST NAME</label>
-                <input ng-model="ProfileService.profile.first_name" type="text">
+                <input class="custom-input" ng-model="ProfileService.profile.first_name" type="text">
              </md-input-container>
              <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
                  <label style="width:100%;line-height:32px;font-size:14px;">LAST NAME</label>
-                 <input ng-model="ProfileService.profile.last_name" type="text">
+                 <input class="custom-input" ng-model="ProfileService.profile.last_name" type="text">
               </md-input-container>
           </div>
           <div class="input-field-container" style="height:50px;padding:0 20px;">
@@ -226,7 +246,7 @@
           <div class="input-field-container" style="margin-top:10px;">
             <md-input-container class="md-icon-float md-icon-right md-block custom-input-field" style="width:93% !important;float:left;">
                 <label style="width:100%;line-height:32px;font-size:14px;">EMAIL ID</label>
-                <input ng-model="ProfileService.profile.email_id" type="text">
+                <input class="custom-input" ng-model="ProfileService.profile.email_id" type="text">
              </md-input-container>
           </div>
           <div class="input-field-container" style="margin-top:10px;">
@@ -365,7 +385,7 @@
             All of your Saved Measurement Profiles appear here. Currently you do not have any saved Measurement Profiles saved.
           </div>
           <div class="ntd-desc">
-            <div class="editinfo-btn" style="margin:0 auto;width:100%;">
+            <div class="editinfo-btn" style="margin:0 auto;width:100%;" ng-click="ModalService.OpenMeasurementsModal()">
               ADD NEW MEASUREMENT
             </div>
           </div>

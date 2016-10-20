@@ -2,6 +2,13 @@ class ModalService{
   constructor(){
 
   }
+  OpenMeasurementsModal(){
+    console.log('open modal');
+    $('.modal.measurements').modal('show')
+  }
+  CloseMeasurementsModal(){
+    $('.modal.measurements').modal('hide')
+  }
   OpenLoginModal(){
     $('.modal.loginmodal').modal('show')
   }
