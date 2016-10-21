@@ -17,7 +17,9 @@ exports.config={
             'bower_components/angular-messages/angular-messages.js',
             'bower_components/angular-material/angular-material.js',
             'bower_components/satellizer/dist/satellizer.js',
-            'bower_components/underscore/underscore.js'
+            'bower_components/underscore/underscore.js',
+            'bower_components/slick-carousel/slick/slick.min.js',
+            'bower_components/angular-slick/dist/slick.js'
         ]
       },
       order : {
@@ -34,7 +36,9 @@ exports.config={
           'bower_components/angular-messages/angular-messages.js',
           'bower_components/angular-material/angular-material.js',
           'bower_components/satellizer/dist/satellizer.js',
-          'bower_components/underscore/underscore.js'
+          'bower_components/underscore/underscore.js',
+          'bower_components/slick-carousel/slick/slick.min.js',
+          'bower_components/angular-slick/dist/slick.js'
         ]
       }
     },
@@ -47,14 +51,18 @@ exports.config={
         'css/vendor.css' : [
           'bower_components/materialize/bin/materialize.css',
           'bower_components/angular-material/angular-material.css',
-          'bower_components/semantic/dist/semantic.css'
+          'bower_components/semantic/dist/semantic.css',
+          'bower_components/slick-carousel/slick/slick.css',
+          'bower_components/slick-carousel/slick/slick-theme.css'
         ]
       },
       order:{
         before : [
           'bower_components/materialize/bin/materialize.css',
           'bower_components/angular-material/angular-material.css',
-          'bower_components/semantic/dist/semantic.css'
+          'bower_components/semantic/dist/semantic.css',
+          'bower_components/slick-carousel/slick/slick.css',
+          'bower_components/slick-carousel/slick/slick-theme.css'
         ]
       }
     }

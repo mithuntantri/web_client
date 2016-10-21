@@ -1,4 +1,4 @@
-angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
+angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 'slick'])
 .run(['$rootScope', '$state', '$stateParams', '$timeout', "TabsService",
     function($rootScope, $state, $stateParams, $timeout, TabsService) {
 
@@ -142,6 +142,11 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook'])
           url: "/credits",
           templateUrl: "partials/app.credits.html",
           controller: "creditsController"
+        })
+        .state("app.design", {
+          url: "/design",
+          templateUrl: "partials/app.design.html",
+          controller: "appDesignController"
         })
 })
 .filter('getTotalCredits', ()=>{

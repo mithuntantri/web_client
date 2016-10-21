@@ -1,0 +1,161 @@
+<div class="center-container">
+  <div style="width:25%;float:left;height:100%;">
+    <div class="my-account-header">
+      Custom Shirt Design
+    </div>
+    <div class="my-account-username">
+      Men's Formal
+    </div>
+  </div>
+  <div class="new-breadcrumbs-container">
+    <ul class="new-breadcrumbs">
+      <li class="first-step" ng-click="changeDesignTabs(true, false, false, false)" ng-class="{'active':styles_active}">DESIGN</li>
+      <li class="middle-divider">------</li>
+      <li class="second-step" ng-click="changeDesignTabs(false, true, false, false)" ng-class="{'active':fabrics_active}">FABRIC</li>
+      <li class="middle-divider">------</li>
+      <li class="third-step" ng-click="changeDesignTabs(false, false, true, false)" ng-class="{'active':measurements_active}">BAG</li>
+      <li class="middle-divider">------</li>
+      <li class="fourth-step" ng-click="changeDesignTabs(false, false, false, true)" ng-class="{'active':checkout_active}">PAYMENT</li>
+    </ul>
+  </div>
+  <div class="new-sidebuttons">
+    <div class="secure-label">
+      <div style="float:left;padding:0 5px;"><i class="material-icons" style="font-size:17px; ">lock</i></div>
+      <div style="float:left;">100% SECURE</div>
+    </div>
+  </div>
+  <div class="my-account-sidebar">
+    <div class="sidebar-options">
+      <ul class="sidebar-option">
+        <div class="overview">
+          <div class="sidebar-header">GENDER</div>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.info}"
+            ng-click="TabsService.myaccountTabs(false, false, false, false, false, true, false, false, false, false, false)">
+            Male
+          </li>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.cards}"
+            ng-click="TabsService.myaccountTabs(false, false, false, false, false, false, true, false, false, false, false)">
+            Female
+          </li>
+        </div>
+        <div class="account">
+          <div class="sidebar-header">OPTIONS</div>
+          <li class="sidebar-option" ng-repeat="options in DesignService.allOptions"
+            ng-class="{'active':options.active}" ng-click="changeStylesTab($index)">
+            {{options.name}}
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div class="my-account-content">
+    <div class="content-card">
+      <div class="top-design-img">
+        <div class="visual-product">
+          <div style="width:100%;height:330px;">
+          </div>
+          <div style="width:100%;height:50px;">
+            <div class="visual-price">
+              <div style="width:65px;float:left;font-weight:400;font-size:12px;">Total Price </div>
+              <div style="width:100px;float:left;text-align:right;font-weight:400;color:#f7931d;font-size:17px;">Rs.{{DesignService.totalPrice}}</div>
+              <div style="width:100%;text-align:right;font-size:12px;line-height:25px;">Prices Inclusive of all taxes</div>
+            </div>
+          </div>
+        </div>
+        <div class="visual-bottom-btn">
+          <div ng-click="changeDesignTabs(false, true, false, false)"
+            class="proceed-next-btn">
+            PROCEED NEXT
+          </div>
+          <div style="width:200px;float:left;height:33px;line-height:33px;cursor:pointer;" ng-mouseover="faviconhover = true" ng-mouseleave="faviconhover = false">
+            <div style="float:left;line-height:43px;font-size:17px;padding:0 10px;color:#e42c42;" ng-if="faviconhover"><i class="material-icons">favorite</i></div>
+            <div style="float:left;line-height:43px;font-size:17px;padding:0 10px;" ng-if="!faviconhover"><i class="material-icons">favorite_border</i></div>
+            <div style="float:left;line-height:33px;">SAVE FOR LATER</div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-subcategories">
+        <div ng-if="DesignService.allOptions && ready" style="width:100%;height:100%;">
+          <div class="left-carousel" ng-click="carouselPrev()">
+            <i class="material-icons left-carousel-icon">chevron_left</i>
+          </div>
+          <div class="right-carousel" ng-click="carouselNext()">
+            <i class="material-icons right-carousel-icon">chevron_right</i>
+          </div>
+          <slick class="carousel-content" dots="false" infinite="false" speed="300" slides-to-show="3" touch-move="true" slides-to-scroll="1" arrows="false" centerMode="true"
+              init-onload="true" data="DesignService.allOptions[0].options" arrows="true" ng-if="current_active_option == 0" >
+              <div class="slick-item" ng-click="changeSubCategory($index)" ng-class="{'active': option.selected}" ng-repeat="option in DesignService.allOptions[0].options">
+                <div class="slick-item-desc"></div>
+                <div class="slick-item-header">{{option.name}}</div>
+              </div>
+          </slick>
+          <slick class="carousel-content" dots="false" infinite="false" speed="300" slides-to-show="3" touch-move="true" slides-to-scroll="1" arrows="false" centerMode="true"
+              init-onload="true" data="DesignService.allOptions[1].options" arrows="true" ng-if="current_active_option == 1">
+              <div class="slick-item" ng-click="changeSubCategory($index)" ng-class="{'active': option.selected}" ng-repeat="option in DesignService.allOptions[1].options">
+                <div class="slick-item-desc"></div>
+                <div class="slick-item-header">{{option.name}}</div>
+              </div>
+          </slick>
+          <slick class="carousel-content" dots="false" infinite="false" speed="300" slides-to-show="6" touch-move="true" slides-to-scroll="1" arrows="false" centerMode="true"
+              init-onload="true" data="DesignService.allOptions[2].options" arrows="true" ng-if="current_active_option == 2">
+              <div class="slick-item" ng-click="changeSubCategory($index)" ng-class="{'active': option.selected}" ng-repeat="option in DesignService.allOptions[2].options">
+                <div class="slick-item-desc"></div>
+                <div class="slick-item-header">{{option.name}}</div>
+              </div>
+          </slick>
+          <slick class="carousel-content" dots="false" infinite="false" speed="300" slides-to-show="5" touch-move="true" slides-to-scroll="1" arrows="false" centerMode="true"
+              init-onload="true" data="DesignService.allOptions[3].options" arrows="true" ng-if="current_active_option == 3">
+              <div class="slick-item" ng-click="changeSubCategory($index)" ng-class="{'active': option.selected}" ng-repeat="option in DesignService.allOptions[3].options">
+                <div class="slick-item-desc"></div>
+                <div class="slick-item-header">{{option.name}}</div>
+              </div>
+          </slick>
+          <slick class="carousel-content" dots="false" infinite="false" speed="300" slides-to-show="4" touch-move="true" slides-to-scroll="1" arrows="false" centerMode="true"
+              init-onload="true" data="DesignService.allOptions[4].options" arrows="true" ng-if="current_active_option == 4">
+              <div class="slick-item" ng-click="changeSubCategory($index)" ng-class="{'active': option.selected}" ng-repeat="option in DesignService.allOptions[4].options">
+                <div class="slick-item-desc"></div>
+                <div class="slick-item-header">{{option.name}}</div>
+              </div>
+          </slick>
+          <slick class="carousel-content" dots="false" infinite="false" speed="300" slides-to-show="3" touch-move="true" slides-to-scroll="1" arrows="false" centerMode="true"
+              init-onload="true" data="DesignService.allOptions[5].options" arrows="true" ng-if="current_active_option == 5">
+              <div class="slick-item" ng-click="changeSubCategory($index)" ng-class="{'active': option.selected}" ng-repeat="option in DesignService.allOptions[5].options">
+                <div class="slick-item-desc"></div>
+                <div class="slick-item-header">{{option.name}}</div>
+              </div>
+          </slick>
+          <slick class="carousel-content" dots="false" infinite="false" speed="300" slides-to-show="3" touch-move="true" slides-to-scroll="1" arrows="false" centerMode="true"
+              init-onload="true" data="DesignService.allOptions[6].options" arrows="true" ng-if="current_active_option == 6">
+              <div class="slick-item" ng-click="changeSubCategory($index)" ng-class="{'active': option.selected}" ng-repeat="option in DesignService.allOptions[6].options">
+                <div class="slick-item-desc"></div>
+                <div class="slick-item-header">{{option.name}}</div>
+              </div>
+          </slick>
+          <slick class="carousel-content" dots="false" infinite="false" speed="300" slides-to-show="2" touch-move="true" slides-to-scroll="1" arrows="false" centerMode="true"
+              init-onload="true" data="DesignService.allOptions[7].options" arrows="true" ng-if="current_active_option == 7">
+              <div class="slick-item" ng-click="changeSubCategory($index)" ng-class="{'active': option.selected}" ng-repeat="option in DesignService.allOptions[7].options">
+                <div class="slick-item-desc"></div>
+                <div class="slick-item-header">{{option.name}}</div>
+              </div>
+          </slick>
+          <slick class="carousel-content" dots="false" infinite="false" speed="300" slides-to-show="4" touch-move="true" slides-to-scroll="1" arrows="false" centerMode="true"
+              init-onload="true" data="DesignService.allOptions[8].options" arrows="true" ng-if="current_active_option == 8">
+              <div class="slick-item" ng-click="changeSubCategory($index)" ng-class="{'active': option.selected}" ng-repeat="option in DesignService.allOptions[8].options">
+                <div class="slick-item-desc"></div>
+                <div class="slick-item-header">{{option.name}}</div>
+              </div>
+          </slick>
+          <slick class="carousel-content" dots="false" infinite="false" speed="300" slides-to-show="3" touch-move="true" slides-to-scroll="1" arrows="false" centerMode="true"
+              init-onload="true" data="DesignService.allOptions[9].options" arrows="true" ng-if="current_active_option == 9">
+              <div class="slick-item" ng-click="changeSubCategory($index)" ng-class="{'active': option.selected}" ng-repeat="option in DesignService.allOptions[9].options">
+                <div class="slick-item-desc"></div>
+                <div class="slick-item-header">{{option.name}}</div>
+              </div>
+          </slick>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

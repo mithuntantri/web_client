@@ -9,6 +9,7 @@ import "./controllers/measurements_controller"
 import "./controllers/credits_controller"
 import "./controllers/main_profile_controller"
 import "./controllers/main_design_controller"
+import "./controllers/app_design_controller"
 
 import "./services/login_service"
 import "./services/signup_service"
