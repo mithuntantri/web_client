@@ -48,6 +48,14 @@ md-checkbox .md-label{
   height:520px;
   margin-top: 0 !important;
 }
+.ui.small.modal.appointments{
+  position: fixed;
+  top: 18% !important;
+  left:56%;
+  width:625px;
+  height:520px;
+  margin-top: 0 !important;
+}
 .sliding-middle-out {
 	display: inline-block;
 	position: relative;

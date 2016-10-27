@@ -1,10 +1,11 @@
 class ProfileService {
-  constructor($http, $state, $rootScope, $q, TabsService) {
+  constructor($http, $state, $rootScope, $q, TabsService, AddressService) {
     this.$http = $http
     this.$state = $state
     this.$rootScope = $rootScope
     this.$q = $q
     this.TabsService = TabsService
+    this.AddressService = AddressService
     this.username = 'User'
     this.profile_set = false
     this.profile = {
@@ -15,9 +16,6 @@ class ProfileService {
       male: true,
       female: false,
       email_id: '',
-      pin_code: '',
-      address: '',
-      street: '',
       referral_id: ''
     }
     this.credits = {
@@ -44,7 +42,7 @@ class ProfileService {
   }
   set_user_profile(){
     this.$http({
-      url : '/api/setprofile',
+      url : '/api/profile',
       method: 'POST',
       data: {
         'mobileno' : this.profile.mobileno,
@@ -53,15 +51,13 @@ class ProfileService {
         'gender': this.gender,
         'first_name': this.profile.first_name,
         'last_name': this.profile.last_name,
-        'address' : this.profile.address,
-        'street' : this.profile.street,
-        'pin_code': this.profile.pin_code
       }
     }).then((response) =>{
       if(response.data.status === 'success'){
         this.get_user_profile()
         this.profile_set = true
         this.$state.go("app.profile")
+        this.AddressService.getAddresses()
         this.TabsService.myaccountTabs(false, false, false, false, false, true, false, false, false, false, false)
       }
     }, (error)=>{
@@ -89,10 +85,7 @@ class ProfileService {
           last_name : info.last_name,
           male : true,
           female : false,
-          referral_id : response.data.data.referral_id,
-          pin_code : saved_address.pin_code,
-          street :  saved_address.street,
-          address : saved_address.address
+          referral_id : response.data.data.referral_id
         }
         this.credits = {
           profile_credits : credits.profile_credits,
@@ -105,6 +98,7 @@ class ProfileService {
           this.profile.female = true
         }
         this.username = this.profile.first_name
+        this.AddressService.getAddresses()
       }else if(response.data.status === 'failed'){
         this.profile_set = false
         this.$state.go("app.profile")
@@ -114,5 +108,5 @@ class ProfileService {
     })
   }
 }
-ProfileService.$inject = ['$http', '$state', '$rootScope', '$q', 'TabsService']
+ProfileService.$inject = ['$http', '$state', '$rootScope', '$q', 'TabsService', 'AddressService']
 angular.module('zigfo').service('ProfileService', ProfileService)

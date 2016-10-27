@@ -55,7 +55,7 @@
           </li>
           <li class="sidebar-option"
             ng-class="{'active': TabsService.myaccount_tabs.addresses}"
-            ng-click="TabsService.myaccountTabs(false, false, false, false, false, false, false, true, false, false, false)">
+            ng-click="TabsService.myaccountTabs(false, false, false, false, false, false, false, true, false, false, false);AddressService.getAddresses();">
             Saved Addresses
           </li>
           <li class="sidebar-option"
@@ -166,29 +166,29 @@
         </div>
       </div>
     </div>
-    <div class="addresses-container" ng-if="TabsService.myaccount_tabs.addresses && ProfileService.profile_set">
-      <div class="add-new-address">
+    <div class="addresses-container" ng-if="TabsService.myaccount_tabs.addresses && AddressService.addresses.length > 0">
+      <div class="add-new-address" ng-click="AddressService.addAddress()">
         Add New Address <div style="float:right;"><i class="material-icons" style="line-height:39px;">chevron_right</i></div>
       </div>
       <div class="all-addresses">
         <div class="all-addresses-header">
           Default Address
         </div>
-        <div class="address-card">
+        <div class="address-card" ng-repeat="addresses in AddressService.addresses">
           <div class="address-card-desc">
             <div style="line-height:43px;font-size:13px;font-weight:400;">{{ProfileService.profile.first_name}} {{ProfileService.profile.last_name}}</div>
-            <div style="line-height:18px;font-size:12px;">{{ProfileService.profile.address}}</div>
-            <div style="line-height:18px;font-size:12px;">{{ProfileService.profile.street}}</div>
-            <div style="line-height:18px;font-size:12px;">Bengaluru - {{ProfileService.profile.pin_code}}</div>
+            <div style="line-height:18px;font-size:12px;">{{addresses.address}}</div>
+            <div style="line-height:18px;font-size:12px;">{{addresses.street}}</div>
+            <div style="line-height:18px;font-size:12px;">Bengaluru - {{addresses.pin_code}}</div>
             <div style="line-height:18px;font-size:12px;">Karnataka</div>
             <div style="line-height:43px;font-size:13px;">Mobile Number {{ProfileService.profile.mobileno}}</div>
           </div>
           <div class="address-card-options">
-            <div class="address-options">
+            <div class="address-options" ng-click="AddressService.removeAddress($index)">
               <div style="float:left;"><i class="material-icons" style="line-height:49px;">close</i></div>
               <div style="float:left;line-height:49px;padding:0 5px;">Remove</div>
             </div>
-            <div class="address-options">
+            <div class="address-options" ng-click="AddressService.modifyAddress($index)">
               <div style="float:left;"><i class="material-icons" style="line-height:49px;">mode_edit</i></div>
               <div style="float:left;line-height:49px;padding:0 5px;">Edit</div>
             </div>
@@ -196,7 +196,7 @@
         </div>
       </div>
     </div>
-    <div class="content-card" ng-if="!TabsService.myaccount_tabs.coupons && (!ProfileService.profile_set || !TabsService.myaccount_tabs.addresses) && (!MeasurementsService.measurements_exists || !TabsService.myaccount_tabs.measurements)">
+    <div class="content-card" ng-if="!TabsService.myaccount_tabs.coupons && (AddressService.addresses.length == 0 || !TabsService.myaccount_tabs.addresses) && (!MeasurementsService.measurements_exists || !TabsService.myaccount_tabs.measurements)">
       <div class="editaddress-container" ng-if="TabsService.myaccount_tabs.editAddress">
         <div class="myprofile-header">
             Address Information
@@ -204,7 +204,7 @@
         <div class="input-field-container" style="margin-top:18px;">
           <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
               <label style="width:100%;line-height:32px;font-size:14px;">PIN CODE</label>
-              <input class="custom-input" ng-model="ProfileService.profile.pin_code" type="text" style="text-transform:uppercase;padding:0 10px;margin-top:10px;" maxlength="16"
+              <input class="custom-input" ng-model="AddressService.newaddress.pin_code" type="text" style="text-transform:uppercase;padding:0 10px;margin-top:10px;" maxlength="16"
                 ng-change="$event.stopPropagation()" ng-model-options="{debounce:20}" ng-click="$event.stopPropagation()"
                   id="editlabelinput">
            </md-input-container>
@@ -212,13 +212,13 @@
         <div class="input-field-container" style="height:135px;">
           <md-input-container class="md-icon-float md-icon-right md-block custom-input-field" style="width:93% !important;height:90% !important;">
               <label style="width:100%;line-height:32px;font-size:14px;">ADDRESS</label>
-              <input class="custom-input" ng-model="ProfileService.profile.address" type="textbox">
+              <input class="custom-input" ng-model="AddressService.newaddress.address" type="textbox">
            </md-input-container>
         </div>
         <div class="input-field-container">
           <md-input-container class="md-icon-float md-icon-right md-block custom-input-field" style="width:93% !important;">
               <label style="width:100%;line-height:32px;font-size:14px;">STREET</label>
-              <input class="custom-input" ng-model="ProfileService.profile.street" type="textbox">
+              <input class="custom-input" ng-model="AddressService.newaddress.street" type="textbox">
            </md-input-container>
         </div>
         <div class="input-field-container" style="height:50px;">
@@ -230,8 +230,14 @@
           </ul>
         </div>
         <div class="input-field-container" style="margin-top:10px;height:58px;">
-          <div class="submit-btn" ng-click="ProfileService.set_user_profile()">
-            SUBMIT
+          <div class="submit-btn" ng-click="AddressService.createAddress()" ng-if="AddressService.current_operation == 'add'">
+            ADD
+          </div>
+          <div class="submit-btn" ng-click="AddressService.updateAddress()" ng-if="AddressService.current_operation == 'update'">
+            MODIFY
+          </div>
+          <div class="submit-btn" ng-click="AddressService.deleteAddress()" ng-if="AddressService.current_operation == 'remove'">
+            DELETE
           </div>
           <div class="cancel-btn">
             CANCEL
@@ -290,7 +296,7 @@
              </md-input-container>
           </div>
           <div class="input-field-container" style="margin-top:10px;">
-            <div class="submit-btn" ng-click="ProfileService.submitProfile()">
+            <div class="submit-btn" ng-click="ProfileService.set_user_profile()">
               SUBMIT
             </div>
             <div class="cancel-btn">
@@ -372,7 +378,7 @@
             All of your Saved Addresses appear here. Currently you do not have any saved Addresses saved.
           </div>
           <div class="ntd-desc">
-            <div class="editinfo-btn" style="margin:0 auto;width:100%;">
+            <div class="editinfo-btn" style="margin:0 auto;width:100%;" ng-click="AddressService.addAddress()">
               ADD NEW ADDRESS
             </div>
           </div>

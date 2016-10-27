@@ -50,7 +50,37 @@
       </ul>
     </div>
   </div>
-  <div class="my-account-content">
+  <div class="my-account-content" ng-show="measurements_active">
+    <div style="width:400px;margin:0 auto;height:100px;">
+      <div style="width:100px;height:100px;float:left;padding-top:15px;">
+        <img src="/img/delivery.png" style="width:100%;"/>
+      </div>
+      <div style="width:300px;height:100px;float:left;padding:25px;">
+        <div style="font-size:20px;line-height:30px;text-align:center;">Personal Pilot at the</div>
+        <div style="font-size:20px;line-height:30px;text-align:center;">Comfort of your Home</div>
+      </div>
+    </div>
+    <div style="width:615px;margin:0 auto;height:33px;font-size:12px;line-height:33px;margin-bottom:20px;">
+      Fabric Pickup | Certified Pilot Measurement Pickup | No Convenience Fee | Book online or call us at 99998 99998
+    </div>
+    <div class="search-locality-container search-location">
+      <div style="float:left;width:70px;text-align:center;height:36px;">
+        <i class="material-icons" style="line-height:36px;">location_searching</i>
+      </div>
+      <div style="float:left;width:360px;text-align:center;">
+        <input type="text" gm-places-autocomplete ng-model="autocomplete" placeholder="Search Nearby Location (Locality, Area or Road)" class="location-search-input"/>
+      </div>
+      <div style="float:left;width:70px;text-align:center;padding:2px;">
+        <div class="location-search-button" ng-click="ModalService.OpenAppointmentsModal();generateMaps();">
+          GO
+        </div>
+      </div>
+    </div>
+    <div style="width:50%;height:33px;border-bottom:1px solid #f1f1f1;margin:0 auto;">
+      <div style="margin:0 auto;width:40px;line-height:65px;background-color:#fff;text-align:center;">OR</div>
+    </div>
+  </div>
+  <div class="my-account-content" ng-show="styles_active">
     <div class="content-card">
       <div class="top-design-img">
         <div class="visual-product">
@@ -156,6 +186,85 @@
           </slick>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+<div class="ui small modal appointments">
+  <div style="width:100%;height:120px;background-color:#2874f0;">
+    <!-- <div style="width:70%;height:80%;padding:25px 15px;float:left;">
+      <div style="font-size:22px;color:#fff;line-height:50px;font-weight:400;">
+        Book Appoinment
+      </div>
+      <div style="font-size:15px;color:#fff;line-height:23px;font-weight:400;">
+        Personal Pilot at the comfort of your Home
+      </div>
+      <div style="padding:50px 10px;font-size:12px;color:#fff;font-weight:400;line-height:18px;">
+        Fabric Pick-Up | Home Measurement Pick-Up | Book online or Call us at 99998 99998
+      </div>
+    </div> -->
+    <div style="width:100%;height:100%;float:left;padding:0 100px;">
+      <md-button class="md-raised" ng-click="gotoAppointments()" style="top:60px;z-index:1;float:left;margin-right:10px;">
+        <div style="float:left;width:30px;text-align:center;height:36px;">
+          <i class="material-icons" style="line-height:36px;font-size:17px;">face</i>
+        </div>
+        <div style="float:left;min-width:120px;text-align:center;font-size:12px;">
+          SCHEDULE FOR NOW
+        </div>
+      </md-button>
+      <md-button class="md-raised" ng-click="gotoAppointments()" style="top:60px;z-index:1;float:left;margin-left:10px;">
+        <div style="float:left;width:30px;text-align:center;height:36px;">
+          <i class="material-icons" style="line-height:36px;font-size:17px;">send</i>
+        </div>
+        <div style="float:left;min-width:120px;text-align:center;font-size:12px;">
+          SCHEDULE FOR LATER
+        </div>
+      </md-button>
+    </div>
+  </div>
+  <div style="width:100%;height:400px;float:left;" ng-hide="appointments_page">
+    <md-button class="md-raised" ng-click="autocompleteMaps()" style="bottom:0;z-index:1;left:0px;position:absolute;">
+      <div style="float:left;width:30px;text-align:center;height:36px;">
+        <i class="material-icons" style="line-height:36px;font-size:17px;">location_searching</i>
+      </div>
+      <div style="float:left;width:120px;text-align:center;font-size:12px;">
+        CURRENT LOCATION
+      </div>
+    </md-button>
+    <ui-gmap-google-map center="center" zoom="zoom" control="control" ng-if="generatedMaps">
+      <ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id">
+            </ui-gmap-marker>
+      </ui-gmap-google-map>
+  </div>
+  <div style="width:100%;height:400px;" ng-show="appointments_page">
+    <div style="width:100%;height:33px;">
+      Pick your Date
+    </div>
+    <div style="width:100%;height:100px;">
+      <ul class="appointments-lists day">
+        <li class="appointments-list" ng-repeat="slot in AppointmentsService.slots">
+          {{slot.dayofweek}}
+        </li>
+      </ul>
+      <ul class="appointments-lists date" ng-click="AppointmentsService.current_date_selection = $index">
+        <li class="appointments-list" ng-repeat="slot in AppointmentsService.slots">
+          {{slot.dateofmonth}}
+        </li>
+      </ul>
+    </div>
+    <div style="width:100%;height:33px;">
+      Pick your Slot
+    </div>
+    <div style="width:100%;height:100px;">
+      <ul class="appointments-lists slot">
+        <li class="appointments-list slots" ng-repeat="slot in AppointmentsService.slots[AppointmentsService.current_date_selection].slots">
+          {{slot.num_slots}}
+        </li>
+      </ul>
+      <ul class="appointments-lists slotname">
+        <li class="appointments-list slotsname" ng-repeat="slot in AppointmentsService.slots[AppointmentsService.current_date_selection].slots">
+          {{slot.slot_name}}
+        </li>
+      </ul>
     </div>
   </div>
 </div>

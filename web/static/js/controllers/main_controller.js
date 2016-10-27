@@ -68,6 +68,18 @@ angular.module("zigfo").controller('mainController',
           }
       });
 
+      $('.modal.appointments').modal({
+          closable: false,
+          allowMultiple: false,
+          duration: 100,
+          detachable: false,
+          observeChanges: true,
+          context: 'none',
+          selector: {
+              close: '.fa.fa-times'
+          }
+      });
+
       $scope.OpenLoginModal = () =>{
         ModalService.OpenLoginModal()
       }

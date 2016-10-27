@@ -29,9 +29,14 @@
     "materialize": "^0.97.7",
     "ng-facebook": "^0.1.6",
     "satellizer": "^0.15.5",
-    "angular-slick": "^0.2.1"
+    "angular-slick": "^0.2.1",
+    "angularjs-google-maps": "^0.5.0",
+    "smDateTimeRangePicker": "^2.0.1",
+    "moment": "^2.15.2"
   },
   "resolutions": {
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "angular-ui-router": "0.3.1",
+    "moment": "^2.15.2"
   }
 }

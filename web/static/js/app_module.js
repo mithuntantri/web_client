@@ -1,7 +1,6 @@
-angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 'slick'])
+angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 'slick', 'gm', 'uiGmapgoogle-maps'])
 .run(['$rootScope', '$state', '$stateParams', '$timeout', "TabsService",
     function($rootScope, $state, $stateParams, $timeout, TabsService) {
-
     (function(){
        if (document.getElementById('facebook-jssdk')) {return;}
        var firstScriptElement = document.getElementsByTagName('script')[0];
@@ -11,6 +10,7 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
        firstScriptElement.parentNode.insertBefore(facebookJS, firstScriptElement);
      }());
 
+    let google_api_key = 'AIzaSyBgAgGl-HIKxAttDgILKPskKDhrAzkJlIk'
     let loggedIn = localStorage.loggedIn
     let token = localStorage.token
     let name = localStorage.username
@@ -106,7 +106,11 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
           templateUrl: "partials/main.profile.html",
           controller: "mainProfileController"
         })
-
+        .state("main.pickup", {
+          url : "pickup",
+          templateUrl: "partials/main.pickup.html",
+          controller: "pickupController"
+        })
         .state("app", {
           url: "/app",
           templateUrl: "partials/app.html",

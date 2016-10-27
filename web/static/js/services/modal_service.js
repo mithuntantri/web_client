@@ -24,6 +24,12 @@ class ModalService{
   ClosePasswordModal(){
     $('.modal.passwordmodal').modal('hide')
   }
+  OpenAppointmentsModal(){
+    $('.modal.appointments').modal('show')
+  }
+  CloseAppointmentsModal(){
+    $('.modal.appointments').modal('hide')
+  }
 }
 ModalService.$inject = []
 angular.module('zigfo').service('ModalService',ModalService)

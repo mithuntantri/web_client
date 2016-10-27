@@ -16,10 +16,12 @@ exports.config={
             'bower_components/angular-animate/angular-animate.js',
             'bower_components/angular-messages/angular-messages.js',
             'bower_components/angular-material/angular-material.js',
+            'bower_components/moment/moment.js',
             'bower_components/satellizer/dist/satellizer.js',
             'bower_components/underscore/underscore.js',
             'bower_components/slick-carousel/slick/slick.min.js',
-            'bower_components/angular-slick/dist/slick.js'
+            'bower_components/angular-slick/dist/slick.js',
+            'bower_components/angularjs-google-maps/dist/angularjs-google-maps.js'
         ]
       },
       order : {
@@ -35,10 +37,12 @@ exports.config={
           'bower_components/angular-animate/angular-animate.js',
           'bower_components/angular-messages/angular-messages.js',
           'bower_components/angular-material/angular-material.js',
+          'bower_components/moment/moment.js',
           'bower_components/satellizer/dist/satellizer.js',
           'bower_components/underscore/underscore.js',
           'bower_components/slick-carousel/slick/slick.min.js',
-          'bower_components/angular-slick/dist/slick.js'
+          'bower_components/angular-slick/dist/slick.js',
+          'bower_components/angularjs-google-maps/dist/angularjs-google-maps.js'
         ]
       }
     },
@@ -53,7 +57,7 @@ exports.config={
           'bower_components/angular-material/angular-material.css',
           'bower_components/semantic/dist/semantic.css',
           'bower_components/slick-carousel/slick/slick.css',
-          'bower_components/slick-carousel/slick/slick-theme.css'
+          'bower_components/slick-carousel/slick/slick-theme.css',
         ]
       },
       order:{
@@ -62,7 +66,7 @@ exports.config={
           'bower_components/angular-material/angular-material.css',
           'bower_components/semantic/dist/semantic.css',
           'bower_components/slick-carousel/slick/slick.css',
-          'bower_components/slick-carousel/slick/slick-theme.css'
+          'bower_components/slick-carousel/slick/slick-theme.css',
         ]
       }
     }
