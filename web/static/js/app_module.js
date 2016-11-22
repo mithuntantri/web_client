@@ -96,6 +96,17 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
           controller: "mainHomeController"
         })
 
+        .state("main.login", {
+          url: "",
+          templateUrl: "partials/main.login.html",
+          controller: "mainLoginController"
+        })
+        .state("main.signup", {
+          url: "",
+          templateUrl: "partials/main.signup.html",
+          controller: "mainSignupController"
+        })
+        
         .state("main.design", {
           url: "design",
           templateUrl: "partials/main.design.html",

@@ -37,8 +37,8 @@
             <div style="font-weight:600;font-size:14px;color:#282c3f;line-height:33px;">Your Account</div>
             <div style="font-weight:400;font-size:12px;color:#282c3f;line-height:27px;">Access Account and manage orders</div>
             <div style="width:100%;padding:7px;">
-              <div class="zig-user-btn">SIGNUP</div>
-              <div class="zig-user-btn">LOGIN</div>
+              <div class="zig-user-btn" ui-sref="main.signup">SIGNUP</div>
+              <div class="zig-user-btn" ui-sref="main.login">LOGIN</div>
             </div>
           </div>
         </div>
@@ -52,13 +52,7 @@
     </div>
   </div>
 </div>
-<div class="zig-shop-base">
-  <div class="offer-base-container">
-    <div class="offer-base-item">
-    </div>
-  </div>
-</div>
-
+<div ui-view style="width:100%;" class="ui-view-container"></div>
 <!-- <div class="top-nav">
   <div class="sub-nav">
     <div class="sub-nav-container">

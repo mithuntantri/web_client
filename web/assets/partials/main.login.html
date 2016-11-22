@@ -12,20 +12,23 @@
         <div class="register-input-item">
           <input type="email" class="register-user-input register-user-input-email" placeholder="Your Email Address / Mobile" name="email"/>
         </div>
-        <div class="register-input-item">
+        <div class="register-input-item" ng-hide="loginwithotp">
           <input type="password" class="register-user-input register-user-input-password" placeholder="Your Password" name="password" style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;"/>
         </div>
       </fieldset>
-      <fieldset class="register-button-container">
+      <fieldset class="register-button-container" ng-if="!loginwithotp">
         <button class="register-button-new">LOGIN</button>
+      </fieldset>
+      <fieldset class="register-button-container" ng-if="loginwithotp">
+        <button class="register-button-new">GET OTP</button>
       </fieldset>
       <div class="register-link-container">
         <div class="register-link" style="width:30%;float:left;text-align:left;">
-          <a class="register-create-account-link register-link">Login with OTP</a>
+          <a class="register-create-account-link register-link" ng-click="loginwithotp = true">Login with OTP</a>
         </div>
         <div class="register-link" style="width:70%;float:left;text-align:right;">
           <span class="register-info-text">New to Zigfo?</span>
-          <a class="register-create-account-link register-link">Create Account</a>
+          <a class="register-create-account-link register-link" ui-sref="main.signup">Create Account</a>
         </div>
       </div>
     </form>

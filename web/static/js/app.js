@@ -12,6 +12,9 @@ import "./controllers/main_design_controller"
 import "./controllers/app_design_controller"
 import "./controllers/pickup_controller"
 
+import "./controllers/main_login_controller"
+import "./controllers/main_signup_controller"
+
 import "./services/login_service"
 import "./services/signup_service"
 import "./services/fb_login_service"
