@@ -69,7 +69,7 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
     $urlRouterProvider.otherwise("/");
     $urlRouterProvider.when('/app', '/app/home');
     $facebookProvider.setAppId('1791808574372416');
-
+    $facebookProvider.setPermissions("email,user_likes");
     // State definitions
     $stateProvider
         .state("main", {
@@ -106,7 +106,7 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
           templateUrl: "partials/main.signup.html",
           controller: "mainSignupController"
         })
-        
+
         .state("main.design", {
           url: "design",
           templateUrl: "partials/main.design.html",

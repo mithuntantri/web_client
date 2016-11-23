@@ -46,7 +46,7 @@
   cursor: pointer;
 }
 .register-fb-logo{
-    background-position: -262px 0;
+    background-position: -262px 0 !important;
     width: 28px;
     top: 10px;
     height: 29px;
@@ -57,7 +57,7 @@
     display: inline-block;
 }
 .register-google-logo{
-    background-position: -290px 0;
+    background-position: -290px 0 !important;
     width: 28px;
     top: 13px;
     height: 29px;
@@ -173,6 +173,9 @@ input[type=number]::-webkit-outer-spin-button {
     text-transform: uppercase;
     border-radius: 3px;
     font-family: 'Open Sans', sans-serif;
+}
+.register-button-new:hover{
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15) !important;
 }
 .register-link-container {
     text-align: left;

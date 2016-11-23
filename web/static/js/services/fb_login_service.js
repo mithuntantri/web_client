@@ -23,11 +23,11 @@ class FBLoginService {
     let this_temp = this
     let modal_service = this.ModalService
     let login_service = this.LoginService
-    this.$facebook.api("/me").then(
+    this.$facebook.api("/me?fields=id,name,email").then(
       function(response) {
-        console.log(response);
-        modal_service.CloseLoginModal()
-        login_service.userlogin(response.id, this_temp.set_expiry, "", false, "", true)
+        console.log("Facebook login response",response);
+        // modal_service.CloseLoginModal()
+        // login_service.userlogin(response.id, this_temp.set_expiry, "", false, "", true)
       },
       function(err) {
       });

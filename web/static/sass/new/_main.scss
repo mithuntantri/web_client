@@ -48,14 +48,15 @@
 }
 .zig-nav-logo{
   float: left;
-  width: 112px;
+  width: 120px;
+  margin-left: 22px;
   height: 80px;
 }
 .zig-nav-menu{
   display: block;
   float: left;
   line-height: 80px;
-  width: 360px;
+  width: 330px;
   height: 80px;
   margin: 0 0 0 25px;
 }
@@ -63,7 +64,9 @@
   width: 100%;
   height: 80px;
 }
-.zig-nav-menuitem{
+.zig-nav-menuitem1,
+.zig-nav-menuitem2,
+.zig-nav-menuitem3{
   padding: 0 20px;
   line-height: 76px;
   cursor: pointer;
@@ -76,7 +79,9 @@
   border-bottom-style: solid;
   border-bottom-color: transparent;
 }
-.zig-nav-menuitem:hover{
+.zig-nav-menuitem1:hover,
+.zig-nav-menuitem2:hover,
+.zig-nav-menuitem3:hover{
   border-bottom-style: solid;
   border-bottom-width: 4px;
   -webkit-transition: left .2s ease-out,border-color .5s ease-in;
@@ -84,7 +89,52 @@
   transition-duration: 0.2s, 0.2s;
   transition-timing-function: ease-out, ease-out;
   transition-delay: initial, initial;
-  border-bottom-color: rgb(238, 95, 115)
+  border-bottom-color: rgb(238, 95, 115);
+}
+.zig-nav-list1,
+.zig-nav-list2,
+.zig-nav-list3{
+  width:100%;
+  top: 104px;
+  left:0;
+  position: absolute;
+  padding: 25px;
+  z-index: 3;
+  box-shadow: 0 1px 10px rgba(0,0,0,.08);
+  -webkit-transition: opacity .2s ease-out,visibility .2s ease-out;
+  transition: opacity .2s ease-out,visibility .2s ease-out;
+  background-color: #fff;
+  color: #3e4152;
+  border: 1px solid #f5f5f6;
+  visibility: hidden;
+  opacity: 0;
+}
+.zig-nav-menuitem1
+.zig-nav-list1{
+  display: none;
+  opacity: 0;
+}
+.zig-nav-list-item{
+  color:#3e4152;line-height:25px;text-align:left;
+}
+.zig-nav-list-item:hover
+.zig-nav-list-item-label{
+  text-decoration: underline;
+}
+.zig-nav-list-item
+.coming-soon{
+  color:rgb(242, 106, 16) !important;border:1px solid rgb(242, 106, 16) !important;
+  text-decoration: none !important;
+}
+.zig-nav-list-item:hover
+.coming-soon{
+  text-decoration: none !important;
+}
+.zig-nav-menuitem1:hover
+.zig-nav-list1{
+  display: block;
+  visibility: visible;
+  opacity: 1;
 }
 .zig-nav-search{
   width: 300px;
