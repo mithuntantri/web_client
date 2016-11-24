@@ -1,0 +1,103 @@
+.bagContainer{
+  width:100%;
+}
+.shoppingbag-left{
+  width:70%;
+  float: left;
+  padding-left: 40px;
+  border-right: 1px solid #f5f5f6;
+  min-height: 500px;
+}
+.shoppingbag-right{
+  display: inline-block;
+  float: left;
+  width: 29%;
+  vertical-align: top;
+  margin-top: 52px;
+  padding-left: 35px;
+}
+.order-total-summary:before {
+    content: 'OPTIONS';
+    text-align: left;
+    width: 100%;
+    display: block;
+    top: -16px;
+    position: relative;
+    font-weight: 600;
+    font-size: 12px;
+    color: #7e818c;
+}
+.order-total-summary {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    border-bottom: none;
+    float: right;
+}
+.coupon-section{
+  width: 100%;
+  color: rgb(89, 96, 98);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  border-bottom: 1px dotted #d4d5d9;
+  min-height: 30px;
+  padding-bottom: 20px!important;
+  margin-bottom: 10px;
+}
+.gift-wrap-order {
+    position: static;
+    height: 30px;
+    margin-bottom: 80px;
+    text-align: left;
+    padding-top: 2px;
+}
+.order-summary-span:before {
+    content: 'Price Details';
+    position: absolute;
+    top: -32px;
+    font-size: 12px;
+    left: 0;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #7e818c;
+}
+.order-summary-span {
+    float: none;
+    padding: 0;
+    position: relative;
+    border-bottom: 1px solid #eaeaec;
+}
+.order-summary-list{
+  height: 28px;
+  padding-bottom: 8px;
+  margin-bottom: 6px;
+}
+.order-summary-label{
+  float: left;
+  width:50%;
+  text-align: left;
+  font-size: 12px;
+  font-weight: 300;
+  color: #535766;
+}
+.order-summary-value{
+  float: right;
+  width: 50%;
+  text-align: right;
+  font-size: 12px !important;
+  font-weight: 400;
+  color: #535766;
+}
+.place-order-btn{
+    border-radius: 3px;
+    height: 45px;
+    width:100%;
+    margin-top: 20px;
+    line-height: 45px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #2cd2b1!important;
+  }

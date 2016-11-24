@@ -10,7 +10,7 @@
   </div>
   <div class="zig-nav-container">
     <div class="zig-nav-logo" style="padding:15px 0;">
-      <img src="/img/Untitled-4.png" style="width:50px;float:left;"/>
+      <!-- <img src="/img/Untitled-4.png" style="width:50px;float:left;"/> -->
       <!-- <div style="float:left;font-size:20px;font-weight:600;width:70px;color: #282c3f;line-height:40px;padding-left:10px;letter-spacing:1px;">Zigfo</div> -->
     </div>
     <div class="zig-nav-menu">
@@ -84,13 +84,15 @@
         <div style="float:left;">
           <i class="material-icons">shopping_basket</i>
         </div>
-        <div style="float:left;line-height:30px;padding:0 5px;font-weight:600;">Bag</div>
+        <div style="float:left;line-height:30px;padding:0 5px;font-weight:600;" ui-sref="main.cart">
+          Bag<span class="desktop-badge desktop-melon">3</span>
+        </div>
       </div>
     </div>
   </div>
 </div>
 <div ui-view style="width:100%;" class="ui-view-container"></div>
-<div style="width:100%;border-top:1px solid #e2e2e2;height:200px;padding: 0px 8%;border-bottom:1px solid #e2e2e2;background-color:#fff;">
+<!-- <div style="width:100%;border-top:1px solid #e2e2e2;height:200px;padding: 0px 8%;border-bottom:1px solid #e2e2e2;background-color:#fff;">
   <div class="footer-container">
     <div class="footerIcon-container">
       <i class="securePayment footerIcon"></i>
@@ -209,7 +211,7 @@
       Copyright © 2016, Raee Creations Private Limited. All Rights Reserved
     </div>
   </div>
-</div>
+</div> -->
 <!-- <div class="top-nav">
   <div class="sub-nav">
     <div class="sub-nav-container">

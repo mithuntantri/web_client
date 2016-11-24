@@ -225,6 +225,30 @@
   opacity: 0;
   margin: -2px 0;
 }
+.zig-userActions-section1,
+.zig-userActions-section2,
+.zig-userActions-section3{
+  border-bottom: 1px solid #eaeaec;
+  padding-bottom: 7px;
+}
+.zig-userActions-section4{
+  color: #7e818c !important;
+}
+.zig-userActions-email{
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 23px;
+}
+.zig-userActions-mobile{
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 40px;
+}
+.zig-userActions-item{
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 30px;
+}
 .zig-userActions-arrow{
   display: block;
   top: -5px;
@@ -267,4 +291,37 @@ input::-webkit-input-placeholder {
    font-weight: 300;
    font-size: 14px;
    font-family: 'Open Sans', sans-serif;
+}
+.desktop-melon {
+    background-color: #ee5f73;
+}
+.desktop-badge {
+    margin: 0 0 0 7px;
+    top: 0px;
+    left: 5px;
+    font-size: 16px;
+    font-weight:400;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1.2;
+    padding: 0 5px 0 6px;
+    height: 18px;
+    background: #ee5f73;
+    position: relative;
+    border-radius: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    color: #fff;
+}
+.desktop-badge:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 4px;
+    left: -5px;
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-right: 6px solid #ee5f73;
+    border-bottom: 5px solid transparent;
 }
