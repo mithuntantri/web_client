@@ -1,6 +1,6 @@
-angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 'slick', 'gm', 'uiGmapgoogle-maps'])
-.run(['$rootScope', '$state', '$stateParams', '$timeout', "TabsService",
-    function($rootScope, $state, $stateParams, $timeout, TabsService) {
+angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 'slick', 'gm', 'uiGmapgoogle-maps', 'directive.g+signin', 'socialLogin'])
+.run(['$rootScope', '$state', '$stateParams', '$timeout', "TabsService", '$window',
+    function($rootScope, $state, $stateParams, $timeout, TabsService, $window) {
     (function(){
        if (document.getElementById('facebook-jssdk')) {return;}
        var firstScriptElement = document.getElementsByTagName('script')[0];
@@ -63,7 +63,28 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
 }])
 
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider,
-                    $httpProvider, $authProvider, $facebookProvider){
+                    $httpProvider, $authProvider, $facebookProvider, socialProvider){
+
+    socialProvider.setGoogleKey(`991813144898-rm87e8mfhsq294b76kj5hgbk02qlbrgj.apps.googleusercontent.com`);
+    socialProvider.setFbKey({appId: `1791808574372416`, apiVersion: "v2.7"});
+    $authProvider.google({
+                clientId: '',
+                url: '/api/google',
+                authorizationEndpoint: 'https://accounts.google.com/o/oauth2/auth',
+                redirectUri: window.location.protocol + '//' + window.location.host,
+                requiredUrlParams: ['scope'],
+                optionalUrlParams: ['display'],
+                scope: ['profile', 'email'],
+                scopePrefix: 'openid',
+                scopeDelimiter: ' ',
+                display: 'popup',
+                oauthType: '2.0',
+                popupOptions: { width: 452, height: 633 }
+            });
+    $authProvider.facebook({
+      clientId: '1791808574372416',
+      redirectUri: 'http://localhost:4321'
+    });
     $locationProvider.html5Mode(true);
     $httpProvider.interceptors.push('tokenInterceptor');
     $urlRouterProvider.otherwise("/");

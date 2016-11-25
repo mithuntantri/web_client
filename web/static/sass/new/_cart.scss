@@ -101,3 +101,43 @@
     color: #fff;
     background-color: #2cd2b1!important;
   }
+  #googlebutton{
+    display: block !important;
+    margin: 0 2% !important;
+    width: 48% !important;
+    max-width: 174px !important;
+    padding-left: 18% !important;
+    position: relative !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    color: #696b79 !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    border: 1px solid #bfc0c6 !important;
+    background-color: #fff !important;
+    border-radius: 5px !important;
+    text-align: left !important;
+    float: left !important;
+    cursor: pointer !important;
+  }
+
+  #googlebutton:hover,
+  #googlebutton:focus{
+     border-bottom: solid 2px #04538d;
+     background: #427FED;
+     cursor: pointer;
+  }
+
+  #googlebutton .google-icon{
+      margin: 6px 0 0 6px;
+      float: left;
+      fill: #FFFFFF;
+  }
+
+  #googlebutton .sign-in-text{
+      text-align: center;
+      vertical-align: middle;
+      margin: 3px 0 0 0;
+      float: left;
+      width: 90px;
+}

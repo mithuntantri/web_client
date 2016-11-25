@@ -21,7 +21,8 @@ exports.config={
             'bower_components/underscore/underscore.js',
             'bower_components/slick-carousel/slick/slick.min.js',
             'bower_components/angular-slick/dist/slick.js',
-            'bower_components/angularjs-google-maps/dist/angularjs-google-maps.js'
+            'bower_components/angularjs-google-maps/dist/angularjs-google-maps.js',
+            'bower_components/angularjs-social-login/angularjs-social-login.js'
         ]
       },
       order : {
@@ -42,7 +43,8 @@ exports.config={
           'bower_components/underscore/underscore.js',
           'bower_components/slick-carousel/slick/slick.min.js',
           'bower_components/angular-slick/dist/slick.js',
-          'bower_components/angularjs-google-maps/dist/angularjs-google-maps.js'
+          'bower_components/angularjs-google-maps/dist/angularjs-google-maps.js',
+          'bower_components/angularjs-social-login/angularjs-social-login.js'
         ]
       }
     },

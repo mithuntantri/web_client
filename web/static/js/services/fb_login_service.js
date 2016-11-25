@@ -10,6 +10,8 @@ class FBLoginService {
     this.set_expiry = set_expiry
     let this_temp = this
     this.$facebook.login().then(function() {
+      var auth_token = response.authResponse.accessToken
+      console.log(auth_token);
       this_temp.fb_refresh();
     });
   }
