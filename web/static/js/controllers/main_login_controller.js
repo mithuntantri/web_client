@@ -5,7 +5,21 @@ angular.module("zigfo").controller('mainLoginController',
                 FBLoginService, ModalService, CategoriesService, TabsService, $auth){
                   $scope.google_client_id = '991813144898-rm87e8mfhsq294b76kj5hgbk02qlbrgj.apps.googleusercontent.com'
                   let google_secret = `tS3pUJLPknnaNiQ8nsQHncoX`
+                $scope.LoginService = LoginService
+                $scope.userid = ''
+                $scope.password = ''
+                $scope.loginwithotp = false
+                $scope.otp = ''
 
+                $scope.secureLogin = ()=>{
+                  LoginService.userlogin($scope.userid, true,$scope.password, false, $scope.otp, false)
+                }
+                $scope.secureLoginwithOtp = ()=>{
+                  LoginService.userlogin($scope.userid, true, $scope.password, true, $scope.otp, false)
+                }
+                $scope.verifyLoginwithOtp = ()=>{
+                  LoginService.userlogin($scope.userid, true, $scope.password, true, $scope.otp.toString(), false)
+                }
                 //   $scope.signUp = function () {
                 //   $auth.signup({email: $scope.email, password: $scope.password})
                 //     .then(function (response) {

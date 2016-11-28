@@ -4,6 +4,8 @@ class LoginService {
     this.$rootScope = $rootScope
     this.$state = $state
     this.ModalService = ModalService
+    this.OtpGenerated = false
+    this.ErrorField = null
   }
   userlogin(id, set_expiry, password, otp_login, otp, fb_login){
     console.log(id)
@@ -37,6 +39,8 @@ class LoginService {
         localStorage.client_id = "5"
         this.ModalService.CloseLoginModal()
         this.$state.go("app.home")
+      }else{
+        this.ErrorField = response.data.message
       }
     },(error)=>{
       console.log('Login Failed:',error);
@@ -56,19 +60,21 @@ class LoginService {
       }
     }).then((response)=>{
       if(response.data.status === 'success'){
-
+        this.OtpGenerated = true
+      }else{
+        this.ErrorField = response.data.message
       }
     },(error)=>{
       console.log('Login Failed:',error);
     })
   }
-  verify_login_otp (id, client_id, set_expiry, otp){
+  verify_login_otp (mobileno, client_id, set_expiry, otp){
     console.log('User ID:',id);
     this.$http({
       url: '/api/login',
       method: 'POST',
       data:{
-        'id': id,
+        'id': mobileno,
         'client_id' : client_id,
         'set_expiry' : set_expiry,
         'otp_login' : true,
@@ -83,6 +89,8 @@ class LoginService {
         localStorage.client_id = "5"
         this.ModalService.CloseLoginModal()
         this.$state.go('app.home')
+      }else{
+        this.ErrorField = response.data.message
       }
     },(error)=>{
       console.log('Login Failed:',error);

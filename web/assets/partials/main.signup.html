@@ -9,29 +9,41 @@
     <div style="font-size:12px;color:#535766;text-align:center;font-weight:300;line-height:14px;margin-bottom:20px;">- OR USING EMAIL/MOBILENO -</div>
     <form class="register-form">
       <fieldset class="register-input-container">
-        <div class="register-input-item">
-          <input type="email" class="register-user-input register-user-input-email" placeholder="Your Email Address" name="email" autocomplete="off" autofocus/>
+        <div class="register-input-item" ng-show="!SignupService.otp_generated">
+          <input type="email" class="register-user-input register-user-input-email" placeholder="Your Email Address" name="email" autocomplete="off" autofocus ng-model="email"/>
         </div>
-        <div class="register-input-item">
-          <input type="password" class="register-user-input register-user-input-password" placeholder="Choose Password" name="password" autocomplete="off"/>
+        <div class="register-input-item" ng-show="!SignupService.otp_generated">
+          <input type="password" class="register-user-input register-user-input-password" placeholder="Choose Password" name="password" autocomplete="off" ng-model="password"/>
         </div>
-        <div class="register-input-item">
-          <input type="text" class="register-user-input register-user-input-password" placeholder="Referral ID (Optional)" name="referral_id" autocomplete="off"/>
+        <div class="register-input-item" ng-show="!SignupService.otp_generated">
+          <input type="text" class="register-user-input register-user-input-password" placeholder="Referral ID (Optional)" name="referral_code" autocomplete="off" ng-model="referral_code"/>
         </div>
         <div class="register-input-item">
           <input type="number" min="1000000000" max="9999999999" class="register-user-input register-user-input-mobileno"
-          placeholder="Mobile Number (For OTP Verification)" name="mobileno" autocomplete="off"/>
+          placeholder="Mobile Number (For OTP Verification)" name="mobileno" autocomplete="off" ng-model="mobileno"/>
         </div>
-        <fieldset class="register-gender">
+        <div class="register-input-item" ng-show="SignupService.otp_generated" style="border-left-bottom-radius:5px;border-right-bottom-radius:5px;">
+          <input type="number" min="0" max="999999" class="register-user-input register-user-input-mobileno"
+          placeholder="OTP (Sent to the Mobile Number)" name="otp" autocomplete="off" ng-model="otp"/>
+        </div>
+        <fieldset class="register-gender" ng-show="!SignupService.otp_generated">
           <legend class="register-gender-title">I'm a</legend>
-          <input type="radio" class="register-gender-radio" id="male" value="M" name="gender"/>
+          <input type="radio" class="register-gender-radio" id="male" value="M" name="gender" ng-model="gender" ng-click="changeGender()"/>
           <label class="register-gender-label" for="male">Male</label>
-          <input type="radio" class="register-gender-radio" id="female" value="F" name="gender"/>
+          <input type="radio" class="register-gender-radio" id="female" value="F" name="gender" ng-model="gender" ng-click="changeGender()"/>
           <label class="register-gender-label" for="female">Female</label>
         </fieldset>
       </fieldset>
-      <fieldset class="register-button-container">
-        <button class="register-button-new">REGISTER</button>
+      <div class="register-link-container" ng-if="SignupService.ErrorField">
+        <div class="register-link" style="text-align:left;color:rgb(241, 55, 81);">
+          <span class="register-info-text">{{SignupService.ErrorField}}</span>
+        </div>
+      </div>
+      <fieldset class="register-button-container" ng-show="!SignupService.otp_generated">
+        <button class="register-button-new" ng-click="secureSignup()">REGISTER</button>
+      </fieldset>
+      <fieldset class="register-button-container" ng-show="SignupService.otp_generated">
+        <button class="register-button-new" ng-click="verifyOtp()">VERIFY OTP</button>
       </fieldset>
       <div class="register-link-container">
         <div class="register-link">

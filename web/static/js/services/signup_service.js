@@ -10,22 +10,26 @@ class SignupService {
     this.set_password = false
     this.set_profile = false
     this.signup_verified = false
+    this.ErrorField = null
   }
-  usersignup(mobileno, referral_id, referral_id_exits){
+  usersignup(email, password, mobileno, referral_id, referral_id_exits, gender){
     if (referral_id_exits){
-      this.signup_w_referral(mobileno, "5", referral_id)
+      this.signup_w_referral(email, password, mobileno.toString(), "5", referral_id, gender)
     }else{
-      this.signup_wo_referral(mobileno, "5")
+      this.signup_wo_referral(email, password, mobileno.toString(), "5", gender)
     }
   }
-  signup_w_referral(mobileno, client_id, referral_id){
+  signup_w_referral(email, password, mobileno, client_id, referral_id, gender){
     this.$http({
       url : '/api/signup',
       method: 'POST',
       data:{
+        'email_id' : email,
+        'password' : password,
         'mobileno' : mobileno,
         'client_id' : client_id,
-        'referral_id' : referral_id
+        'referral_id' : referral_id,
+        'gender' : gender
       }
     }).then((response)=>{
       if (!response.data.data.is_valid_refcode){
@@ -43,25 +47,35 @@ class SignupService {
       console.log('Sign up failed:',error);
     })
   }
-  signup_wo_referral(mobileno, client_id){
+  signup_wo_referral(email, password, mobileno, client_id, gender){
     this.$http({
       url : '/api/signup',
       method: 'POST',
       data:{
+        'email_id' : email,
+        'password' : password,
         'mobileno' : mobileno,
-        'client_id' : client_id
+        'client_id' : client_id,
+        'gender' : gender
       }
     }).then((response)=>{
-      console.log(response);
-      if(!response.data.data.is_new_user){
-        this.ErrorField1 = true
-      }else if(response.data.data.is_new_user && response.data.data.is_valid_refcode){
-        if(response.data.data.otp_generated){
-          this.otp_generated = true
-          console.log(this.otp_generated);
+      if(response.data.status === 'success'){
+        if(!response.data.data.is_new_mobile){
+          this.ErrorField = 'Mobile Number already registered'
+        }else if(!response.data.data.is_new_email){
+          this.ErrorField = 'Email ID already taken'
+        }else if(response.data.data.is_valid_refcode){
+          if(response.data.data.otp_generated){
+            this.otp_generated = true
+            console.log(this.otp_generated);
+          }else{
+            this.ErrorField3 = 'Failed to Register. Please try again!'
+          }
         }else{
-          this.ErrorField3 = true
+          this.ErrorField = 'Invalid Referral Code'
         }
+      }else{
+        this.ErrorField = response.data.message
       }
     },(error)=>{
       console.log('Sign up failed:',error);
@@ -76,18 +90,13 @@ class SignupService {
         'otp': otp
       }
     }).then((response)=>{
-      if(response.data.data.verified && response.data.data.first_time_login){
+      if(response.data.status === 'success'){
         console.log('coming here');
         this.signup_verified = true
-        if(!response.data.data.password_set){
-          this.ModalService.CloseLoginModal()
-          this.ModalService.OpenPasswordModal()
-        }else if(!response.data.data.profile_set){
-          this.ModalService.CloseLoginModal()
-          this.$state.go("main.profile")
-        }
+        this.$state.go('app.home')
       }else{
         this.signup_verified = false
+        this.ErrorField = response.data.message
       }
     }, (error)=>{
 
