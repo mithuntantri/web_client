@@ -21,9 +21,9 @@
           style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;"/>
         </div>
       </fieldset>
-      <div class="register-link-container" ng-if="LoginService.LoginErrorField">
-        <div class="register-link" style="text-align:left;color:rgb(241, 55, 81);">
-          <span class="register-info-text">{{LoginService.LoginErrorField}}</span>
+      <div class="register-link-container" ng-if="LoginService.ErrorField" style="text-align:left;color:rgb(241, 55, 81) !important;">
+        <div class="register-link" style="text-align:left;color:rgb(241, 55, 81) !important;">
+          <span class="register-info-text">{{LoginService.ErrorField}}</span>
         </div>
       </div>
       <fieldset class="register-button-container" ng-if="!loginwithotp" ng-click="secureLogin()">

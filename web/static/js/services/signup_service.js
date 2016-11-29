@@ -6,11 +6,14 @@ class SignupService {
     this.otp_generated = false
     this.$state = $state
     this.ModalService = ModalService
-
+    this.GoogleSignup = false
+    this.GoogleEmail = ''
     this.set_password = false
     this.set_profile = false
     this.signup_verified = false
     this.ErrorField = null
+    this.FacebookSignup = false
+    this.FacebookID = ''
   }
   usersignup(email, password, mobileno, referral_id, referral_id_exits, gender){
     if (referral_id_exits){
@@ -29,7 +32,8 @@ class SignupService {
         'mobileno' : mobileno,
         'client_id' : client_id,
         'referral_id' : referral_id,
-        'gender' : gender
+        'gender' : gender,
+        'fb_id' : this.FacebookID
       }
     }).then((response)=>{
       if (!response.data.data.is_valid_refcode){
@@ -56,7 +60,8 @@ class SignupService {
         'password' : password,
         'mobileno' : mobileno,
         'client_id' : client_id,
-        'gender' : gender
+        'gender' : gender,
+        'fb_id' : this.FacebookID
       }
     }).then((response)=>{
       if(response.data.status === 'success'){

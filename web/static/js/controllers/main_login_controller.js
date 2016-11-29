@@ -44,6 +44,7 @@ angular.module("zigfo").controller('mainLoginController',
                  }
                 $scope.$on('event:social-sign-in-success', function (event,authResult) {
                   console.log(event, authResult)
+                  LoginService.loginwithGoogle(authResult.email,authResult.imageUrl,authResult.name,authResult.token,authResult.uid)
                 })
                 // $scope.login = function () {
                 //   $auth.login({email: $scope.email, password: $scope.password})

@@ -14,6 +14,7 @@ import "./controllers/pickup_controller"
 
 import "./controllers/main_login_controller"
 import "./controllers/main_signup_controller"
+import "./controllers/verify_email_controller"
 
 import "./services/login_service"
 import "./services/signup_service"

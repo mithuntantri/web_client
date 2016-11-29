@@ -72,7 +72,7 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
     $urlRouterProvider.otherwise("/");
     $urlRouterProvider.when('/app', '/app/home');
     $facebookProvider.setAppId('1791808574372416');
-    $facebookProvider.setPermissions(["email,user_likes,public_profile"]);
+    // $facebookProvider.setPermissions(["email,user_likes,public_profile"]);
     // State definitions
     $stateProvider
         .state("main", {
@@ -92,7 +92,11 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
               }]
           }
         })
-
+        .state("main.verifyemail",{
+            url: "confirm-email?token",
+            templateUrl: "partials/main.verifyemail.html",
+            controller: "verifyEmailController"
+        })
         .state("main.home", {
           url: "",
           templateUrl: "partials/main.home.html",

@@ -3,7 +3,7 @@ angular.module("zigfo").controller('mainSignupController',
               'FBLoginService', 'ModalService', 'CategoriesService', 'TabsService',
               function($scope, $state, $rootScope, LoginService, SignupService,
                 FBLoginService, ModalService, CategoriesService, TabsService){
-                    $scope.email = ''
+                    $scope.email = SignupService.GoogleEmail
                     $scope.password = ''
                     $scope.referral_code = ''
                     $scope.mobileno = ''

@@ -9,8 +9,11 @@
     <div style="font-size:12px;color:#535766;text-align:center;font-weight:300;line-height:14px;margin-bottom:20px;">- OR USING EMAIL/MOBILENO -</div>
     <form class="register-form">
       <fieldset class="register-input-container">
-        <div class="register-input-item" ng-show="!SignupService.otp_generated">
+        <div class="register-input-item" ng-show="!SignupService.otp_generated && !SignupService.GoogleSignup">
           <input type="email" class="register-user-input register-user-input-email" placeholder="Your Email Address" name="email" autocomplete="off" autofocus ng-model="email"/>
+        </div>
+        <div class="register-input-item" ng-show="!SignupService.otp_generated && SignupService.GoogleSignup">
+          <input type="email" class="register-user-input register-user-input-email" placeholder="Your Email Address" name="email" autocomplete="off" autofocus ng-model="SignupService.GoogleEmail" disabled="true"/>
         </div>
         <div class="register-input-item" ng-show="!SignupService.otp_generated">
           <input type="password" class="register-user-input register-user-input-password" placeholder="Choose Password" name="password" autocomplete="off" ng-model="password"/>
