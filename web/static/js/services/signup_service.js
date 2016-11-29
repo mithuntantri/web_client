@@ -15,14 +15,14 @@ class SignupService {
     this.FacebookSignup = false
     this.FacebookID = ''
   }
-  usersignup(email, password, mobileno, referral_id, referral_id_exits, gender){
+  usersignup(email, password, mobileno, referral_id, referral_id_exits, firstname, lastname, gender){
     if (referral_id_exits){
-      this.signup_w_referral(email, password, mobileno.toString(), "5", referral_id, gender)
+      this.signup_w_referral(email, password, mobileno.toString(), "5", referral_id, firstname, lastname, gender)
     }else{
-      this.signup_wo_referral(email, password, mobileno.toString(), "5", gender)
+      this.signup_wo_referral(email, password, mobileno.toString(), "5", firstname, lastname, gender)
     }
   }
-  signup_w_referral(email, password, mobileno, client_id, referral_id, gender){
+  signup_w_referral(email, password, mobileno, client_id, referral_id, firstname, lastname, gender){
     this.$http({
       url : '/api/signup',
       method: 'POST',
@@ -32,6 +32,8 @@ class SignupService {
         'mobileno' : mobileno,
         'client_id' : client_id,
         'referral_id' : referral_id,
+        'firstname' : firstname,
+        'lastname' : lastname,
         'gender' : gender,
         'fb_id' : this.FacebookID
       }
@@ -51,7 +53,7 @@ class SignupService {
       console.log('Sign up failed:',error);
     })
   }
-  signup_wo_referral(email, password, mobileno, client_id, gender){
+  signup_wo_referral(email, password, mobileno, client_id, firstname, lastname, gender){
     this.$http({
       url : '/api/signup',
       method: 'POST',
@@ -60,6 +62,8 @@ class SignupService {
         'password' : password,
         'mobileno' : mobileno,
         'client_id' : client_id,
+        'firstname' : firstname,
+        'lastname' : lastname,
         'gender' : gender,
         'fb_id' : this.FacebookID
       }

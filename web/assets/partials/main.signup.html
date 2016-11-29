@@ -16,6 +16,10 @@
           <input type="email" class="register-user-input register-user-input-email" placeholder="Your Email Address" name="email" autocomplete="off" autofocus ng-model="SignupService.GoogleEmail" disabled="true"/>
         </div>
         <div class="register-input-item" ng-show="!SignupService.otp_generated">
+          <input type="text" class="register-user-input register-user-input-password" placeholder="First Name" name="firstname" autocomplete="off" ng-model="firstname" style="width:48%;float:left;"/>
+          <input type="text" class="register-user-input register-user-input-password" placeholder="Last Name" name="lastname" autocomplete="off" ng-model="lastname" style="width:40%;float:left;"/>
+        </div>
+        <div class="register-input-item" ng-show="!SignupService.otp_generated">
           <input type="password" class="register-user-input register-user-input-password" placeholder="Choose Password" name="password" autocomplete="off" ng-model="password"/>
         </div>
         <div class="register-input-item" ng-show="!SignupService.otp_generated">

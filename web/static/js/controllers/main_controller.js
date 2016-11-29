@@ -5,10 +5,27 @@ angular.module("zigfo").controller('mainController',
                 FBLoginService, ModalService, CategoriesService, TabsService){
 
       console.log('Main Controller');
-
+      $('#mainpageslider').slick({
+         slidesToShow: 4,
+         slidesToScroll: 1,
+         infinite: true,
+         mobileFirst: true,
+         responsive: [{
+             breakpoint: 500,
+             settings: {
+                 slidesToShow: 2
+             }
+         }]
+      });
+      $scope.carouselPrev = ()=>{
+        console.log('going next');
+        $('#mainpageslider').slick('slickPrev')
+      }
+      $scope.carouselNext = ()=>{
+        $('#mainpageslider').slick('slickNext')
+      }
       $scope.CategoriesService = CategoriesService
       CategoriesService.getCategories()
-
       $scope.loggedIn = $rootScope.loggedIn
       $scope.zigfo_wallet = 0
       $scope.loggedIn = false

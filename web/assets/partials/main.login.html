@@ -11,14 +11,14 @@
     <form class="register-form">
       <fieldset class="register-input-container">
         <div class="register-input-item"ng-show="!LoginService.OtpGenerated">
-          <input type="text" class="register-user-input register-user-input-email" placeholder="Your Email Address / Mobile" name="userid" ng-model="userid"/>
+          <input type="text" class="register-user-input register-user-input-email" placeholder="Your Email Address / Mobile" name="userid" ng-model="userid" autocomplete="off"/>
         </div>
         <div class="register-input-item" ng-show="LoginService.OtpGenerated">
-          <input type="number" class="register-user-input register-user-input-email" placeholder="OTP sent to Mobile Number" name="otp" ng-model="otp"/>
+          <input type="number" class="register-user-input register-user-input-email" placeholder="OTP sent to Mobile Number" name="otp" ng-model="otp" autocomplete="off"/>
         </div>
         <div class="register-input-item" ng-hide="loginwithotp">
           <input type="password" class="register-user-input register-user-input-password" placeholder="Your Password" name="password" ng-model="password"
-          style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;"/>
+          style="border-bottom-left-radius:5px;border-bottom-right-radius:5px;" autocomplete="off"/>
         </div>
       </fieldset>
       <div class="register-link-container" ng-if="LoginService.ErrorField" style="text-align:left;color:rgb(241, 55, 81) !important;">

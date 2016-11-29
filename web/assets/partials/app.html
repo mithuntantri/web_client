@@ -72,13 +72,16 @@
           <div class="zig-userActions-arrow"></div>
           <div class="zig-user-content">
             <div class="zig-userActions-section1">
-              <div class="zig-userActions-email">me@mithuntantri.in</div>
-              <div class="zig-userActions-mobile">8867742253</div>
+              <div class="zig-userActions-email">{{ ProfileService.profile.email_id}}</div>
+              <div class="zig-userActions-mobile">{{ ProfileService.profile.mobileno }}</div>
             </div>
             <div class="zig-userActions-section2">
               <div class="zig-userActions-item">My Orders</div>
               <div class="zig-userActions-item">Favorites</div>
-              <div class="zig-userActions-item">ZIGFO Credits</div>
+              <div class="zig-userActions-item">
+                ZIGFO Credits
+                <span class="zig-header-label">{{ ProfileService.credits | getTotalCredits }}</span>
+              </div>
             </div>
             <div class="zig-userActions-section3">
               <div class="zig-userActions-item">Saved Measurements</div>
@@ -87,7 +90,7 @@
             </div>
             <div class="zig-userActions-section4">
               <div class="zig-userActions-item">Edit Profile</div>
-              <div class="zig-userActions-item">Logout</div>
+              <div class="zig-userActions-item" ng-click="logOut()">Logout</div>
             </div>
           </div>
         </div>
@@ -102,7 +105,7 @@
   </div>
 </div>
 <div ui-view style="width:100%;" class="ui-view-container"></div>
-<div style="width:100%;border-top:1px solid #e2e2e2;height:200px;padding: 0px 8%;border-bottom:1px solid #e2e2e2;background-color:#fff;">
+<!-- <div style="width:100%;border-top:1px solid #e2e2e2;height:200px;padding: 0px 8%;border-bottom:1px solid #e2e2e2;background-color:#fff;"> -->
   <div class="footer-container">
     <div class="footerIcon-container">
       <i class="securePayment footerIcon"></i>
@@ -314,7 +317,7 @@
   <!-- <div class="ui-view-container"> -->
   <div ui-view style="min-height:660px;"></div>
   <!-- </div> -->
-  <div style="width:100%;border-top:1px solid #e2e2e2;height:200px;padding: 0px 8%;border-bottom:1px solid #e2e2e2;background-color:#fff;">
+  <!-- <div style="width:100%;border-top:1px solid #e2e2e2;height:200px;padding: 0px 8%;border-bottom:1px solid #e2e2e2;background-color:#fff;"> -->
     <div class="footer-container">
       <div class="footerIcon-container">
         <i class="securePayment footerIcon"></i>

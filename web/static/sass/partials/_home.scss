@@ -202,9 +202,8 @@ li.fab-categories-list:hover{
   float:left;
 }
 .ui-view-container{
-  width:78%;
-  height:100%;
-  float:left;
+  width: 100%;
+  min-height: 690px;
   padding:0px 20px;
 }
 .profile-fab-section

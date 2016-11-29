@@ -10,6 +10,8 @@ angular.module("zigfo").controller('mainSignupController',
                     $scope.mobileno = ''
                     $scope.male = true
                     $scope.female = false
+                    $scope.firstname = ''
+                    $scope.lastname = ''
                     if ($scope.male){
                       $scope.gender = 'M'
                     }else{
@@ -28,7 +30,7 @@ angular.module("zigfo").controller('mainSignupController',
                       if ($scope.referral_code !== ""){
                         has_referral_code = true
                       }
-                      SignupService.usersignup($scope.email, $scope.password, $scope.mobileno, $scope.referral_code, has_referral_code, $scope.gender)
+                      SignupService.usersignup($scope.email, $scope.password, $scope.mobileno, $scope.referral_code, has_referral_code, $scope.firstname, $scope.lastname, $scope.gender)
                     }
                     $scope.verifyOtp = ()=>{
                       SignupService.verify_signup($scope.mobileno.toString(), $scope.otp.toString())

@@ -1,6 +1,42 @@
 .bagContainer{
   width:100%;
 }
+.shoppingbag-center{
+  width:100%;
+  padding: 80px;
+  min-height: 550px;
+}
+.empty-bag-icon{
+  width: 85px;
+  height: 85px;
+  margin: 0 auto;
+  border-radius: 85px;
+  border: 2px solid #535766;
+  color: #535766;
+  line-height: 85px;
+  text-align: center;
+}
+.empty-cart-icon{
+  font-size: 50px;
+    line-height: 85px;
+}
+.empty-cart-desc{
+  text-align:center;
+  font-size:18px;
+  color:#535766;
+  line-height:110px;
+  font-weight:400;
+}
+.empty-cart-add{
+  text-align:center;
+  font-size:14px;
+  color:#526cd0;
+  font-weight:400;
+  cursor:pointer;
+}
+.empty-cart-add:hover{
+  text-decoration: underline;
+}
 .shoppingbag-left{
   width:70%;
   float: left;
