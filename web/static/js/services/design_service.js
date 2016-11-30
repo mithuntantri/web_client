@@ -6,7 +6,7 @@ class DesignService {
   }
   initOptions(){
     this.$http({
-      url: '/product/init',
+      url: '/api/product/init',
       method: 'GET'
     }).then((response)=>{
       if(response.data.status === 'success'){
@@ -20,7 +20,7 @@ class DesignService {
   }
   getOptions(hash){
     this.$http({
-      url:`/product/options?hash=${hash}`,
+      url:`/api/product/options?hash=${hash}`,
       method: 'GET'
     }).then((response)=>{
       this.allOptions = response.data.data.all_options
@@ -37,7 +37,7 @@ class DesignService {
   }
   setValue(hash, choice, option){
     this.$http({
-      url: '/product/options',
+      url: '/api/product/options',
       method:'POST',
       data:{
         'hash' : hash,

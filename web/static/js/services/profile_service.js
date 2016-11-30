@@ -40,6 +40,30 @@ class ProfileService {
       this.gender = "M"
     }
   }
+  update_profile(){
+    this.$http({
+      url : '/api/profile',
+      method: 'PUT',
+      data: {
+        'mobileno' : this.profile.mobileno,
+        'client_id' : "5",
+        'email_id':  this.profile.email_id,
+        'gender': this.gender,
+        'first_name': this.profile.first_name,
+        'last_name': this.profile.last_name,
+      }
+    }).then((response) =>{
+      if(response.data.status === 'success'){
+        this.get_user_profile()
+        this.profile_set = true
+        this.$state.go("app.profile")
+        this.AddressService.getAddresses()
+        this.TabsService.myaccountTabs(false, false, false, false, false, true, false, false, false, false, false)
+      }
+    }, (error)=>{
+
+    })
+  }
   set_user_profile(){
     this.$http({
       url : '/api/profile',

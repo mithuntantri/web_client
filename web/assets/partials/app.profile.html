@@ -248,18 +248,18 @@
         <div class="myprofile-header">
             Account Information
         </div>
-        <div style="width:100%;height:100%;float:left;padding-top:20px;">
+        <div style="width:100%;height:100%;float:left;padding-top:40px;">
           <div class="input-field-container">
             <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
                 <label style="width:100%;line-height:32px;font-size:14px;">MOBILE NUMBER</label>
-                <input class="custom-input" ng-model="ProfileService.profile.mobileno" type="text">
+                <input class="custom-input" ng-model="ProfileService.profile.mobileno" type="text" disabled="true">
              </md-input-container>
              <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
-                 <label style="width:100%;line-height:32px;font-size:14px;">PASSWORD</label>
-                 <input class="custom-input" ng-model="ProfileService.profile.password" type="password">
+               <label style="width:100%;line-height:32px;font-size:14px;">EMAIL ID</label>
+               <input class="custom-input" ng-model="ProfileService.profile.email_id" type="text" disabled="true">
               </md-input-container>
           </div>
-          <div class="input-field-container">
+          <div class="input-field-container" style="margin-top:15px;">
             <md-input-container class="md-icon-float md-icon-right md-block custom-input-field">
                 <label style="width:100%;line-height:32px;font-size:14px;">FIRST NAME</label>
                 <input class="custom-input" ng-model="ProfileService.profile.first_name" type="text">
@@ -269,7 +269,7 @@
                  <input class="custom-input" ng-model="ProfileService.profile.last_name" type="text">
               </md-input-container>
           </div>
-          <div class="input-field-container" style="height:50px;padding:0 20px;">
+          <div class="input-field-container" style="height:50px;padding:0 20px;margin-top:15px;">
             <div class="left-option">
               <div style="width:33px;line-height:50px;float:left;cursor:pointer;" ng-click="ProfileService.changeGender(true, false)">
                 <i class="material-icons" style="line-height:50px;" ng-if="ProfileService.profile.male">radio_button_checked</i>
@@ -289,17 +289,11 @@
               </div>
             </div>
           </div>
-          <div class="input-field-container" style="margin-top:10px;">
-            <md-input-container class="md-icon-float md-icon-right md-block custom-input-field" style="width:93% !important;float:left;">
-                <label style="width:100%;line-height:32px;font-size:14px;">EMAIL ID</label>
-                <input class="custom-input" ng-model="ProfileService.profile.email_id" type="text">
-             </md-input-container>
-          </div>
-          <div class="input-field-container" style="margin-top:10px;">
-            <div class="submit-btn" ng-click="ProfileService.set_user_profile()">
+          <div class="input-field-container" style="margin-top:15px;">
+            <div class="submit-btn" ng-click="ProfileService.update_profile()">
               SUBMIT
             </div>
-            <div class="cancel-btn">
+            <div class="cancel-btn" ng-click="TabsService.myaccountTabs(false, false, false, false, false, true, false, false, false, false, false)">
               CANCEL
             </div>
           </div>

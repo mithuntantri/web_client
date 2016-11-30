@@ -101,6 +101,11 @@ class SignupService {
     }).then((response)=>{
       if(response.data.status === 'success'){
         console.log('coming here');
+        this.$rootScope.loggedIn = true
+        localStorage.token = response.data.data.secret
+        localStorage.loggedIn = true
+        localStorage.mobileno = mobileno
+        localStorage.client_id = "5"
         this.signup_verified = true
         this.$state.go('app.home')
       }else{

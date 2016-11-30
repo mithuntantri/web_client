@@ -10,7 +10,7 @@
   </div>
   <div class="zig-nav-container">
     <div class="zig-nav-logo" style="padding:15px 0;">
-      <img src="/img/Untitled-4.png" style="width:50px;float:left;"/>
+      <!-- <img src="/img/Untitled-4.png" style="width:50px;float:left;"/> -->
       <!-- <div style="float:left;font-size:20px;font-weight:600;width:70px;color: #282c3f;line-height:40px;padding-left:10px;letter-spacing:1px;">Zigfo</div> -->
     </div>
     <div class="zig-nav-menu">
@@ -23,7 +23,9 @@
                 <div style="color:rgb(238, 95, 115);font-size:14px;font-weight:600;line-height:40px;margin-bottom:8px;text-align:left;">Men's Clothing</div>
               </div>
               <div style="width:30%;float:left;font-size:12px;">
-                <div class="zig-nav-list-item">Custom Shirts</div>
+                <div class="zig-nav-list-item">
+                  <span class="zig-nav-list-item-label" ui-sref="app.design">Custom Shirts</span>
+                </div>
                 <div class="zig-nav-list-item">
                   <span class="zig-nav-list-item-label">Custom Suits</span>
                   <span class="zig-header-label coming-soon">Coming Soon</span>
@@ -72,24 +74,24 @@
           <div class="zig-userActions-arrow"></div>
           <div class="zig-user-content">
             <div class="zig-userActions-section1">
-              <div class="zig-userActions-email">{{ ProfileService.profile.email_id}}</div>
-              <div class="zig-userActions-mobile">{{ ProfileService.profile.mobileno }}</div>
+              <div class="zig-userActions-email" ng-click="gotoProfile()">{{ ProfileService.profile.email_id}}</div>
+              <div class="zig-userActions-mobile" ng-click="gotoProfile()">{{ ProfileService.profile.mobileno }}</div>
             </div>
             <div class="zig-userActions-section2">
-              <div class="zig-userActions-item">My Orders</div>
+              <div class="zig-userActions-item" ng-click="gotoOrders()">My Orders</div>
               <div class="zig-userActions-item">Favorites</div>
-              <div class="zig-userActions-item">
+              <div class="zig-userActions-item" ng-click="gotoCredits()">
                 ZIGFO Credits
                 <span class="zig-header-label">{{ ProfileService.credits | getTotalCredits }}</span>
               </div>
             </div>
             <div class="zig-userActions-section3">
-              <div class="zig-userActions-item">Saved Measurements</div>
-              <div class="zig-userActions-item">Saved Cards</div>
-              <div class="zig-userActions-item">Saved Addresses</div>
+              <div class="zig-userActions-item" ng-click="gotoMeasurements()">Saved Measurements</div>
+              <div class="zig-userActions-item" ng-click="gotoSavedCards()">Saved Cards</div>
+              <div class="zig-userActions-item" ng-click="gotoSavedAddress()">Saved Addresses</div>
             </div>
             <div class="zig-userActions-section4">
-              <div class="zig-userActions-item">Edit Profile</div>
+              <div class="zig-userActions-item" ng-click="gotoEditProfile()">Edit Profile</div>
               <div class="zig-userActions-item" ng-click="logOut()">Logout</div>
             </div>
           </div>
@@ -105,53 +107,7 @@
   </div>
 </div>
 <div ui-view style="width:100%;" class="ui-view-container"></div>
-<!-- <div style="width:100%;border-top:1px solid #e2e2e2;height:200px;padding: 0px 8%;border-bottom:1px solid #e2e2e2;background-color:#fff;"> -->
-  <div class="footer-container">
-    <div class="footerIcon-container">
-      <i class="securePayment footerIcon"></i>
-    </div>
-    <div class="footerHeader-container">
-      100% SECURE PAYMENTS
-    </div>
-    <div class="footerDesc-container">
-      All major credit and debit cards accepted
-    </div>
-  </div>
-  <div class="footer-container">
-    <div class="footerIcon-container">
-      <i class="trustPay footerIcon"></i>
-    </div>
-    <div class="footerHeader-container">
-      TRUSTPAY
-    </div>
-    <div class="footerDesc-container">
-      100% payment protection. Easy Return policy.
-    </div>
-  </div>
-  <div class="footer-container">
-    <div class="footerIcon-container">
-      <i class="helpCenter footerIcon"></i>
-    </div>
-    <div class="footerHeader-container">
-      HELPCENTER
-    </div>
-    <div class="footerDesc-container">
-      Got a question? Look no further. Browse our FAQs or submit your query here.
-    </div>
-  </div>
-  <div class="footer-container" style="border-right:1px solid #e2e2e2;">
-    <div class="footerIcon-container">
-      <i class="shopontheGo footerIcon"></i>
-    </div>
-    <div class="footerHeader-container">
-      SHOP ON THE GO
-    </div>
-    <div class="footerDesc-container">
-      Download the app and get exciting app only offers at your fingertips
-    </div>
-  </div>
-</div>
-<div style="width:100%;height:300px;border-bottom:1px solid #e2e2e2;padding:50px 8%;background-color:#fff;">
+<div style="width:100%;height:330px;border-bottom:1px solid #e2e2e2;padding:50px 0;background-color:#fff;max-width:980px;margin:0 auto;">
   <div style="width:15%;float:left;height:100%;">
     <div style="font-size:14px;color:#5a5a5a;font-weight:400;">POLICY INFO</div>
       <ul style="font-size:12px;color:#a4a3a3;">
@@ -174,27 +130,27 @@
     </div>
     <div style="width:40%;float:left;height:100%;">
       <div style="font-size:14px;color:#5a5a5a;font-weight:400;">EXPERIENCE ZIGFO APP ON MOBILE</div>
-      <div style="width:100%;height:75px;padding:15px;">
+      <div style="width:100%;height:85px;padding:15px;">
         <i class="downloadApp1Icon footerIcon"></i>
-        <i class="downloadApp2Icon footerIcon"></i>
+        <!-- <i class="downloadApp2Icon footerIcon"></i> -->
         <i class="downloadApp3Icon footerIcon"></i>
       </div>
       <div style="width:40%;height:100px;float:left;text-align:center;">
         <i class="originalityIcon footerIcon"></i>
       </div>
-      <div style="width:60%;height:100px;float:left;">
+      <div style="width:60%;height:100px;float:left;padding:20px 0;">
         <div style="font-size:18px;line-height:35px;">Fast, Simple & Delightful</div>
         <div style="color:#a4a3a3;">All it takes is 30 seconds to Download</div>
       </div>
     </div>
     <div style="width:30%;float:left;height:100%;">
-      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">ABOUT ZIGFO</div>
+      <div style="font-size:14px;color:#5a5a5a;font-weight:400;padding-bottom:10px;">ABOUT ZIGFO</div>
       <div style="font-size:11px;color:#a4a3a3;">
         Our shirts are made with the single most essential ingredient ever, which is love. With this comes the finest quality of shirting and top workmanship from our tailors as well as heartfelt services from our teams. Our shirts are made with the most exclusive collars and cuffs with thick and soft finishes and exclusively edged seams. We are able to produce any style of collar, cuff, front placket, back, pocket, bottom styles possible. The list is endless! Monograms/Initials are possible anywhere on the shirt, depending on your choice. Marvel at our range of 100 % cotton fabrics, made of the highest thread counts and weaves. There is so much to choose from!
       </div>
     </div>
   </div>
-  <div style="width:100%;height:128px;padding:25px 8%;background-color:#fff;border-bottom:1px solid #e2e2e2;">
+  <div style="width:100%;height:128px;padding:25px 8%;background-color:#fff;border-bottom:1px solid #e2e2e2;max-width:980px;margin:0 auto;">
     <div style="width:50%;height:100%;float:left;">
       <div style="font-size:14px;color:#5a5a5a;font-weight:400;">PAYMENT</div>
       <div style="width:100%;height:60px;line-height:60px;">
@@ -216,7 +172,7 @@
       </div>
     </div>
   </div>
-  <div style="width:100%;height:40px;line-height:40px;padding:0 8%;">
+  <div style="width:100%;height:40px;line-height:40px;padding:0 8%;max-width:980px;margin:0 auto;">
     <div style="width:50%;font-size:12px;float:left;text-align:left;">
       Have Issues? Contact Us
     </div>
@@ -225,218 +181,7 @@
     </div>
   </div>
 </div>
-<!-- <div class="top-nav">
-  <div class="sub-nav">
-    <div class="sub-nav-container">
-      <div class="sub-nav-menu-left">
-        India's Leading Online Tailor | Use Coupon
-        <span style="background-color:#fff;color:#f70;padding:2px 5px;">ZIG100</span>
-        on first Order to get 100 off
-      </div>
-      <div class="sub-nav-menu-right">
-        <span class="sub-nav-menu">Help<span>
-        <span class="sub-nav-menu">Track Order<span>
-        <span class="sub-nav-menu">Download App<span>
-      </div>
-    </div>
-  </div>
-  <div class="main-nav">
-    <div class="main-nav-container">
-      <div class="left-logo-section"></div>
-      <div class="center-search-section">
-        <div class="search-container">
-          <div class="search-input">
-            <input type="text" placeholder="Search Products & Brands" class="search-input-text"/>
-          </div>
-          <div class="search-btn">
-            <div class="search-icon">
-              <i class="material-icons" style="font-size:18px;line-height:35px;">search</i>
-            </div>
-            <div class="search-label">
-              Search
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="right-fab-section">
-        <div class="cart-fab-section">
-          <div class="cart-fab-lbl">
-            Cart
-          </div>
-          <div class="cart-fab-icon">
-            <i class="material-icons" style="line-height:65px;">shopping_cart</i>
-          </div>
-        </div>
-        <div class="profile-fab-section">
-          <div class="profile-fab-lbl" ng-if="!loggedIn" ng-click="OpenLoginModal()">
-            <span>Log In</span>
-          </div>
-          <div class="profile-fab-lbl" ng-if="loggedIn">
-            <span>{{ProfileService.profile.first_name}}</span>
-          </div>
-          <div class="profile-fab-dropdown">
-            <ul class="dropdown-list">
-              <li class="dropdown-list-item" ui-sref="app.profile">
-                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">perm_identity</i></div>
-                <div class="dropdown-item-lbl">Your Account</div>
-              </li>
-              <li class="dropdown-list-item" ui-sref="app.measurements">
-                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">all_inclusive</i></div>
-                <div class="dropdown-item-lbl">Measurement Profile</div>
-              </li>
-              <li class="dropdown-list-item" class="dropdown-list-item" ui-sref="main.design">
-                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">favorite_border</i></div>
-                <div class="dropdown-item-lbl">Favorites</div>
-              </li>
-              <li class="dropdown-list-item" ui-sref="app.credits">
-                <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">account_balance_wallet</i></div>
-                <div class="dropdown-item-lbl">
-                  <div style="width:66%;float:left;">ZigFo Credits</div>
-                  <div style="width:33%;float:left;text-align:right;">{{ProfileService.credits | getTotalCredits}}</div>
-                </div>
-              </li>
-            </ul>
-            <div style="width:100%;height:50px;padding:10px 0px;text-align:center;font-size:11px;">
-              <ul class="dropdown-list" style="border:none;">
-                <li class="dropdown-list-item" ng-click="logOut()">
-                  <div class="dropdown-item-icon"><i class="material-icons" style="line-height:33px;font-size:17px;">exit_to_app</i></div>
-                  <div class="dropdown-item-lbl">Log Out</div>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="profile-fab-icon">
-            <i class="material-icons" style="line-height:65px;">account_circle</i>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="app-container">
-  <!-- <div class="ui-view-container"> -->
-  <div ui-view style="min-height:660px;"></div>
-  <!-- </div> -->
-  <!-- <div style="width:100%;border-top:1px solid #e2e2e2;height:200px;padding: 0px 8%;border-bottom:1px solid #e2e2e2;background-color:#fff;"> -->
-    <div class="footer-container">
-      <div class="footerIcon-container">
-        <i class="securePayment footerIcon"></i>
-      </div>
-      <div class="footerHeader-container">
-        100% SECURE PAYMENTS
-      </div>
-      <div class="footerDesc-container">
-        All major credit and debit cards accepted
-      </div>
-    </div>
-    <div class="footer-container">
-      <div class="footerIcon-container">
-        <i class="trustPay footerIcon"></i>
-      </div>
-      <div class="footerHeader-container">
-        TRUSTPAY
-      </div>
-      <div class="footerDesc-container">
-        100% payment protection. Easy Return policy.
-      </div>
-    </div>
-    <div class="footer-container">
-      <div class="footerIcon-container">
-        <i class="helpCenter footerIcon"></i>
-      </div>
-      <div class="footerHeader-container">
-        HELPCENTER
-      </div>
-      <div class="footerDesc-container">
-        Got a question? Look no further. Browse our FAQs or submit your query here.
-      </div>
-    </div>
-    <div class="footer-container" style="border-right:1px solid #e2e2e2;">
-      <div class="footerIcon-container">
-        <i class="shopontheGo footerIcon"></i>
-      </div>
-      <div class="footerHeader-container">
-        SHOP ON THE GO
-      </div>
-      <div class="footerDesc-container">
-        Download the app and get exciting app only offers at your fingertips
-      </div>
-    </div>
-  </div>
-  <div style="width:100%;height:300px;border-bottom:1px solid #e2e2e2;padding:50px 8%;background-color:#fff;">
-    <div style="width:15%;float:left;height:100%;">
-      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">POLICY INFO</div>
-      <ul style="font-size:12px;color:#a4a3a3;">
-        <li>Privacy Policy</li>
-        <li>Terms of Sale</li>
-        <li>Terms of Use</li>
-        <li>T&C</li>
-        <li>Return Policy</li>
-      </ul>
-    </div>
-    <div style="width:15%;float:left;height:100%;">
-      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">USEFUL LINKS</div>
-      <ul style="font-size:12px;color:#a4a3a3;">
-        <li>FAQs</li>
-        <li>Shipping</li>
-        <li>Contact Us</li>
-        <li>Cancellation</li>
-        <li>Track Orders</li>
-      </ul>
-    </div>
-    <div style="width:40%;float:left;height:100%;">
-      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">EXPERIENCE ZIGFO APP ON MOBILE</div>
-      <div style="width:100%;height:75px;padding:15px;">
-        <i class="downloadApp1Icon footerIcon"></i>
-        <i class="downloadApp2Icon footerIcon"></i>
-        <i class="downloadApp3Icon footerIcon"></i>
-      </div>
-      <div style="width:40%;height:100px;float:left;text-align:center;">
-        <i class="originalityIcon footerIcon"></i>
-      </div>
-      <div style="width:60%;height:100px;float:left;">
-        <div style="font-size:18px;line-height:35px;">Fast, Simple & Delightful</div>
-        <div style="color:#a4a3a3;">All it takes is 30 seconds to Download</div>
-      </div>
-    </div>
-    <div style="width:30%;float:left;height:100%;">
-      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">ABOUT ZIGFO</div>
-      <div style="font-size:11px;color:#a4a3a3;">
-        Our shirts are made with the single most essential ingredient ever, which is love. With this comes the finest quality of shirting and top workmanship from our tailors as well as heartfelt services from our teams. Our shirts are made with the most exclusive collars and cuffs with thick and soft finishes and exclusively edged seams. We are able to produce any style of collar, cuff, front placket, back, pocket, bottom styles possible. The list is endless! Monograms/Initials are possible anywhere on the shirt, depending on your choice. Marvel at our range of 100 % cotton fabrics, made of the highest thread counts and weaves. There is so much to choose from!
-      </div>
-    </div>
-  </div>
-  <div style="width:100%;height:128px;padding:25px 8%;background-color:#fff;border-bottom:1px solid #e2e2e2;">
-    <div style="width:50%;height:100%;float:left;">
-      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">PAYMENT</div>
-      <div style="width:100%;height:60px;line-height:60px;">
-        <i class="visaPayment footerIcon"></i>
-        <i class="mastercardPayment footerIcon"></i>
-        <i class="cashondelivery footerIcon"></i>
-        <i class="netbanking footerIcon"></i>
-      </div>
-    </div>
-    <div style="width:50%;height:100%;float:left;">
-      <div style="font-size:14px;color:#5a5a5a;font-weight:400;">CONNECT</div>
-      <div style="width:100%;height:60px;line-height:60px;">
-        <i class="facebook footerIcon"></i>
-        <i class="twitter footerIcon"></i>
-        <i class="google footerIcon"></i>
-        <i class="youtube footerIcon"></i>
-        <i class="instagram footerIcon"></i>
-        <i class="pintereset footerIcon"></i>
-      </div>
-    </div>
-  </div>
-  <div style="width:100%;height:40px;line-height:40px;padding:0 8%;">
-    <div style="width:50%;font-size:12px;float:left;text-align:left;">
-      Have Issues? Contact Us
-    </div>
-    <div style="width:50%;font-size:11px;float:left;text-align:right;">
-      Copyright © 2016, Raee Creations Private Limited. All Rights Reserved
-    </div>
-  </div>
-</div>
+
 <div class="ui small modal measurements">
   <div style="width:40%;height:100%;float:left;background-color:#2874f0;">
     <div style="width:100%;height:80%;padding:25px 15px;">

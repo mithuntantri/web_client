@@ -8,6 +8,50 @@
     background: #fff;
     box-shadow: 0 1px 3px rgba(0,0,0,.08);
 }
+.img-overlay {
+   position: absolute;
+   top: 170px;
+   left: 30px;
+   width: 100%;
+}
+.img-overlay span.heading {
+   color: white;
+   font: 'Open Sans', sans-serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px;
+   line-height: 50px;
+   font-weight: 400;
+   font-size:20px;
+   opacity: 0.3;
+}
+.img-overlay span.description {
+   color: white;
+   font:'Open Sans', sans-serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px;
+   font-size: 14px;
+   opacity: 0.3;
+   font-weight: 400;
+   line-height: 50px;
+}
+.img-overlay span.link {
+   color: white;
+   font:'Open Sans', sans-serif;
+   letter-spacing: -1px;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 10px;
+   font-size: 14px;
+   opacity: 0.9;
+   font-weight: 400;
+   line-height: 70px;
+   text-align: right;
+   margin-left: 20px;
+}
 .zig-header-container{
   max-width:980px;
   margin:0 auto;
