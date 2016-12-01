@@ -163,6 +163,11 @@
   display: none;
   opacity: 0;
 }
+.zig-nav-menuitem3
+.zig-nav-list3{
+  display: none;
+  opacity: 0;
+}
 .zig-nav-list-item{
   color:#3e4152;line-height:25px;text-align:left;
 }
@@ -187,6 +192,12 @@
 }
 .zig-nav-menuitem2:hover
 .zig-nav-list2{
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+.zig-nav-menuitem3:hover
+.zig-nav-list3{
   display: block;
   visibility: visible;
   opacity: 1;

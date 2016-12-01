@@ -1,0 +1,79 @@
+<div class="center-container">
+  <div style="width:25%;float:left;height:100%;">
+    <div class="my-account-header">
+      Custom Shirt Design
+    </div>
+    <div class="my-account-username">
+      Men's Formal
+    </div>
+  </div>
+  <div class="new-breadcrumbs-container">
+    <ul class="new-breadcrumbs">
+      <li class="first-step" ng-click="changeDesignTabs(true, false, false, false)" ng-class="{'active':styles_active}">DESIGN</li>
+      <li class="middle-divider">------</li>
+      <li class="second-step" ng-click="changeDesignTabs(false, true, false, false)" ng-class="{'active':fabrics_active}">FABRIC</li>
+      <li class="middle-divider">------</li>
+      <li class="third-step" ng-click="changeDesignTabs(false, false, true, false)" ng-class="{'active':measurements_active}">BAG</li>
+      <li class="middle-divider">------</li>
+      <li class="fourth-step" ng-click="changeDesignTabs(false, false, false, true)" ng-class="{'active':checkout_active}">PAYMENT</li>
+    </ul>
+  </div>
+  <div class="new-sidebuttons">
+    <div class="secure-label">
+      <div style="float:left;padding:0 5px;"><i class="material-icons" style="font-size:17px; ">lock</i></div>
+      <div style="float:left;">100% SECURE</div>
+    </div>
+  </div>
+  <div class="my-account-sidebar">
+    <div class="sidebar-options">
+      <ul class="sidebar-option">
+        <div class="overview">
+          <div class="sidebar-header">GENDER</div>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.info}"
+            ng-click="TabsService.myaccountTabs(false, false, false, false, false, true, false, false, false, false, false)">
+            Male
+          </li>
+          <li class="sidebar-option"
+            ng-class="{'active': TabsService.myaccount_tabs.cards}"
+            ng-click="TabsService.myaccountTabs(false, false, false, false, false, false, true, false, false, false, false)">
+            Female
+          </li>
+        </div>
+        <div class="account">
+          <div class="sidebar-header">BRAND</div>
+          <li class="sidebar-option" ng-repeat="brand in FabricsService.filters.brand.name">
+            {{brand}}
+          </li>
+        </div>
+        <div class="account">
+          <div class="sidebar-header">CATEGORIES</div>
+          <li class="sidebar-option" ng-repeat="category in FabricsService.filters.category.name">
+            {{category}}
+          </li>
+        </div>
+        <div class="account">
+          <div class="sidebar-header">QUALITY</div>
+          <li class="sidebar-option" ng-repeat="quality in FabricsService.filters.quality.name">
+            {{quality}}
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div class="my-account-content">
+    <div class="product-card" ng-repeat="fabric in FabricsService.fabrics">
+      <div class="product-img">
+        <img src="{{fabric.img}}" style="float:left;"/>
+      </div>
+      <div class="product-desc">
+        <div style="font-size:14px;color:#999;line-height:35px;font-weight:500;">
+          {{fabric.brand}}
+        </div>
+        <div style="font-size:12px;line-height:35px;">
+          <i class="material-icons gold" ng-repeat="i in getNumber(fabric.stars) track by $index" style="font-size:13px;float:left;">star</i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

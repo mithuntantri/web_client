@@ -1,8 +1,8 @@
 angular.module("zigfo").controller('mainController',
               ['$scope','$state', '$rootScope', 'LoginService', 'SignupService',
-              'FBLoginService', 'ModalService', 'CategoriesService', 'TabsService',
+              'FBLoginService', 'ModalService', 'CategoriesService', 'TabsService', 'FabricsService',
               function($scope, $state, $rootScope, LoginService, SignupService,
-                FBLoginService, ModalService, CategoriesService, TabsService){
+                FBLoginService, ModalService, CategoriesService, TabsService, FabricsService){
 
       console.log('Main Controller');
       $('#mainpageslider').slick({
@@ -26,6 +26,11 @@ angular.module("zigfo").controller('mainController',
       }
       $scope.CategoriesService = CategoriesService
       CategoriesService.getCategories()
+
+      $scope.FabricsService = FabricsService
+      FabricsService.getTopFabrics()
+      FabricsService.getFabricFilters()
+
       $scope.loggedIn = $rootScope.loggedIn
       $scope.zigfo_wallet = 0
       $scope.loggedIn = false

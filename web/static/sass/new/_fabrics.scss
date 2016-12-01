@@ -1,0 +1,20 @@
+.product-card{
+  width:232px;
+  float: left;
+  padding: 16px;
+}
+.product-img{
+  width: 70px;
+  float: left;
+}
+.product-desc{
+  width:130px;
+  float: left;
+  padding: 0 10px;
+}
+.product-card:hover{
+  box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15) !important;
+}
+.gold{
+  color: #FFC315;
+}

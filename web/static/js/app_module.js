@@ -136,6 +136,11 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
           templateUrl: "partials/main.pickup.html",
           controller: "pickupController"
         })
+        .state("main.fabrics", {
+          url : "fabrics",
+          templateUrl: "partials/main.fabrics.html",
+          controller: "mainFabricsController"
+        })
         .state("app", {
           url: "/app",
           templateUrl: "partials/app.html",
@@ -176,6 +181,11 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
           url: "/design",
           templateUrl: "partials/app.design.html",
           controller: "appDesignController"
+        })
+        .state("app.cart", {
+          url: "/cart",
+          templateUrl: "partials/app.cart.html",
+          controller: "appCartController"
         })
 })
 .filter('getTotalCredits', ()=>{

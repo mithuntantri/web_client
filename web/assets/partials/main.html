@@ -74,9 +74,28 @@
             </div>
           </div>
         </div>
-        <div class="zig-nav-menuitem3">
+        <div class="zig-nav-menuitem3" ui-sref="main.fabrics">
           Fabrics
           <div class="zig-nav-list3">
+            <div style="max-width:980px;margin:0 auto;font-weight:400;">
+              <div style="width:30%;float:left;font-size:12px;">
+                <div style="width:100%">
+                  <div style="color:rgb(238, 95, 115);font-size:14px;font-weight:600;line-height:40px;margin-bottom:8px;text-align:left;">Fabric Brands</div>
+                </div>
+                <div class="zig-nav-list-item" ng-repeat="brand in FabricsService.filters.brand.name">
+                  <span class="zig-nav-list-item-label">{{brand}}</span>
+                </div>
+              </div>
+              <div style="width:70%;float:left;font-size:12px;">
+                <div style="width:100%">
+                  <div style="color:rgb(238, 95, 115);font-size:14px;font-weight:600;line-height:40px;margin-bottom:8px;text-align:left;">Trending Fabrics</div>
+                </div>
+                <div class="zig-nav-list-item" ng-repeat="fabric in FabricsService.topFabrics" style="float:left;margin:0 7px;">
+                  <!-- <span class="zig-nav-list-item-label">{{ fabric.brand }}</span> -->
+                  <img src="{{fabric.img}}"/>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
