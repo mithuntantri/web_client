@@ -3,6 +3,7 @@ class DesignService {
     this.$http = $http
     this.allOptions = []
     this.totalPrice = "0"
+    this.favorites = false
   }
   initOptions(){
     this.$http({
@@ -12,7 +13,13 @@ class DesignService {
       if(response.data.status === 'success'){
         this.allOptions = response.data.data.all_options
         this.totalPrice = (response.data.data.total_price)
+        this.favorites = response.data.data.favorites
         localStorage.designHash = response.data.data.hash
+        this.allOptions.gender = response.data.data.gender
+        angular.forEach(this.allOptions, (val, key)=>{
+          val.active = false
+        })
+        this.allOptions[0].active = true
       }
     },(error)=>{
 
@@ -25,8 +32,9 @@ class DesignService {
     }).then((response)=>{
       this.allOptions = response.data.data.all_options
       this.totalPrice = (response.data.data.total_price)
+      this.favorites = response.data.data.favorites
+      this.allOptions.gender = response.data.data.gender
       localStorage.designHash = response.data.data.hash
-      console.log(this.allOptions);
       angular.forEach(this.allOptions, (val, key)=>{
         val.active = false
       })
@@ -51,6 +59,37 @@ class DesignService {
         })
         this.allOptions[choice].options[option].selected = true
         this.totalPrice = (response.data.data.total_price)
+      }
+    },(error)=>{
+
+    })
+  }
+  addtoFavorites(hash){
+    this.$http({
+      url: '/api/favorites',
+      method: 'PUT',
+      data :{
+        hash : hash
+      }
+    }).then((response)=>{
+      if(response.data.status === 'success'){
+        this.favorites = true
+      }else{
+
+      }
+    },(error)=>{
+
+    })
+  }
+  removeFromFavorites(hash){
+    this.$http({
+      url: `/api/favorites?hash=${hash}`,
+      method: 'DELETE'
+    }).then((response)=>{
+      if(response.data.status === 'success'){
+        this.favorites = false
+      }else{
+
       }
     },(error)=>{
 

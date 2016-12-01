@@ -36,7 +36,7 @@ angular.module("zigfo").controller('appDesignController',
       $timeout(function() {
         $scope.ready = true;
       }, 1000);
-      $('.carousel-content').slick({
+      $('.carousel-content-app-design').slick({
          slidesToShow: 6,
          slidesToScroll: 1,
          infinite: true,
@@ -49,10 +49,10 @@ angular.module("zigfo").controller('appDesignController',
          }]
      });
      $scope.carouselPrev = ()=>{
-       $('.carousel-content').slick('slickPrev')
+       $('.carousel-content-app-design').slick('slickPrev')
      }
      $scope.carouselNext = ()=>{
-       $('.carousel-content').slick('slickNext')
+       $('.carousel-content-app-design').slick('slickNext')
      }
      $scope.MapsService = MapsService
 

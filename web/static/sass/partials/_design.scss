@@ -106,9 +106,11 @@ li.middle-divider{
 }
 .slick-item{
   height:80px !important;float:left !important;cursor: pointer;
+  border-bottom: 2px solid transparent;
 }
 .slick-item.active{
-  background-color: #f7931d !important;
+  color: #f7931d !important;
+  border-bottom: 2px solid #f7931d !important;
   opacity: 0.8;
 }
 .slick-item-desc{

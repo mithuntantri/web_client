@@ -111,6 +111,7 @@ class ProfileService {
           female : false,
           referral_id : response.data.data.referral_id
         }
+        localStorage.mobileno = info.mobileno
         this.credits = {
           profile_credits : credits.profile_credits,
           promo_credits : credits.promo_credits,
