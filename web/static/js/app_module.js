@@ -196,3 +196,12 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
     return c.referral_credits + c.profile_credits + c.promo_credits
   }
 })
+.filter('getGender', ()=>{
+  return(gender)=>{
+    if (gender === 'M'){
+      return "Men"
+    }else{
+      return "Women"
+    }
+  }
+})
