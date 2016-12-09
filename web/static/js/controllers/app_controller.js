@@ -1,10 +1,12 @@
 angular.module("zigfo").controller('appController',
-              ['$scope','$state', '$rootScope', '$http', '$auth', '$facebook','ProfileService', 'LogOutService', 'MeasurementsService', 'TabsService', 'CategoriesService', 'AddressService',
-              function($scope, $state, $rootScope, $http, $auth, $facebook, ProfileService, LogOutService, MeasurementsService, TabsService, CategoriesService, AddressService){
+              ['$scope','$state', '$rootScope', '$http', '$auth', '$facebook','ProfileService', 'LogOutService', 'MeasurementsService', 'TabsService', 'CategoriesService', 'AddressService', 'FabricsService',
+              function($scope, $state, $rootScope, $http, $auth, $facebook, ProfileService, LogOutService, MeasurementsService, TabsService, CategoriesService, AddressService, FabricsService){
   console.log('App Controller');
   $scope.credits = 0
   $scope.ProfileService = ProfileService
   $scope.MeasurementsService = MeasurementsService
+  $scope.FabricsService = FabricsService
+  
   $scope.logOut = ()=>{
     LogOutService.logOut()
   }

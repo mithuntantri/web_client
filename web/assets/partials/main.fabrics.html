@@ -1,5 +1,5 @@
 <div class="center-container" style="min-height:1000px;display:block;">
-  <div style="width:100%;height:102px;">
+  <div style="width:100%;height:102px;" ng-show="!showdetails">
     <div style="width:25%;float:left;height:100%;">
       <div class="my-account-header">
         Fabrics
@@ -126,7 +126,7 @@
     </div>
   </div>
   <div class="fabric-details" ng-show="showdetails">
-    <div style="padding:15px 0 20px;font-size:13px;height:47px;width:100%;">
+    <div style="padding:25px 0 40px;font-size:13px;height:96px;width:100%;">
       <div style="line-height:12px;">
         <a ui-sref="main.home" class="breadcrumbs-link">Home</a>
         <span class="breadcrumbs-separator">/</span>
@@ -163,7 +163,7 @@
         </div>
         <div>
           <button class="pdp-add-to-wishlist pdp-button">ADD TO WISHLIST</button>
-          <button class="pdp-add-to-bag pdp-button" ng-click="gotoBag()">ADD TO BAG</button>
+          <button class="pdp-add-to-bag pdp-button" ng-click="FabricsService.addtoCart()">ADD TO BAG</button>
         </div>
         <div class="pdp-size-chart-description">
           Shirt fabric length: 1.7 metres<br/>

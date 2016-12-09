@@ -115,6 +115,11 @@ class FabricsService{
 
     })
   }
+  addtoCart(){
+    this.$http({
+      
+    })
+  }
 }
 FabricsService.$inject = ['$http']
 angular.module('zigfo').service('FabricsService', FabricsService)
