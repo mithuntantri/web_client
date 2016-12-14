@@ -1,4 +1,4 @@
-<div class="center-container">
+<div class="center-container" style="min-height:600px;display:block;">
   <div style="width:25%;float:left;height:100%;">
     <div class="my-account-header">
       Custom Shirt Design
@@ -24,7 +24,73 @@
       <div style="float:left;">100% SECURE</div>
     </div>
   </div>
-  <div class="my-account-sidebar">
+  <div class="my-account-sidebar" ng-show=fabrics_active>
+    <div class="sidebar-options">
+      <ul class="sidebar-option">
+        <div class="overview">
+          <div class="sidebar-header">GENDER</div>
+          <li class="sidebar-option" ng-repeat="gender in FabricsService.filters.gender">
+            <div style="height:100%;float:left;padding:0 7px;line-height:17px;">
+              <input type="checkbox" style="line-height:17px;width:15px;height:15px;left:0 !important;top:0 !important;"
+                ng-model="gender.applied" ng-click="FabricsService.applyFilter('gender', gender.name)"/>
+            </div>
+            <div style="float:left;height:100%;line-height:17px;">
+              {{gender.name | getGender}}
+            </div>
+          </li>
+        </div>
+        <div class="account">
+          <div class="sidebar-header">BRAND</div>
+          <li class="sidebar-option" ng-repeat="brand in FabricsService.filters.brand">
+            <div style="height:100%;float:left;padding:0 7px;line-height:17px;">
+              <input type="checkbox" style="line-height:17px;width:15px;height:15px;left:0 !important;top:0 !important;"
+                ng-model="brand.applied" ng-click="FabricsService.applyFilter('brand', brand.name)"/>
+            </div>
+            <div style="float:left;height:100%;line-height:17px;">
+            {{brand.name}}
+            </div>
+          </li>
+        </div>
+        <div class="account">
+          <div class="sidebar-header">CATEGORIES</div>
+          <li class="sidebar-option" ng-repeat="category in FabricsService.filters.category">
+            <div style="height:100%;float:left;padding:0 7px;line-height:17px;">
+              <input type="checkbox" style="line-height:17px;width:15px;height:15px;left:0 !important;top:0 !important;"
+                ng-model="category.applied" ng-click="FabricsService.applyFilter('category', category.name)"/>
+            </div>
+            <div style="float:left;height:100%;line-height:17px;">
+            {{category.name}}
+            </div>
+          </li>
+        </div>
+        <div class="account">
+          <div class="sidebar-header">MATERIAL</div>
+          <li class="sidebar-option" ng-repeat="material in FabricsService.filters.material">
+            <div style="height:100%;float:left;padding:0 7px;line-height:17px;">
+              <input type="checkbox" style="line-height:17px;width:15px;height:15px;left:0 !important;top:0 !important;"
+                ng-model="material.applied" ng-click="FabricsService.applyFilter('material', material.name)"/>
+            </div>
+            <div style="float:left;height:100%;line-height:17px;">
+            {{material.name}}
+            </div>
+          </li>
+        </div>
+        <div class="account">
+          <div class="sidebar-header">RATING</div>
+          <li class="sidebar-option" ng-repeat="quality in FabricsService.filters.quality">
+            <div style="height:100%;float:left;padding:0 7px;line-height:17px;">
+              <input type="checkbox" style="line-height:17px;width:15px;height:15px;left:0 !important;top:0 !important;"
+                ng-model="quality.applied" ng-click="FabricsService.applyFilter('quality',quality.name)"/>
+            </div>
+            <div style="float:left;height:100%;line-height:17px;">
+              <i class="material-icons gold" ng-repeat="i in getNumber(quality.name) track by $index" style="font-size:13px;float:left;">star</i>
+            </div>
+          </li>
+        </div>
+      </ul>
+    </div>
+  </div>
+  <div class="my-account-sidebar" ng-show="styles_active">
     <div class="sidebar-options">
       <ul class="sidebar-option">
         <div class="overview">
@@ -77,6 +143,8 @@
     <div style="width:50%;height:33px;border-bottom:1px solid #f1f1f1;margin:0 auto;">
       <div style="margin:0 auto;width:40px;line-height:65px;background-color:#fff;text-align:center;">OR</div>
     </div>
+  </div>
+  <div class="my-account-content" ng-show="fabrics_active">
   </div>
   <div class="my-account-content" ng-show="styles_active">
     <div class="content-card">

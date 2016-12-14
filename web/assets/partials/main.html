@@ -10,8 +10,8 @@
   </div>
   <div class="zig-nav-container">
     <div class="zig-nav-logo" style="padding:20px 0;">
-      <!-- <img src="/img/logo.png" style="width:30px;float:left;"/> -->
-      <!-- <div style="float:left;font-size:20px;font-weight:600;width:70px;color: #282c3f;line-height:40px;padding-left:10px;letter-spacing:1px;">Zigfo</div> -->
+      <img src="/img/zigfo_logo.png" style="width:40px;float:left;"/>
+      <div style="float:left;font-size:20px;font-weight:600;width:70px;color: #282c3f;line-height:40px;padding-left:10px;letter-spacing:1px;">Zigfo</div>
     </div>
     <div class="zig-nav-menu">
       <div class="zig-nav-menuitems">
@@ -52,12 +52,12 @@
                 <div style="color:rgb(238, 95, 115);font-size:14px;font-weight:600;line-height:40px;margin-bottom:8px;text-align:left;">Women's Fashion</div>
               </div>
               <div style="width:30%;float:left;font-size:12px;">
-                <div class="zig-nav-list-item">
-                  <span class="zig-nav-list-item-label">Custom Shirts</span>
-                  <span class="zig-header-label coming-soon">Coming Soon</span>
+                <div class="zig-nav-list-item" ui-sref="main.blouses">
+                  <span class="zig-nav-list-item-label">Custom Blouse</span>
+                  <!-- <span class="zig-header-label coming-soon">Coming Soon</span> -->
                 </div>
                 <div class="zig-nav-list-item">
-                  <span class="zig-nav-list-item-label">Custom Suits</span>
+                  <span class="zig-nav-list-item-label">Custom Shirts</span>
                   <span class="zig-header-label coming-soon">Coming Soon</span>
                 </div>
               </div>
@@ -101,7 +101,7 @@
       </div>
     </div>
     <div class="zig-nav-search">
-      <input type="text" class="zig-query" placeholder="Search"/>
+      <input type="text" class="zig-query" placeholder="Search" ng-click="SearchService.search()"/>
       <a class="zig-query-submit">
         <i class="material-icons">search</i>
       </a>

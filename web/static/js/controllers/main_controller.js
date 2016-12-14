@@ -1,9 +1,9 @@
 angular.module("zigfo").controller('mainController',
               ['$scope','$state', '$rootScope', 'LoginService', 'SignupService',
-              'FBLoginService', 'ModalService', 'CategoriesService', 'TabsService', 'FabricsService',
+              'FBLoginService', 'ModalService', 'CategoriesService', 'TabsService', 'FabricsService', 'SearchService',
               function($scope, $state, $rootScope, LoginService, SignupService,
-                FBLoginService, ModalService, CategoriesService, TabsService, FabricsService){
-
+                FBLoginService, ModalService, CategoriesService, TabsService, FabricsService, SearchService){
+    $scope.SearchService = SearchService
       console.log('Main Controller');
       $('#mainpageslider').slick({
          slidesToShow: 4,
