@@ -1,10 +1,15 @@
 class FabricsService{
-  constructor($http){
+  constructor($http, Notifications, CartService){
     this.$http = $http
+    this.Notifications = Notifications
+    this.CartService = CartService
     this.topFabrics = []
     this.filters = []
     this.fabrics = []
     this.favorites = false
+  }
+  getNumber (num) {
+      return new Array(num);
   }
   getTopFabrics(){
     let quality = 3
@@ -116,10 +121,31 @@ class FabricsService{
     })
   }
   addtoCart(){
+    if(!localStorage.cartHash){
+      this.CartService.getCart().then((response)=>{
+        this.addFabrictoCart()
+      })
+    }else{
+      this.addFabrictoCart()
+    }
+  }
+  addFabrictoCart(){
     this.$http({
-      
+      url: `/api/cart`,
+      method:'POST',
+      data: {
+        'hash' : localStorage.cartHash,
+        'fabric_id' : this.fabrics[0].fabric_id
+      }
+    }).then((response)=>{
+      if(response.data.status === 'success'){
+        this.CartService.item_count = response.data.item_count
+        this.Notifications.showSuccessToast(`Product Added to Cart. You Have ${response.data.item_count} items in cart`)
+      }
+    },(error)=>{
+
     })
   }
 }
-FabricsService.$inject = ['$http']
+FabricsService.$inject = ['$http', 'Notifications', 'CartService']
 angular.module('zigfo').service('FabricsService', FabricsService)

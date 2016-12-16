@@ -85,7 +85,7 @@
                 ng-model="quality.applied" ng-click="FabricsService.applyFilter('quality',quality.name)"/>
             </div>
             <div style="float:left;height:100%;line-height:17px;">
-              <i class="material-icons gold" ng-repeat="i in getNumber(quality.name) track by $index" style="font-size:13px;float:left;">star</i>
+              <i class="material-icons gold" ng-repeat="i in FabricsService.getNumber(quality.name) track by $index" style="font-size:13px;float:left;">star</i>
             </div>
           </li>
         </div>

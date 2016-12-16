@@ -1,6 +1,7 @@
 angular.module("zigfo").controller('mainDesignController',
-  ['$scope', '$rootScope', 'DesignService', '$timeout',
-  function ($scope, $rootScope, DesignService, $timeout) {
+  ['$scope', '$rootScope', 'DesignService', '$timeout', 'FabricsService',
+  function ($scope, $rootScope, DesignService, $timeout, FabricsService) {
+      $scope.FabricsService = FabricsService
       $scope.DesignService = DesignService
       if(!localStorage.designHash){
         DesignService.initOptions()
@@ -20,6 +21,22 @@ angular.module("zigfo").controller('mainDesignController',
         $scope.fabrics_active = fabrics
         $scope.measurements_active = measurements
         $scope.checkout_active = checkout
+        if(fabrics){
+          $scope.disableGender = true
+          $scope.disableCategory = true
+          angular.forEach(FabricsService.filters.gender, (gender, key)=>{
+            if(gender.name === "M"){
+              gender.applied = true
+            }
+          })
+          angular.forEach(FabricsService.filters.category, (category, key)=>{
+            if(category.name==='Shirts'){
+              category.applied  = true
+            }
+          })
+          FabricsService.applyFilter('gender', 'M')
+          FabricsService.applyFilter('category', 'Shirts')
+        }
       }
       $scope.current_active_option = 0
       $scope.changeStylesTab = (index)=>{

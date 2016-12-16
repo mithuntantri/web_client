@@ -9,9 +9,6 @@ angular.module("zigfo")
     $scope.showBag = false
     $scope.showPayment = false
 
-    $scope.getNumber = function(num) {
-        return new Array(num);
-    }
     $scope.gotoFabrics = ()=>{
       if($scope.showBag || $scope.showdetails){
         $scope.showdetails = false

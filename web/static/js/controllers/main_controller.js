@@ -1,8 +1,9 @@
 angular.module("zigfo").controller('mainController',
-              ['$scope','$state', '$rootScope', 'LoginService', 'SignupService',
+              ['$scope','$state', '$rootScope', 'LoginService', 'SignupService', 'CartService',
               'FBLoginService', 'ModalService', 'CategoriesService', 'TabsService', 'FabricsService', 'SearchService',
-              function($scope, $state, $rootScope, LoginService, SignupService,
+              function($scope, $state, $rootScope, LoginService, SignupService, CartService,
                 FBLoginService, ModalService, CategoriesService, TabsService, FabricsService, SearchService){
+    $scope.CartService = CartService
     $scope.SearchService = SearchService
       console.log('Main Controller');
       $('#mainpageslider').slick({

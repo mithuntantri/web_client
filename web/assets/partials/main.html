@@ -132,7 +132,7 @@
         </div>
         <div style="float:left;line-height:30px;padding:0 5px;font-weight:600;" ui-sref="main.cart">
           Bag
-          <!-- <span class="desktop-badge desktop-melon">3</span> -->
+          <span class="desktop-badge desktop-melon" ng-show="CartService.item_count > 0">{{CartService.item_count}}</span>
         </div>
       </div>
     </div>
