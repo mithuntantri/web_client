@@ -3,8 +3,8 @@
     <div style="font-size:26px;color:#535766;text-align:center;font-weight:300;line-height:37px;margin-top:15px;margin-bottom:32px;">Signup with</div>
     <div style="font-size:12px;color:#535766;text-align:center;font-weight:300;line-height:14px;margin-bottom:20px;">EASILY USING</div>
     <div style="width:100%;margin-top:10px;margin-bottom:40px;height:50px;">
-      <div class="register-button"><span class="register-fb-logo"></span>FACEBOOK</div>
-      <div class="register-button"><span class="register-google-logo"></span>GOOGLE</div>
+      <div class="register-button" ng-click="fbLogin()"><span class="register-fb-logo"></span>FACEBOOK</div>
+      <div class="register-button" g-login><span class="register-google-logo"></span>GOOGLE</div>
     </div>
     <div style="font-size:12px;color:#535766;text-align:center;font-weight:300;line-height:14px;margin-bottom:20px;">- OR USING EMAIL/MOBILENO -</div>
     <form class="register-form">
@@ -15,7 +15,7 @@
         <div class="register-input-item" ng-show="!SignupService.otp_generated && SignupService.GoogleSignup">
           <input type="email" class="register-user-input register-user-input-email" placeholder="Your Email Address" name="email" autocomplete="off" autofocus ng-model="SignupService.GoogleEmail" disabled="true"/>
         </div>
-        <div class="register-input-item" ng-show="!SignupService.otp_generated">
+        <div class="register-input-item" ng-show="!SignupService.otp_generated" style="height:46px;">
           <input type="text" class="register-user-input register-user-input-password" placeholder="First Name" name="firstname" autocomplete="off" ng-model="firstname" style="width:48%;float:left;"/>
           <input type="text" class="register-user-input register-user-input-password" placeholder="Last Name" name="lastname" autocomplete="off" ng-model="lastname" style="width:40%;float:left;"/>
         </div>

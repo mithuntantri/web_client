@@ -35,4 +35,11 @@ angular.module("zigfo").controller('mainSignupController',
                     $scope.verifyOtp = ()=>{
                       SignupService.verify_signup($scope.mobileno.toString(), $scope.otp.toString())
                     }
+                    $scope.fbLogin = ()=>{
+                       FBLoginService.fblogin()
+                     }
+                    $scope.$on('event:social-sign-in-success', function (event,authResult) {
+                      console.log(event, authResult)
+                      LoginService.loginwithGoogle(authResult.email,authResult.imageUrl,authResult.name,authResult.token,authResult.uid)
+                    })
                 }])
