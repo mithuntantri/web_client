@@ -4,6 +4,7 @@ angular.module("zigfo").controller('mainSignupController',
               function($scope, $state, $rootScope, LoginService, SignupService,
                 FBLoginService, ModalService, CategoriesService, TabsService){
                     $scope.email = SignupService.GoogleEmail
+                    $scope.emailFormat = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
                     $scope.password = ''
                     $scope.referral_code = ''
                     $scope.mobileno = ''

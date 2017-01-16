@@ -4,6 +4,9 @@ html,body{
   font-weight: 300 !important;
   background-color: #fff !important;
 }
+input[type="reset"][disabled], input[type="submit"][disabled], html input[type="button"][disabled], button[disabled]{
+  background-color: #ccc !important;
+ }
 .angular-google-map-container { height: 400px; }
 ::-webkit-scrollbar {
     width: 9px;
