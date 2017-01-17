@@ -104,30 +104,30 @@ angular.module("zigfo", ['ui.router', 'satellizer', 'ngMaterial', 'ngFacebook', 
         })
 
         .state("main.login", {
-          url: "",
+          url: "login",
           templateUrl: "partials/main.login.html",
           controller: "mainLoginController"
         })
 
         .state("main.cart", {
-          url: "",
+          url: "cart",
           templateUrl: "partials/main.cart.html",
           controller: "mainLoginController"
         })
 
         .state("main.signup", {
-          url: "",
+          url: "signup",
           templateUrl: "partials/main.signup.html",
           controller: "mainSignupController"
         })
 
         .state("main.design", {
-          url: "design",
+          url: "customshirts",
           templateUrl: "partials/main.design.html",
           controller: "mainDesignController"
         })
         .state("main.profile", {
-          url: "",
+          url: "profile",
           templateUrl: "partials/main.profile.html",
           controller: "mainProfileController"
         })
