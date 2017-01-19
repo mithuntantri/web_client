@@ -202,9 +202,25 @@
   </div>
   <div class="my-account-content" ng-show="styles_active">
     <div class="content-card">
-      <div class="top-design-img">
+      <div class="top-design-img" style="background-color:#fafafa;">
         <div class="visual-product">
           <div style="width:100%;height:330px;">
+            <div style="position:absolute;">
+              <img src="/img/customshirts/R_201.png" ng-if="!DesignService.allOptions[1].options[2].selected"
+              style="position:absolute;top:-250px;left:-250px;width:650px;height:650px;z-index:10;">
+              <img src="/img/customshirts/Buttons.png"
+              style="position:absolute;top:-250px;left:-250px;width:650px;height:650px;z-index:10;">
+              <img src="/img/customshirts/A_301(SEAMS02).png"
+              style="position:absolute;top:-250px;left:-250px;width:650px;height:650px;z-index:10;">
+              <img src="/img/customshirts/Angle Flap_A706.png"
+              style="position:absolute;top:-250px;left:-250px;width:650px;height:650px;z-index:10;">
+              <img ng-src="/img/customshirts/{{option.key}}.png" ng-if="option.selected" style="position:absolute;top:-250px;left:-250px;width:650px;height:650px;z-index:10;"
+                ng-repeat="option in DesignService.allOptions[1].options">
+                <img ng-src="/img/customshirts/{{option.key}}.png" ng-if="option.selected" style="position:absolute;top:-250px;left:-250px;width:650px;height:650px;z-index:10;"
+                  ng-repeat="option in DesignService.allOptions[2].options">
+                <img ng-src="/img/customshirts/{{option.key}}.png" ng-if="option.selected" style="position:absolute;top:-250px;left:-250px;width:650px;height:650px;"
+                  ng-repeat="option in DesignService.allOptions[9].options">
+            </div>
           </div>
           <div style="width:100%;height:50px;">
             <div class="visual-price">
